@@ -1,0 +1,2056 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Keys99.com | Login</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* =========================================================
+           KEYS99 LIGHT PREMIUM THEME
+           FUNCTIONALITY NOT CHANGED
+        ========================================================= */
+
+        :root {
+            --primary: #075b4f;
+            --primary-dark: #064b42;
+            --primary-light: #eaf7f4;
+
+            --gold: #d8a51d;
+            --gold-dark: #b98508;
+            --gold-light: #fff7df;
+
+            --bg: #f7faf9;
+            --white: #ffffff;
+
+            --text: #102d3d;
+            --text-light: #647783;
+            --muted: #8a989f;
+
+            --border: #e3ebe8;
+
+            --error: #dc4b4b;
+            --success: #15966d;
+
+            --shadow: 0 25px 70px rgba(16, 45, 61, 0.10);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family:
+                Inter,
+                "Segoe UI",
+                Arial,
+                sans-serif;
+
+            margin: 0;
+            min-height: 100vh;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            padding: 30px 18px;
+
+            color: var(--text);
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(216, 165, 29, 0.09),
+                    transparent 28%
+                ),
+                radial-gradient(
+                    circle at 90% 90%,
+                    rgba(7, 91, 79, 0.08),
+                    transparent 30%
+                ),
+                var(--bg);
+        }
+
+        /* =========================================================
+           MAIN LOGIN CARD
+        ========================================================= */
+
+        .login-card {
+            width: 100%;
+            max-width: 520px;
+
+            background: rgba(255, 255, 255, 0.96);
+
+            border: 1px solid var(--border);
+
+            border-radius: 28px;
+
+            padding: 42px 44px 34px;
+
+            box-shadow: var(--shadow);
+
+            position: relative;
+            overflow: hidden;
+
+            animation: cardIn 0.5s ease;
+        }
+
+        .login-card::before {
+            content: "";
+
+            position: absolute;
+            left: 0;
+            top: 0;
+
+            width: 100%;
+            height: 5px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--primary),
+                    var(--gold),
+                    var(--primary)
+                );
+        }
+
+        @keyframes cardIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* =========================================================
+           BRAND / LOGO
+        ========================================================= */
+
+        .logo-icon {
+            width: 62px;
+            height: 62px;
+
+            border-radius: 18px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            margin: 0 auto 16px;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #f7d45b,
+                    var(--gold)
+                );
+
+            color: var(--primary);
+
+            box-shadow:
+                0 10px 25px rgba(216, 165, 29, 0.22);
+
+            position: relative;
+        }
+
+        .logo-icon::after {
+            content: "";
+
+            position: absolute;
+            inset: -5px;
+
+            border-radius: 22px;
+
+            border: 1px solid rgba(216, 165, 29, 0.22);
+
+            pointer-events: none;
+        }
+
+        .logo-icon svg {
+            width: 30px;
+            height: 30px;
+            stroke-width: 2.4;
+        }
+
+        h2 {
+            margin: 0;
+
+            text-align: center;
+
+            color: var(--text);
+
+            font-size: 28px;
+            line-height: 1.2;
+
+            font-weight: 800;
+
+            letter-spacing: -0.6px;
+        }
+
+        h2::first-letter {
+            color: var(--primary);
+        }
+
+        p.subtitle {
+            text-align: center;
+
+            color: var(--text-light);
+
+            margin:
+                8px auto 28px;
+
+            font-size: 14px;
+
+            line-height: 1.6;
+
+            max-width: 340px;
+        }
+
+        /* =========================================================
+           ERROR BOX
+        ========================================================= */
+
+        .db-error-box {
+            background: #fff4f4;
+
+            border: 1px solid #f0bcbc;
+
+            color: var(--error);
+
+            padding: 12px 14px;
+
+            border-radius: 12px;
+
+            margin-bottom: 18px;
+
+            font-size: 13px;
+
+            line-height: 1.5;
+
+            display: none;
+
+            text-align: center;
+        }
+
+        /* =========================================================
+           FORM
+        ========================================================= */
+
+        .input-group {
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .row {
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 14px;
+        }
+
+        label {
+            display: block;
+
+            margin-bottom: 7px;
+
+            font-size: 12px;
+
+            color: var(--text);
+
+            font-weight: 700;
+
+            letter-spacing: 0.1px;
+        }
+
+        .field-wrapper {
+            position: relative;
+        }
+
+        .input-icon {
+            position: absolute;
+
+            left: 14px;
+            top: 50%;
+
+            transform: translateY(-50%);
+
+            color: var(--primary);
+
+            width: 17px;
+            height: 17px;
+
+            pointer-events: none;
+
+            opacity: 0.85;
+        }
+
+        input,
+        textarea {
+            width: 100%;
+
+            padding:
+                13px
+                13px
+                13px
+                42px;
+
+            background: #fbfdfc;
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            color: var(--text);
+
+            outline: none;
+
+            transition:
+                border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+
+            font-size: 14px;
+
+            font-family: inherit;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #a0adb2;
+        }
+
+        input:hover,
+        textarea:hover {
+            border-color: #cbdad5;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: var(--primary);
+
+            background: #ffffff;
+
+            box-shadow:
+                0 0 0 4px rgba(7, 91, 79, 0.08);
+        }
+
+        textarea {
+            padding-top: 13px;
+
+            resize: none;
+
+            line-height: 1.5;
+        }
+
+        input.invalid,
+        textarea.invalid {
+            border-color: var(--error) !important;
+
+            background: #fff8f8;
+
+            box-shadow:
+                0 0 0 3px rgba(220, 75, 75, 0.06);
+        }
+
+        .error-hint {
+            color: var(--error);
+
+            font-size: 11px;
+
+            margin-top: 5px;
+
+            display: none;
+
+            line-height: 1.4;
+        }
+
+        /* =========================================================
+           FORGOT PASSWORD
+        ========================================================= */
+
+        .forgot-link {
+            text-align: right;
+
+            margin-top: -7px;
+
+            margin-bottom: 15px;
+
+            font-size: 12px;
+
+            color: var(--primary);
+
+            cursor: pointer;
+
+            font-weight: 700;
+
+            transition: color 0.2s ease;
+        }
+
+        .forgot-link:hover {
+            color: var(--gold-dark);
+            text-decoration: underline;
+        }
+
+        /* =========================================================
+           PRIMARY BUTTON
+        ========================================================= */
+
+        .btn-primary {
+            position: relative;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    var(--primary),
+                    var(--primary-dark)
+                );
+
+            color: white;
+
+            width: 100%;
+
+            padding: 14px 18px;
+
+            border: none;
+
+            border-radius: 12px;
+
+            font-weight: 800;
+
+            cursor: pointer;
+
+            margin-top: 8px;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 10px;
+
+            font-size: 14px;
+
+            letter-spacing: 0.1px;
+
+            box-shadow:
+                0 8px 18px rgba(7, 91, 79, 0.18);
+
+            transition:
+                transform 0.2s ease,
+                box-shadow 0.2s ease,
+                opacity 0.2s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 12px 25px rgba(7, 91, 79, 0.23);
+        }
+
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+
+        .btn-primary:disabled {
+            cursor: not-allowed;
+            opacity: 0.75;
+            transform: none;
+        }
+
+        /* =========================================================
+           GOOGLE BUTTON
+        ========================================================= */
+
+        .btn-google {
+            background: #ffffff;
+
+            color: var(--text);
+
+            border: 1px solid var(--border);
+
+            width: 100%;
+
+            padding: 13px;
+
+            border-radius: 12px;
+
+            font-weight: 700;
+
+            cursor: pointer;
+
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 10px;
+
+            margin-bottom: 17px;
+
+            transition:
+                border-color 0.2s ease,
+                background 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+        }
+
+        .btn-google:hover {
+            background: #fbfdfc;
+
+            border-color: #cbdad5;
+
+            transform: translateY(-1px);
+
+            box-shadow:
+                0 6px 18px rgba(16, 45, 61, 0.07);
+        }
+
+        .btn-google img {
+            width: 17px;
+            height: 17px;
+        }
+
+        /* =========================================================
+           DIVIDER
+        ========================================================= */
+
+        .divider {
+            display: flex;
+
+            align-items: center;
+
+            text-align: center;
+
+            margin: 21px 0;
+
+            color: #96a3a8;
+
+            font-size: 10px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.4px;
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+
+            flex: 1;
+
+            height: 1px;
+
+            background: var(--border);
+        }
+
+        .divider:not(:empty)::before {
+            margin-right: 12px;
+        }
+
+        .divider:not(:empty)::after {
+            margin-left: 12px;
+        }
+
+        /* =========================================================
+           OUTLINE BUTTON
+        ========================================================= */
+
+        .btn-outline {
+            background: white;
+
+            border: 1px solid var(--primary);
+
+            color: var(--primary);
+
+            width: 100%;
+
+            padding: 12px;
+
+            border-radius: 12px;
+
+            cursor: pointer;
+
+            margin-top: 10px;
+
+            font-weight: 700;
+
+            font-size: 13px;
+
+            transition:
+                background 0.2s ease,
+                color 0.2s ease;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary-light);
+        }
+
+        /* =========================================================
+           SPINNER
+        ========================================================= */
+
+        .spinner {
+            width: 17px;
+            height: 17px;
+
+            border: 2px solid rgba(255, 255, 255, 0.35);
+
+            border-radius: 50%;
+
+            border-top-color: white;
+
+            animation: spin 0.8s linear infinite;
+
+            display: none;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* =========================================================
+           FOOTER LINKS
+        ========================================================= */
+
+        .footer-links {
+            margin-top: 23px;
+
+            font-size: 12px;
+
+            text-align: center;
+
+            color: var(--text-light);
+        }
+
+        .footer-links p {
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .footer-links span {
+            color: var(--primary);
+
+            cursor: pointer;
+
+            text-decoration: none;
+
+            font-weight: 800;
+        }
+
+        .footer-links span:hover {
+            color: var(--gold-dark);
+
+            text-decoration: underline;
+        }
+
+        /* =========================================================
+           SMALL BRAND FOOTER
+        ========================================================= */
+
+        .login-card::after {
+            content: "KEYS99.COM  •  YOUR KEY TO A BETTER TOMORROW";
+
+            display: block;
+
+            text-align: center;
+
+            margin-top: 25px;
+
+            padding-top: 18px;
+
+            border-top: 1px solid var(--border);
+
+            color: #a0adb2;
+
+            font-size: 9px;
+
+            font-weight: 800;
+
+            letter-spacing: 1.2px;
+        }
+
+        /* =========================================================
+           MODAL
+        ========================================================= */
+
+        .modal-overlay {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+            height: 100%;
+
+            background:
+                rgba(7, 40, 36, 0.45);
+
+            display: none;
+
+            justify-content: center;
+
+            align-items: center;
+
+            z-index: 9999;
+
+            padding: 20px;
+
+            backdrop-filter: blur(8px);
+        }
+
+        .modal-content {
+            background: white;
+
+            padding: 34px 30px;
+
+            border-radius: 24px;
+
+            text-align: center;
+
+            border: 1px solid var(--border);
+
+            max-width: 400px;
+
+            width: 100%;
+
+            box-shadow:
+                0 30px 70px rgba(16, 45, 61, 0.20);
+
+            animation: modalIn 0.25s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.96) translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+
+        .modal-content .logo-icon {
+            margin-bottom: 15px;
+        }
+
+        .modal-content h3 {
+            margin: 0 0 8px;
+
+            font-size: 21px;
+        }
+
+        .modal-content p {
+            font-size: 13px;
+
+            line-height: 1.6;
+
+            margin: 0 0 20px;
+        }
+
+        .modal-content .btn-primary {
+            margin-top: 0;
+        }
+
+        /* =========================================================
+           UTILITY
+        ========================================================= */
+
+        .hidden {
+            display: none !important;
+        }
+
+        /* =========================================================
+           TABLET
+        ========================================================= */
+
+        @media (max-width: 600px) {
+
+            body {
+                padding: 18px 14px;
+
+                align-items: center;
+            }
+
+            .login-card {
+                max-width: 480px;
+
+                padding:
+                    34px
+                    22px
+                    28px;
+
+                border-radius: 23px;
+            }
+
+            h2 {
+                font-size: 25px;
+            }
+
+            p.subtitle {
+                margin-bottom: 24px;
+            }
+
+            .row {
+                gap: 10px;
+            }
+
+            .input-group {
+                margin-bottom: 16px;
+            }
+        }
+
+        /* =========================================================
+           SMALL MOBILE
+        ========================================================= */
+
+        @media (max-width: 420px) {
+
+            body {
+                padding: 12px;
+            }
+
+            .login-card {
+                padding:
+                    30px
+                    17px
+                    25px;
+
+                border-radius: 20px;
+            }
+
+            .logo-icon {
+                width: 56px;
+                height: 56px;
+
+                border-radius: 16px;
+            }
+
+            .logo-icon svg {
+                width: 27px;
+                height: 27px;
+            }
+
+            h2 {
+                font-size: 23px;
+            }
+
+            p.subtitle {
+                font-size: 13px;
+
+                margin-bottom: 21px;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+
+                gap: 0;
+            }
+
+            input,
+            textarea {
+                padding-top: 12px;
+                padding-bottom: 12px;
+
+                font-size: 13px;
+            }
+
+            .btn-primary,
+            .btn-google {
+                padding: 13px;
+            }
+
+            .login-card::after {
+                font-size: 8px;
+
+                letter-spacing: 0.9px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="login-card">
+
+    <!-- BRAND ICON -->
+    <div class="logo-icon">
+        <i data-lucide="home"></i>
+    </div>
+
+    <h2 id="formTitle">Keys99.com</h2>
+
+    <p class="subtitle" id="formSubtitle">
+        Login and access your property dashboard
+    </p>
+
+    <div id="dbErrorBox" class="db-error-box"></div>
+
+    <!-- SOCIAL LOGIN -->
+    <div id="socialSection">
+
+        <button
+            type="button"
+            class="btn-google"
+            onclick="handleGoogleLogin()"
+        >
+            <img
+                src="https://www.google.com/favicon.ico"
+                width="16"
+                alt="google"
+            >
+
+            Continue with Google
+        </button>
+
+        <div class="divider">
+            OR EMAIL
+        </div>
+
+    </div>
+
+
+    <form
+        id="authForm"
+        novalidate
+        onsubmit="handleSubmit(event)"
+    >
+
+        <!-- REGISTER FIELDS -->
+        <div id="registerFields" class="hidden">
+
+            <div class="row">
+
+                <div class="input-group">
+
+                    <label>First Name*</label>
+
+                    <div class="field-wrapper">
+
+                        <i
+                            data-lucide="user"
+                            class="input-icon"
+                        ></i>
+
+                        <input
+                            type="text"
+                            id="fname"
+                            placeholder="John"
+                        >
+
+                    </div>
+
+                    <div
+                        class="error-hint"
+                        id="err-fname"
+                    >
+                        Min 3 letters, alphabets only.
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Middle Name</label>
+
+                    <div class="field-wrapper">
+
+                        <i
+                            data-lucide="user"
+                            class="input-icon"
+                        ></i>
+
+                        <input
+                            type="text"
+                            id="mname"
+                            placeholder="Quincy"
+                        >
+
+                    </div>
+
+                    <div
+                        class="error-hint"
+                        id="err-mname"
+                    >
+                        Min 3 letters, alphabets only.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="row">
+
+                <div class="input-group">
+
+                    <label>Last Name*</label>
+
+                    <div class="field-wrapper">
+
+                        <i
+                            data-lucide="user"
+                            class="input-icon"
+                        ></i>
+
+                        <input
+                            type="text"
+                            id="lname"
+                            placeholder="Doe"
+                        >
+
+                    </div>
+
+                    <div
+                        class="error-hint"
+                        id="err-lname"
+                    >
+                        Min 3 letters, alphabets only.
+                    </div>
+
+                </div>
+
+
+                <div class="input-group">
+
+                    <label>Phone Number*</label>
+
+                    <div class="field-wrapper">
+
+                        <i
+                            data-lucide="smartphone"
+                            class="input-icon"
+                        ></i>
+
+                        <input
+                            type="text"
+                            id="phone"
+                            maxlength="10"
+                            placeholder="10-digit number"
+                        >
+
+                    </div>
+
+                    <div
+                        class="error-hint"
+                        id="err-phone"
+                    >
+                        Exactly 10 numerical digits required.
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="input-group">
+
+                <label>Residential Address*</label>
+
+                <div class="field-wrapper">
+
+                    <i
+                        data-lucide="map"
+                        class="input-icon"
+                        style="top: 18px;"
+                    ></i>
+
+                    <textarea
+                        id="address"
+                        rows="2"
+                        placeholder="Street, City, Zip..."
+                    ></textarea>
+
+                </div>
+
+                <div
+                    class="error-hint"
+                    id="err-address"
+                >
+                    Address is required.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- EMAIL -->
+        <div class="input-group">
+
+            <label>Email Address*</label>
+
+            <div class="field-wrapper">
+
+                <i
+                    data-lucide="mail"
+                    class="input-icon"
+                ></i>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="you@example.com"
+                >
+
+            </div>
+
+            <div
+                class="error-hint"
+                id="err-email"
+            >
+                Invalid email format.
+            </div>
+
+        </div>
+
+
+        <!-- PASSWORD -->
+        <div class="input-group">
+
+            <label id="passLabel">
+                Password*
+            </label>
+
+            <div class="field-wrapper">
+
+                <i
+                    data-lucide="lock"
+                    class="input-icon"
+                ></i>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="••••••••"
+                >
+
+            </div>
+
+            <div
+                class="error-hint"
+                id="err-password"
+            >
+                Password is required.
+            </div>
+
+        </div>
+
+
+        <!-- FORGOT -->
+        <div
+            class="forgot-link"
+            id="forgotPassLink"
+            onclick="handleForgotPassword()"
+        >
+            Forgot Password?
+        </div>
+
+
+        <!-- CONFIRM PASSWORD -->
+        <div
+            class="input-group hidden"
+            id="confirmPassGroup"
+        >
+
+            <label>
+                Confirm Password*
+            </label>
+
+            <div class="field-wrapper">
+
+                <i
+                    data-lucide="check-circle"
+                    class="input-icon"
+                ></i>
+
+                <input
+                    type="password"
+                    id="confirmPassword"
+                    placeholder="••••••••"
+                >
+
+            </div>
+
+            <div
+                class="error-hint"
+                id="err-confirmPassword"
+            >
+                Passwords do not match.
+            </div>
+
+        </div>
+
+
+        <!-- SUBMIT -->
+        <button
+            type="submit"
+            class="btn-primary"
+            id="submitBtn"
+        >
+
+            <span id="btnText">
+                Sign In
+            </span>
+
+            <div
+                class="spinner"
+                id="btnSpinner"
+            ></div>
+
+        </button>
+
+
+        <!-- BACK -->
+        <button
+            type="button"
+            id="backBtn"
+            class="btn-outline hidden"
+            onclick="toggleMode()"
+        >
+            Back to Login
+        </button>
+
+    </form>
+
+
+    <!-- FOOTER LINKS -->
+    <div class="footer-links">
+
+        <p id="toggleText">
+            Don't have an account?
+            <span onclick="toggleMode()">
+                Create Account
+            </span>
+        </p>
+
+        <p
+            id="resendArea"
+            class="hidden"
+        >
+            Didn't get the mail?
+            <span onclick="resendEmail()">
+                Resend Verification Link
+            </span>
+        </p>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     EMAIL MODAL
+========================================================= -->
+
+<div
+    id="emailModal"
+    class="modal-overlay"
+>
+
+    <div class="modal-content">
+
+        <div
+            class="logo-icon"
+            style="
+                background:#e9f8f2;
+                color:#15966d;
+            "
+        >
+            <i data-lucide="mail-check"></i>
+        </div>
+
+        <h3
+            id="modalTitle"
+            style="color:#15966d;"
+        >
+            Email Sent!
+        </h3>
+
+        <p
+            id="modalMsg"
+            style="color:#647783;"
+        >
+            A verification link has been sent to your email.
+            Please verify it to log in.
+        </p>
+
+        <button
+            class="btn-primary"
+            onclick="closeModal()"
+        >
+            Got it
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+    lucide.createIcons();
+
+    let isLoginMode = true;
+
+
+    /* =========================================================
+       SUPABASE
+       ORIGINAL CONFIGURATION PRESERVED
+    ========================================================= */
+
+    const supabaseUrl =
+        "https://xeesusgbdyrgxvzevjha.supabase.co";
+
+    const supabaseKey =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lZXN1c2diZHlyZ3h2emV2amhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NzI1MzksImV4cCI6MjA4ODQ0ODUzOX0.8TjnH50MO4YBu8liCJwnUu36hiX6zAwRpGOCPFVW7sI";
+
+    const client =
+        supabase.createClient(
+            supabaseUrl,
+            supabaseKey
+        );
+
+
+    /* =========================================================
+       REDIRECT UTILITY
+    ========================================================= */
+
+    const redirectToProfile = () => {
+
+        const baseUrl =
+            window.location.origin +
+            window.location.pathname
+                .split('/')
+                .slice(0, -1)
+                .join('/');
+
+        window.location.href =
+            `${baseUrl}/profile.html`;
+    };
+
+
+    /* =========================================================
+       SESSION CHECK
+    ========================================================= */
+
+    window.addEventListener(
+        'load',
+        async () => {
+
+            const {
+                data: {
+                    session
+                }
+            } =
+                await client.auth.getSession();
+
+            if (session) {
+                redirectToProfile();
+            }
+
+        }
+    );
+
+
+    client.auth.onAuthStateChange(
+        (event, session) => {
+
+            if (
+                (
+                    event === 'SIGNED_IN' ||
+                    event === 'TOKEN_REFRESHED'
+                ) &&
+                session
+            ) {
+
+                redirectToProfile();
+
+            }
+
+        }
+    );
+
+
+    /* =========================================================
+       TOGGLE LOGIN / REGISTER
+    ========================================================= */
+
+    function toggleMode() {
+
+        isLoginMode = !isLoginMode;
+
+        document
+            .getElementById('registerFields')
+            .classList
+            .toggle('hidden');
+
+        document
+            .getElementById('confirmPassGroup')
+            .classList
+            .toggle('hidden');
+
+        document
+            .getElementById('backBtn')
+            .classList
+            .toggle('hidden');
+
+        document
+            .getElementById('socialSection')
+            .classList
+            .toggle('hidden');
+
+        document
+            .getElementById('forgotPassLink')
+            .classList
+            .toggle('hidden');
+
+        document
+            .getElementById('dbErrorBox')
+            .style
+            .display = 'none';
+
+        document
+            .getElementById('formTitle')
+            .innerText =
+            isLoginMode
+                ? 'Keys99.com'
+                : 'Create Your Account';
+
+        document
+            .getElementById('btnText')
+            .innerText =
+            isLoginMode
+                ? 'Sign In'
+                : 'Register Account';
+
+        document
+            .getElementById('toggleText')
+            .style
+            .display =
+            isLoginMode
+                ? 'block'
+                : 'none';
+
+        clearAllErrors();
+
+        lucide.createIcons();
+    }
+
+
+    /* =========================================================
+       GOOGLE LOGIN
+    ========================================================= */
+
+    async function handleGoogleLogin() {
+
+        const baseUrl =
+            window.location.origin +
+            window.location.pathname
+                .split('/')
+                .slice(0, -1)
+                .join('/');
+
+        const {
+            error
+        } =
+            await client.auth.signInWithOAuth({
+
+                provider: 'google',
+
+                options: {
+                    redirectTo:
+                        `${baseUrl}/profile.html`
+                }
+
+            });
+
+        if (error) {
+            showError(
+                "Google Login Error: " +
+                error.message
+            );
+        }
+    }
+
+
+    /* =========================================================
+       FORGOT PASSWORD
+    ========================================================= */
+
+    async function handleForgotPassword() {
+
+        const email =
+            document
+                .getElementById('email')
+                .value;
+
+        const emailRegex =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+
+            setFieldError(
+                'email',
+                'Enter a valid email to reset password.'
+            );
+
+            return;
+        }
+
+        const {
+            error
+        } =
+            await client.auth.resetPasswordForEmail(
+                email,
+                {
+                    redirectTo:
+                        window.location.origin +
+                        '/reset-password.html',
+                }
+            );
+
+        if (error) {
+
+            showError(
+                "Reset Error: " +
+                error.message
+            );
+
+        } else {
+
+            document
+                .getElementById('modalTitle')
+                .innerText =
+                "Reset Link Sent!";
+
+            document
+                .getElementById('modalMsg')
+                .innerText =
+                "Check your inbox for the password reset instructions.";
+
+            document
+                .getElementById('emailModal')
+                .style
+                .display = 'flex';
+        }
+    }
+
+
+    /* =========================================================
+       CLEAR ERRORS
+    ========================================================= */
+
+    function clearAllErrors() {
+
+        document
+            .querySelectorAll('.invalid')
+            .forEach(
+                el =>
+                    el.classList.remove('invalid')
+            );
+
+        document
+            .querySelectorAll('.error-hint')
+            .forEach(
+                el =>
+                    el.style.display = 'none'
+            );
+    }
+
+
+    /* =========================================================
+       FIELD ERROR
+    ========================================================= */
+
+    function setFieldError(id, message) {
+
+        const input =
+            document.getElementById(id);
+
+        const hint =
+            document.getElementById(
+                'err-' + id
+            );
+
+        if (input && hint) {
+
+            input.classList.add('invalid');
+
+            hint.innerText = message;
+
+            hint.style.display = 'block';
+        }
+    }
+
+
+    /* =========================================================
+       CLOSE MODAL
+    ========================================================= */
+
+    function closeModal() {
+
+        document
+            .getElementById('emailModal')
+            .style
+            .display = 'none';
+
+        if (!isLoginMode) {
+            toggleMode();
+        }
+    }
+
+
+    /* =========================================================
+       DATABASE ERROR
+    ========================================================= */
+
+    function showError(msg) {
+
+        const box =
+            document.getElementById(
+                'dbErrorBox'
+            );
+
+        box.innerText = msg;
+
+        box.style.display = 'block';
+    }
+
+
+    /* =========================================================
+       RESEND EMAIL
+    ========================================================= */
+
+    async function resendEmail() {
+
+        const email =
+            document
+                .getElementById('email')
+                .value;
+
+        const {
+            error
+        } =
+            await client.auth.resend({
+                type: 'signup',
+                email
+            });
+
+        if (error) {
+
+            showError(
+                "Resend failed: " +
+                error.message
+            );
+
+        } else {
+
+            alert(
+                "Verification link resent!"
+            );
+
+        }
+    }
+
+
+    /* =========================================================
+       FORM SUBMIT
+    ========================================================= */
+
+    async function handleSubmit(e) {
+
+        e.preventDefault();
+
+        clearAllErrors();
+
+        document
+            .getElementById('dbErrorBox')
+            .style
+            .display = 'none';
+
+        const email =
+            document
+                .getElementById('email')
+                .value;
+
+        const password =
+            document
+                .getElementById('password')
+                .value;
+
+        let hasLocalError = false;
+
+        const emailRegex =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(email)) {
+
+            setFieldError(
+                'email',
+                'Invalid email format.'
+            );
+
+            hasLocalError = true;
+        }
+
+        if (password.length < 1) {
+
+            setFieldError(
+                'password',
+                'Password is required.'
+            );
+
+            hasLocalError = true;
+        }
+
+
+        /* =====================================================
+           REGISTRATION VALIDATION
+        ===================================================== */
+
+        if (!isLoginMode) {
+
+            const alphaOnly =
+                /^[A-Za-z]{3,}$/;
+
+            const phoneRegex =
+                /^[0-9]{10}$/;
+
+            const passPolicy =
+                /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
+
+
+            if (
+                !alphaOnly.test(
+                    document
+                        .getElementById('fname')
+                        .value
+                )
+            ) {
+
+                setFieldError(
+                    'fname',
+                    'Min 3 letters, alphabets only.'
+                );
+
+                hasLocalError = true;
+            }
+
+
+            if (
+                !alphaOnly.test(
+                    document
+                        .getElementById('lname')
+                        .value
+                )
+            ) {
+
+                setFieldError(
+                    'lname',
+                    'Min 3 letters, alphabets only.'
+                );
+
+                hasLocalError = true;
+            }
+
+
+            if (
+                !phoneRegex.test(
+                    document
+                        .getElementById('phone')
+                        .value
+                )
+            ) {
+
+                setFieldError(
+                    'phone',
+                    'Exactly 10 numerical digits required.'
+                );
+
+                hasLocalError = true;
+            }
+
+
+            if (
+                document
+                    .getElementById('address')
+                    .value
+                    .trim() === ""
+            ) {
+
+                setFieldError(
+                    'address',
+                    'Address is required.'
+                );
+
+                hasLocalError = true;
+            }
+
+
+            if (!passPolicy.test(password)) {
+
+                setFieldError(
+                    'password',
+                    'Min 6 chars, 1 upper, 1 lower, 1 special.'
+                );
+
+                hasLocalError = true;
+            }
+
+
+            if (
+                password !==
+                document
+                    .getElementById('confirmPassword')
+                    .value
+            ) {
+
+                setFieldError(
+                    'confirmPassword',
+                    'Passwords do not match.'
+                );
+
+                hasLocalError = true;
+            }
+        }
+
+
+        if (hasLocalError) return;
+
+
+        /* =====================================================
+           BUTTON LOADING
+        ===================================================== */
+
+        const btn =
+            document.getElementById(
+                'submitBtn'
+            );
+
+        const spinner =
+            document.getElementById(
+                'btnSpinner'
+            );
+
+        btn.disabled = true;
+
+        spinner.style.display = 'block';
+
+
+        try {
+
+            /* =================================================
+               LOGIN
+            ================================================= */
+
+            if (isLoginMode) {
+
+                const {
+                    error
+                } =
+                    await client.auth
+                        .signInWithPassword({
+                            email,
+                            password
+                        });
+
+
+                if (error) {
+
+                    if (
+                        error.message.includes(
+                            "Email not confirmed"
+                        )
+                    ) {
+
+                        showError(
+                            "Please verify your email before logging in."
+                        );
+
+                        document
+                            .getElementById(
+                                'resendArea'
+                            )
+                            .classList
+                            .remove('hidden');
+
+                    } else {
+
+                        showError(
+                            "Login failed: " +
+                            error.message
+                        );
+                    }
+
+                    throw error;
+                }
+
+
+                redirectToProfile();
+
+            }
+
+
+            /* =================================================
+               REGISTRATION
+            ================================================= */
+
+            else {
+
+                const userData = {
+
+                    first_name:
+                        document
+                            .getElementById('fname')
+                            .value,
+
+                    middle_name:
+                        document
+                            .getElementById('mname')
+                            .value,
+
+                    last_name:
+                        document
+                            .getElementById('lname')
+                            .value,
+
+                    phone:
+                        document
+                            .getElementById('phone')
+                            .value,
+
+                    address:
+                        document
+                            .getElementById('address')
+                            .value,
+
+                    email:
+                        email
+                };
+
+
+                const {
+                    data: authData,
+                    error: authError
+                } =
+                    await client.auth.signUp({
+
+                        email,
+
+                        password,
+
+                        options: {
+                            data: userData
+                        }
+
+                    });
+
+
+                if (authError) {
+
+                    showError(
+                        "Auth Error: " +
+                        authError.message
+                    );
+
+                    throw authError;
+                }
+
+
+                if (authData.user) {
+
+                    const {
+                        error: dbError
+                    } =
+                        await client
+                            .from('users')
+                            .upsert(
+                                [
+                                    {
+                                        id:
+                                            authData.user.id,
+                                        ...userData
+                                    }
+                                ],
+                                {
+                                    onConflict: 'id'
+                                }
+                            );
+
+
+                    if (dbError) {
+
+                        showError(
+                            "DB Error: " +
+                            dbError.message +
+                            " (Code: " +
+                            dbError.code +
+                            ")"
+                        );
+
+                        throw dbError;
+                    }
+
+
+                    document
+                        .getElementById(
+                            'modalTitle'
+                        )
+                        .innerText =
+                        "Email Sent!";
+
+
+                    document
+                        .getElementById(
+                            'modalMsg'
+                        )
+                        .innerText =
+                        "A verification link has been sent to your email. Please verify it to log in.";
+
+
+                    document
+                        .getElementById(
+                            'emailModal'
+                        )
+                        .style
+                        .display = 'flex';
+                }
+            }
+
+        } catch (err) {
+
+            console.error(err);
+
+        } finally {
+
+            btn.disabled = false;
+
+            spinner.style.display = 'none';
+        }
+    }
+
+</script>
+
+</body>
+</html>

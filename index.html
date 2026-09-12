@@ -1,0 +1,2599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+
+<title>Keys99.com | Find Your Dream Property</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+  
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  
+</head>
+
+
+<body>
+
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
+
+<header class="header">
+
+  <div class="container nav">
+
+
+    <!-- LOGO -->
+
+    <a class="logo logo-link" href="index.html">
+
+      <!--
+        Replace the URL below with your actual Keys99 logo image.
+      -->
+
+      <img
+        src="https://dummyimage.com/400x110/ffffff/006b5b&text=KEYS99.COM"
+        alt="Keys99.com"
+        class="header-logo"
+      >
+
+    </a>
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="nav-links">
+
+      <a class="active" href="#">Home</a>
+
+      <a href="#properties">Buy</a>
+
+      <a href="#properties">Rent</a>
+
+      <a href="#types">Projects</a>
+
+      <a href="#why">About</a>
+
+      <a href="#footer">Contact</a>
+
+    </nav>
+
+
+    <!-- ACTIONS -->
+
+    <div class="nav-actions">
+
+      <button
+        class="icon-btn"
+        aria-label="Favorites"
+        id="headerFavorites"
+      >
+        ♡
+      </button>
+
+      <button
+        class="login-btn"
+        id="loginBtn"
+      >
+        ♙ &nbsp; Login / Sign Up
+      </button>
+
+      <button
+        class="menu-btn"
+        id="menuBtn"
+        aria-label="Menu"
+      >
+        ☰
+      </button>
+
+    </div>
+
+  </div>
+
+</header>
+
+
+<!-- =======================================================
+     MOBILE MENU
+======================================================= -->
+
+<div class="mobile-menu" id="mobileMenu">
+
+  <a href="#">Home</a>
+
+  <a href="#properties">Buy Property</a>
+
+  <a href="#properties">Rent Property</a>
+
+  <a href="#types">Projects</a>
+
+  <a href="#why">Why Keys99</a>
+
+  <a href="#footer">Contact</a>
+
+</div>
+
+
+
+<main>
+
+
+<!-- =======================================================
+     HERO
+======================================================= -->
+
+<section class="hero">
+
+  <div class="container">
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Sell &nbsp;•&nbsp; Rent &nbsp;•&nbsp; Invest
+      </div>
+
+      <h1>
+        Find Your Dream<br>
+        Property with <span>Keys99</span>
+      </h1>
+
+      <p>
+        Trusted real estate platform for your perfect home,
+        commercial space or investment property.
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <!-- SEARCH -->
+
+  <div class="search-wrap">
+
+    <div class="container">
+
+      <form
+        class="search-bar"
+        id="searchForm"
+      >
+
+        <label class="search-field">
+
+          <span class="search-icon">⌖</span>
+
+          <input
+            id="searchInput"
+            type="text"
+            placeholder="Search city, locality, developer, project..."
+            autocomplete="off"
+          >
+
+        </label>
+
+
+        <label class="search-field">
+
+          <span class="search-icon">⌂</span>
+
+          <select
+            id="propertyType"
+          >
+
+            <option value="">
+              Property Type
+            </option>
+
+            <option value="residential">
+              Residential
+            </option>
+
+            <option value="commercial">
+              Commercial
+            </option>
+
+            <option value="plots">
+              Plots & Land
+            </option>
+
+            <option value="luxury">
+              Luxury Homes
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <label class="search-field">
+
+          <span class="search-icon">▣</span>
+
+          <select
+            id="bhkType"
+          >
+
+            <option value="">
+              BHK Type
+            </option>
+
+            <option value="1 bhk">
+              1 BHK
+            </option>
+
+            <option value="2 bhk">
+              2 BHK
+            </option>
+
+            <option value="3 bhk">
+              3 BHK
+            </option>
+
+            <option value="4+ bhk">
+              4+ BHK
+            </option>
+
+          </select>
+
+        </label>
+
+
+        <button
+          class="search-button"
+          type="submit"
+        >
+          ⌕ &nbsp; Search
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     STATS
+======================================================= -->
+
+<section style="padding-top:0">
+
+  <div class="container">
+
+    <div class="stats">
+
+      <div class="stat">
+
+        <div class="stat-icon">⌂</div>
+
+        <strong>10,000+</strong>
+
+        <span>
+          Properties Listed
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">▥</div>
+
+        <strong>500+</strong>
+
+        <span>
+          Trusted Developers
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">⌖</div>
+
+        <strong>50+</strong>
+
+        <span>
+          Cities Covered
+        </span>
+
+      </div>
+
+
+      <div class="stat">
+
+        <div class="stat-icon">♢</div>
+
+        <strong>100%</strong>
+
+        <span>
+          Verified Listings
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- =======================================================
+     PROPERTY TYPES
+======================================================= -->
+
+<section id="types">
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="section-kicker">
+          Explore Properties
+        </div>
+
+        <h2 class="section-title">
+          Choose Your Property Type
+        </h2>
+
+      </div>
+
+
+      <button
+        class="view-all"
+        type="button"
+        onclick="document.getElementById('properties').scrollIntoView({behavior:'smooth'})"
+      >
+        View All →
+      </button>
+
+    </div>
+
+
+    <div class="type-grid">
+
+
+      <!-- RESIDENTIAL -->
+
+      <article class="type-card">
+
+        <div class="type-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=700&q=80"
+            alt="Residential property"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="type-body">
+
+          <div class="type-row">
+
+            <div>
+
+              <h3>
+                Residential
+              </h3>
+
+              <p>
+                5,240+ Properties
+              </p>
+
+            </div>
+
+            <span class="arrow">
+              →
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- COMMERCIAL -->
+
+      <article class="type-card">
+
+        <div class="type-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80"
+            alt="Commercial property"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="type-body">
+
+          <div class="type-row">
+
+            <div>
+
+              <h3>
+                Commercial
+              </h3>
+
+              <p>
+                1,320+ Properties
+              </p>
+
+            </div>
+
+            <span class="arrow">
+              →
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- PLOTS -->
+
+      <article class="type-card">
+
+        <div class="type-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=700&q=80"
+            alt="Plots and land"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="type-body">
+
+          <div class="type-row">
+
+            <div>
+
+              <h3>
+                Plots & Land
+              </h3>
+
+              <p>
+                980+ Properties
+              </p>
+
+            </div>
+
+            <span class="arrow">
+              →
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+
+
+      <!-- LUXURY -->
+
+      <article class="type-card">
+
+        <div class="type-img">
+
+          <img
+            src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=700&q=80"
+            alt="Luxury homes"
+            loading="lazy"
+          >
+
+        </div>
+
+        <div class="type-body">
+
+          <div class="type-row">
+
+            <div>
+
+              <h3>
+                Luxury Homes
+              </h3>
+
+              <p>
+                420+ Properties
+              </p>
+
+            </div>
+
+            <span class="arrow">
+              →
+            </span>
+
+          </div>
+
+        </div>
+
+      </article>
+
+    </div>
+
+
+    <div class="scroll-hint">
+      Swipe to explore →
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     POPULAR PROPERTIES
+======================================================= -->
+
+<section
+  id="properties"
+  style="padding-top:10px"
+>
+
+  <div class="container">
+
+    <div class="section-head">
+
+      <div>
+
+        <div class="section-kicker">
+          Featured Properties
+        </div>
+
+        <h2 class="section-title">
+          Popular Properties
+        </h2>
+
+      </div>
+
+      <button
+        class="view-all"
+        id="viewAllBtn"
+        type="button"
+      
+        View All →
+      </button>
+
+    </div>
+
+
+    <!-- DATABASE STATUS -->
+
+    <div
+      id="propertyLoading"
+      class="property-state"
+    >
+      Loading properties...
+    </div>
+
+
+    <div
+      id="propertyError"
+      class="property-state property-error"
+      style="display:none"
+    >
+      Unable to load properties.
+    </div>
+
+
+    <div
+      id="propertyEmpty"
+      class="property-state"
+      style="display:none"
+    >
+      No properties found.
+    </div>
+
+
+    <!-- PROPERTY LIST -->
+
+    <div
+      class="property-scroll"
+      id="propertyList"
+    >
+      <!-- Properties will be loaded from Supabase -->
+    </div>
+
+
+    <div
+      class="scroll-hint"
+      id="propertyScrollHint"
+      style="display:none"
+    >
+      Swipe to explore properties →
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
+
+<!-- =======================================================
+     WHY KEYS99
+======================================================= -->
+
+<section
+  id="why"
+  style="padding-top:20px"
+>
+
+  <div class="container">
+
+
+    <div class="trust">
+
+
+      <div class="trust-intro">
+
+        <div class="section-kicker">
+          Why Choose Keys99
+        </div>
+
+        <h2>
+          Your Trusted Real Estate Partner
+        </h2>
+
+        <p>
+          We make your property journey simple,
+          transparent and hassle-free.
+        </p>
+
+      </div>
+
+
+      <div class="trust-item">
+
+        <div class="trust-icon">
+          ♢
+        </div>
+
+        <strong>
+          Verified Listings
+        </strong>
+
+        <span>
+          Genuine properties
+        </span>
+
+      </div>
+
+
+      <div class="trust-item">
+
+        <div class="trust-icon">
+          ♙
+        </div>
+
+        <strong>
+          Expert Support
+        </strong>
+
+        <span>
+          Dedicated assistance
+        </span>
+
+      </div>
+
+
+      <div class="trust-item">
+
+        <div class="trust-icon">
+          ◇
+        </div>
+
+        <strong>
+          Best Deals
+        </strong>
+
+        <span>
+          Right value
+        </span>
+
+      </div>
+
+
+      <div class="trust-item">
+
+        <div class="trust-icon">
+          ◷
+        </div>
+
+        <strong>
+          Easy Process
+        </strong>
+
+        <span>
+          Search to registration
+        </span>
+
+      </div>
+
+
+    </div>
+
+
+
+    <!-- CTA -->
+
+    <div class="cta">
+
+      <div>
+
+        <small>
+          READY TO FIND YOUR DREAM PROPERTY?
+        </small>
+
+        <h2>
+          Start Your Search Today
+        </h2>
+
+        <p>
+          Your dream home is just a click away.
+        </p>
+
+      </div>
+
+
+      <button
+        class="cta-btn"
+        onclick="document.getElementById('properties').scrollIntoView({behavior:'smooth'})"
+      >
+        Explore Properties &nbsp; →
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+</main>
+
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer id="footer">
+
+  <div class="container">
+
+    <div class="footer-grid">
+
+
+      <!-- BRAND -->
+
+      <div class="footer-col footer-brand">
+
+        <a
+          class="logo logo-link"
+          href="index.html"
+        >
+
+          <img
+            src="https://dummyimage.com/400x110/ffffff/006b5b&text=KEYS99.COM"
+            alt="Keys99.com"
+            class="header-logo"
+          >
+
+        </a>
+
+
+        <p
+          style="margin-top:13px;max-width:230px"
+        >
+          A modern real estate platform to help you
+          discover verified properties with confidence.
+        </p>
+
+      </div>
+
+
+
+      <!-- QUICK LINKS -->
+
+      <div class="footer-col">
+
+        <h4>
+          Quick Links
+        </h4>
+
+        <a href="#">
+          Home
+        </a>
+
+        <a href="#properties">
+          Buy
+        </a>
+
+        <a href="#properties">
+          Rent
+        </a>
+
+        <a href="#types">
+          Projects
+        </a>
+
+      </div>
+
+
+
+      <!-- COMPANY -->
+
+      <div class="footer-col">
+
+        <h4>
+          Company
+        </h4>
+
+        <a href="#why">
+          About Us
+        </a>
+
+        <a href="#footer">
+          Contact Us
+        </a>
+
+        <a href="#">
+          Privacy Policy
+        </a>
+
+        <a href="#">
+          Terms & Conditions
+        </a>
+
+      </div>
+
+
+
+      <!-- CONTACT -->
+
+      <div class="footer-col">
+
+        <h4>
+          Follow & Contact
+        </h4>
+
+
+        <div class="socials">
+
+          <a href="#">
+            f
+          </a>
+
+          <a href="#">
+            ◎
+          </a>
+
+          <a href="#">
+            in
+          </a>
+
+          <a href="#">
+            ▶
+          </a>
+
+        </div>
+
+
+        <p style="margin-top:12px">
+          support@keys99.com
+        </p>
+
+        <p>
+          +91 98765 43210
+        </p>
+
+        <p>
+          India
+        </p>
+
+      </div>
+
+
+    </div>
+
+
+    <div class="copyright">
+
+      <span>
+        © 2026 Keys99.com. All rights reserved.
+      </span>
+
+      <span>
+        ⌂ &nbsp; Your Key to a Better Tomorrow
+      </span>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   KEYS99 - SUPABASE CONFIGURATION
+========================================================= */
+
+const SUPABASE_URL =
+  "https://xeesusgbdyrgxvzevjha.supabase.co";
+
+const SUPABASE_ANON_KEY =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhlZXN1c2diZHlyZ3h2emV2amhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NzI1MzksImV4cCI6MjA4ODQ0ODUzOX0.8TjnH50MO4YBu8liCJwnUu36hiX6zAwRpGOCPFVW7sI";
+
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY
+  );
+
+
+/* =========================================================
+   GLOBAL VARIABLES
+========================================================= */
+
+let allProperties = [];
+
+let filteredProperties = [];
+
+let propertiesExpanded = false;
+
+const INITIAL_PROPERTY_COUNT = 8;
+
+
+/* =========================================================
+   DOM ELEMENTS
+========================================================= */
+
+const propertyList =
+  document.getElementById("propertyList");
+
+const propertyLoading =
+  document.getElementById("propertyLoading");
+
+const propertyError =
+  document.getElementById("propertyError");
+
+const propertyEmpty =
+  document.getElementById("propertyEmpty");
+
+const propertyScrollHint =
+  document.getElementById("propertyScrollHint");
+
+const viewAllBtn =
+  document.getElementById("viewAllBtn");
+
+
+/* =========================================================
+   MOBILE MENU
+========================================================= */
+
+const menuBtn =
+  document.getElementById("menuBtn");
+
+const mobileMenu =
+  document.getElementById("mobileMenu");
+
+
+if(menuBtn && mobileMenu){
+
+  menuBtn.addEventListener("click", () => {
+
+    mobileMenu.classList.toggle("open");
+
+    menuBtn.textContent =
+      mobileMenu.classList.contains("open")
+        ? "×"
+        : "☰";
+
+  });
+
+
+  document
+    .querySelectorAll(".mobile-menu a")
+    .forEach(link => {
+
+      link.addEventListener("click", () => {
+
+        mobileMenu.classList.remove("open");
+
+        menuBtn.textContent = "☰";
+
+      });
+
+    });
+
+}
+
+
+/* =========================================================
+   FETCH PROPERTIES FROM SUPABASE
+========================================================= */
+
+async function fetchProperties(){
+
+  showLoading();
+
+
+  try{
+
+    const {
+      data,
+      error
+    } = await supabaseClient
+
+      .from("properties")
+
+      .select(`
+        id,
+        created_at,
+        developer,
+        address,
+        state,
+        city,
+        locality,
+        pincode,
+        status,
+        overview,
+        main_image,
+        bhk_options,
+        amenities,
+        nearby_landmarks,
+        interior,
+        exterior,
+        rera_id,
+        contact_number,
+        youtube_link,
+        facebook_link,
+        instagram_link,
+        posted_by_user_id,
+        posted_by_user_code,
+        posted_by_name,
+        virtual_tour_video
+      `)
+
+      .order(
+        "created_at",
+        {
+          ascending:false
+        }
+      );
+
+
+    if(error){
+
+      console.error(
+        "Supabase error:",
+        error
+      );
+
+      throw error;
+
+    }
+
+
+    allProperties =
+      Array.isArray(data)
+        ? data
+        : [];
+
+
+    filteredProperties =
+      [...allProperties];
+
+
+    renderProperties();
+
+
+  }catch(error){
+
+    console.error(
+      "Failed to fetch properties:",
+      error
+    );
+
+
+    showPropertyError(
+      "Unable to load properties. Please try again."
+    );
+
+  }
+
+}
+
+
+/* =========================================================
+   SHOW LOADING
+========================================================= */
+
+function showLoading(){
+
+  propertyLoading.style.display = "block";
+
+  propertyError.style.display = "none";
+
+  propertyEmpty.style.display = "none";
+
+  propertyList.innerHTML = "";
+
+  propertyScrollHint.style.display = "none";
+
+}
+
+
+/* =========================================================
+   SHOW ERROR
+========================================================= */
+
+function showPropertyError(message){
+
+  propertyLoading.style.display = "none";
+
+  propertyError.style.display = "block";
+
+  propertyError.textContent = message;
+
+  propertyEmpty.style.display = "none";
+
+  propertyList.innerHTML = "";
+
+  propertyScrollHint.style.display = "none";
+
+}
+
+
+/* =========================================================
+   GET BHK OPTIONS
+========================================================= */
+
+function getBhkOptions(property){
+
+  if(
+    !property ||
+    !Array.isArray(property.bhk_options)
+  ){
+
+    return [];
+
+  }
+
+
+  return property.bhk_options.filter(
+    option =>
+      option &&
+      typeof option === "object"
+  );
+
+}
+
+
+/* =========================================================
+   GET PROPERTY TYPES
+========================================================= */
+
+function getPropertyTypes(property){
+
+  const options =
+    getBhkOptions(property);
+
+
+  return options
+    .map(option => {
+
+      return String(
+        option.type || ""
+      )
+      .trim();
+
+    })
+    .filter(Boolean);
+
+}
+
+
+/* =========================================================
+   GET BHK TEXT
+========================================================= */
+
+function getBhkText(property){
+
+  const types =
+    getPropertyTypes(property);
+
+
+  if(!types.length){
+
+    return "Property";
+
+  }
+
+
+  const uniqueTypes =
+    [...new Set(types)];
+
+
+  return uniqueTypes.join(" / ");
+
+}
+
+
+/* =========================================================
+   CONVERT PRICE TO NUMBER
+========================================================= */
+
+function getNumericPrice(option){
+
+  if(!option){
+
+    return null;
+
+  }
+
+
+  const price =
+    Number(option.price);
+
+
+  if(
+    Number.isFinite(price) &&
+    price > 0
+  ){
+
+    return price;
+
+  }
+
+
+  return null;
+
+}
+
+
+/* =========================================================
+   FORMAT PRICE
+========================================================= */
+
+function formatPrice(price){
+
+  if(
+    price === null ||
+    price === undefined ||
+    !Number.isFinite(Number(price))
+  ){
+
+    return "";
+
+  }
+
+
+  price = Number(price);
+
+
+  if(price >= 10000000){
+
+    const crore =
+      price / 10000000;
+
+
+    return "₹ " +
+      crore
+        .toFixed(
+          crore % 1 === 0
+            ? 0
+            : 2
+        )
+        .replace(
+          /\.00$/,
+          ""
+        ) +
+      " Cr";
+
+  }
+
+
+  if(price >= 100000){
+
+    const lakh =
+      price / 100000;
+
+
+    return "₹ " +
+      lakh
+        .toFixed(
+          lakh % 1 === 0
+            ? 0
+            : 2
+        )
+        .replace(
+          /\.00$/,
+          ""
+        ) +
+      " Lakh";
+
+  }
+
+
+  if(price >= 1000){
+
+    const thousand =
+      price / 1000;
+
+
+    return "₹ " +
+      thousand
+        .toFixed(
+          thousand % 1 === 0
+            ? 0
+            : 1
+        )
+        .replace(
+          /\.0$/,
+          ""
+        ) +
+      "K";
+
+  }
+
+
+  return "₹ " +
+    price.toLocaleString("en-IN");
+
+}
+
+
+/* =========================================================
+   GET PRICE TEXT
+========================================================= */
+
+function getPriceText(property){
+
+  const options =
+    getBhkOptions(property);
+
+
+  if(!options.length){
+
+    return "Price on Request";
+
+  }
+
+
+  /*
+    Prefer price_words from database
+  */
+
+  const priceWords =
+    options
+      .map(option =>
+        String(
+          option.price_words || ""
+        ).trim()
+      )
+      .filter(Boolean);
+
+
+  const uniquePriceWords =
+    [...new Set(priceWords)];
+
+
+  if(uniquePriceWords.length === 1){
+
+    return uniquePriceWords[0];
+
+  }
+
+
+  if(uniquePriceWords.length > 1){
+
+    return uniquePriceWords[0] +
+      " – " +
+      uniquePriceWords[
+        uniquePriceWords.length - 1
+      ];
+
+  }
+
+
+  /*
+    Fallback to numeric price
+  */
+
+  const prices =
+    options
+      .map(getNumericPrice)
+      .filter(price => price !== null)
+      .sort((a,b) => a - b);
+
+
+  if(!prices.length){
+
+    return "Price on Request";
+
+  }
+
+
+  const minPrice =
+    prices[0];
+
+  const maxPrice =
+    prices[prices.length - 1];
+
+
+  if(minPrice === maxPrice){
+
+    return formatPrice(minPrice);
+
+  }
+
+
+  return (
+    formatPrice(minPrice) +
+    " – " +
+    formatPrice(maxPrice)
+  );
+
+}
+
+
+/* =========================================================
+   GET AREA TEXT
+========================================================= */
+
+function getAreaText(property){
+
+  const options =
+    getBhkOptions(property);
+
+
+  const areas =
+    options
+      .map(option => {
+
+        const value =
+          parseFloat(option.sqft);
+
+
+        return {
+          value,
+          unit:
+            option.areaUnit ||
+            "Sq.Ft"
+        };
+
+      })
+      .filter(item =>
+        Number.isFinite(item.value)
+      )
+      .sort(
+        (a,b) =>
+          a.value - b.value
+      );
+
+
+  if(!areas.length){
+
+    return "";
+
+  }
+
+
+  const min =
+    areas[0];
+
+  const max =
+    areas[areas.length - 1];
+
+
+  const formatArea =
+    value =>
+      Number(value).toLocaleString(
+        "en-IN"
+      );
+
+
+  if(min.value === max.value){
+
+    return (
+      formatArea(min.value) +
+      " " +
+      min.unit
+    );
+
+  }
+
+
+  return (
+    formatArea(min.value) +
+    " " +
+    min.unit +
+    " – " +
+    formatArea(max.value) +
+    " " +
+    max.unit
+  );
+
+}
+
+
+/* =========================================================
+   GET LOCATION
+========================================================= */
+
+function getLocationText(property){
+
+  const parts = [
+
+    property.locality,
+
+    property.city,
+
+    property.state
+
+  ];
+
+
+  const unique =
+    parts
+      .map(value =>
+        String(value || "").trim()
+      )
+      .filter(Boolean)
+      .filter(
+        (value,index,array) =>
+          array.indexOf(value) === index
+      );
+
+
+  if(unique.length){
+
+    return unique.join(", ");
+
+  }
+
+
+  if(property.address){
+
+    return property.address;
+
+  }
+
+
+  return "Location not available";
+
+}
+
+
+/* =========================================================
+   GET STATUS
+========================================================= */
+
+function getStatusText(property){
+
+  const status =
+    String(
+      property.status || ""
+    )
+    .trim();
+
+
+  if(!status){
+
+    return "Available";
+
+  }
+
+
+  return status;
+
+}
+
+
+/* =========================================================
+   STATUS CLASS
+========================================================= */
+
+function getStatusClass(status){
+
+  const value =
+    String(status || "")
+      .toLowerCase();
+
+
+  if(
+    value.includes("rent") ||
+    value.includes("lease")
+  ){
+
+    return "rent";
+
+  }
+
+
+  if(
+    value.includes("sold") ||
+    value.includes("closed")
+  ){
+
+    return "sold";
+
+  }
+
+
+  return "sale";
+
+}
+
+
+/* =========================================================
+   GET CATEGORY
+========================================================= */
+
+function getCategory(property){
+
+  const text = [
+
+    ...getPropertyTypes(property),
+
+    property.developer || "",
+
+    property.overview || "",
+
+    property.address || "",
+
+    property.locality || "",
+
+    property.city || ""
+
+  ]
+  .join(" ")
+  .toLowerCase();
+
+
+  /*
+    Luxury
+  */
+
+  if(
+    text.includes("luxury") ||
+    text.includes("penthouse") ||
+    text.includes("villa") ||
+    text.includes("premium") ||
+    text.includes("bungalow")
+  ){
+
+    return "luxury";
+
+  }
+
+
+  /*
+    Plots
+  */
+
+  if(
+    text.includes("plot") ||
+    text.includes("land") ||
+    text.includes("farm land") ||
+    text.includes("farmland")
+  ){
+
+    return "plots";
+
+  }
+
+
+  /*
+    Commercial
+  */
+
+  if(
+    text.includes("commercial") ||
+    text.includes("office") ||
+    text.includes("shop") ||
+    text.includes("warehouse") ||
+    text.includes("showroom") ||
+    text.includes("retail")
+  ){
+
+    return "commercial";
+
+  }
+
+
+  /*
+    Residential
+  */
+
+  if(
+    text.includes("residential") ||
+    text.includes("apartment") ||
+    text.includes("flat") ||
+    text.includes("bhk") ||
+    text.includes("villa") ||
+    text.includes("bungalow")
+  ){
+
+    return "residential";
+
+  }
+
+
+  return "residential";
+
+}
+
+
+/* =========================================================
+   GET SEARCH TEXT
+========================================================= */
+
+function getSearchText(property){
+
+  return [
+
+    property.developer,
+
+    property.address,
+
+    property.state,
+
+    property.city,
+
+    property.locality,
+
+    property.pincode,
+
+    property.status,
+
+    property.overview,
+
+    property.rera_id,
+
+    property.posted_by_name,
+
+    property.posted_by_user_code,
+
+    ...getPropertyTypes(property),
+
+    ...getBhkOptions(property)
+      .map(option =>
+        option.price_words || ""
+      )
+
+  ]
+  .filter(Boolean)
+  .join(" ")
+  .toLowerCase();
+
+}
+
+
+/* =========================================================
+   IMAGE URL
+========================================================= */
+
+function getImageUrl(property){
+
+  const image =
+    String(
+      property.main_image || ""
+    ).trim();
+
+
+  if(image){
+
+    return image;
+
+  }
+
+
+  /*
+    Fallback image only when
+    database main_image is empty.
+  */
+
+  return "https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=85";
+
+}
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHtml(value){
+
+  return String(
+    value ?? ""
+  )
+  .replace(
+    /&/g,
+    "&amp;"
+  )
+  .replace(
+    /</g,
+    "&lt;"
+  )
+  .replace(
+    />/g,
+    "&gt;"
+  )
+  .replace(
+    /"/g,
+    "&quot;"
+  )
+  .replace(
+    /'/g,
+    "&#039;"
+  );
+
+}
+
+
+/* =========================================================
+   CREATE PROPERTY CARD
+========================================================= */
+
+function createPropertyCard(property){
+
+  const id =
+    escapeHtml(property.id);
+
+
+  const title =
+    getBhkText(property);
+
+
+  const location =
+    getLocationText(property);
+
+
+  const developer =
+    String(
+      property.developer || ""
+    ).trim();
+
+
+  const status =
+    getStatusText(property);
+
+
+  const statusClass =
+    getStatusClass(status);
+
+
+  const category =
+    getCategory(property);
+
+
+  const price =
+    getPriceText(property);
+
+
+  const area =
+    getAreaText(property);
+
+
+  const image =
+    getImageUrl(property);
+
+
+  const imageAlt =
+    title +
+    " " +
+    location;
+
+
+  const searchText =
+    getSearchText(property);
+
+
+  const firstOption =
+    getBhkOptions(property)[0];
+
+
+  const bhkValue =
+    firstOption &&
+    firstOption.type
+      ? String(firstOption.type)
+          .toLowerCase()
+      : "";
+
+
+  return `
+
+    <article
+      class="property-card"
+      data-id="${id}"
+      data-search="${escapeHtml(searchText)}"
+      data-type="${escapeHtml(category)}"
+      data-bhk="${escapeHtml(bhkValue)}"
+    >
+
+      <div class="property-image">
+
+        <img
+          src="${escapeHtml(image)}"
+          alt="${escapeHtml(imageAlt)}"
+          loading="lazy"
+          onerror="this.src='https://images.unsplash.com/photo-1600607688969-a5bfcd646154?auto=format&fit=crop&w=900&q=85'"
+        >
+
+        <span class="badge ${statusClass}">
+          ${escapeHtml(status)}
+        </span>
+
+        <button
+          class="fav"
+          aria-label="Add to favorites"
+          data-property-id="${id}"
+          type="button"
+        >
+          ♡
+        </button>
+
+      </div>
+
+
+      <div class="property-body">
+
+        <h3>
+          ${escapeHtml(title)}
+        </h3>
+
+
+        <p class="location">
+
+          ⌖ &nbsp;
+
+          ${escapeHtml(location)}
+
+        </p>
+
+
+        ${
+          developer
+            ? `
+              <p class="developer">
+                By &nbsp;
+                ${escapeHtml(developer)}
+              </p>
+            `
+            : ""
+        }
+
+
+        ${
+          area
+            ? `
+              <p class="developer">
+                ${escapeHtml(area)}
+              </p>
+            `
+            : ""
+        }
+
+
+        <div class="price-row">
+
+          <div class="price">
+
+            ${escapeHtml(price)}
+
+            <small>
+              ${
+                statusClass === "rent"
+                  ? "Rent"
+                  : "Starting Price"
+              }
+            </small>
+
+          </div>
+
+
+          <button
+            class="arrow card-arrow"
+            type="button"
+            aria-label="View property details"
+            data-property-id="${id}"
+          >
+            →
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  `;
+
+}
+
+
+/* =========================================================
+   RENDER PROPERTIES
+========================================================= */
+
+function renderProperties(){
+
+  propertyLoading.style.display = "none";
+
+  propertyError.style.display = "none";
+
+
+  if(!filteredProperties.length){
+
+    propertyList.innerHTML = "";
+
+    propertyEmpty.style.display = "block";
+
+    propertyScrollHint.style.display = "none";
+
+    viewAllBtn.style.display = "none";
+
+    return;
+
+  }
+
+
+  propertyEmpty.style.display = "none";
+
+
+  const propertiesToShow =
+    propertiesExpanded
+      ? filteredProperties
+      : filteredProperties.slice(
+          0,
+          INITIAL_PROPERTY_COUNT
+        );
+
+
+  propertyList.innerHTML =
+    propertiesToShow
+      .map(createPropertyCard)
+      .join("");
+
+
+  /*
+    View All button
+  */
+
+  if(
+    filteredProperties.length >
+    INITIAL_PROPERTY_COUNT
+  ){
+
+    viewAllBtn.style.display = "inline-flex";
+
+    viewAllBtn.innerHTML =
+      propertiesExpanded
+        ? "Show Less ↑"
+        : "View All →";
+
+  }else{
+
+    viewAllBtn.style.display = "none";
+
+  }
+
+
+  /*
+    Mobile scroll hint
+  */
+
+  propertyScrollHint.style.display =
+    propertiesToShow.length > 1
+      ? "block"
+      : "none";
+
+
+  attachPropertyEvents();
+
+}
+
+
+/* =========================================================
+   PROPERTY EVENTS
+========================================================= */
+
+function attachPropertyEvents(){
+
+  /*
+    Favorite buttons
+  */
+
+  document
+    .querySelectorAll(".fav")
+    .forEach(btn => {
+
+      const propertyId =
+        btn.dataset.propertyId;
+
+
+      /*
+        Restore favorite state
+      */
+
+      if(
+        getFavorites().includes(propertyId)
+      ){
+
+        btn.classList.add("active");
+
+        btn.textContent = "♥";
+
+      }
+
+
+      btn.addEventListener(
+        "click",
+        event => {
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+          toggleFavorite(
+            propertyId,
+            btn
+          );
+
+        }
+      );
+
+    });
+
+
+  /*
+    Property detail arrows
+  */
+
+  document
+    .querySelectorAll(".card-arrow")
+    .forEach(button => {
+
+      button.addEventListener(
+        "click",
+        event => {
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+
+          const propertyId =
+            button.dataset.propertyId;
+
+
+          if(!propertyId){
+
+            return;
+
+          }
+
+
+          /*
+            Open your property details page.
+
+            Example:
+            property-details.html?id=UUID
+          */
+
+          window.location.href =
+            "property-details.html?id=" +
+            encodeURIComponent(
+              propertyId
+            );
+
+        }
+      );
+
+    });
+
+}
+
+
+/* =========================================================
+   FAVORITES - LOCAL STORAGE
+========================================================= */
+
+function getFavorites(){
+
+  try{
+
+    const favorites =
+      JSON.parse(
+        localStorage.getItem(
+          "keys99_favorites"
+        ) || "[]"
+      );
+
+
+    return Array.isArray(favorites)
+      ? favorites
+      : [];
+
+  }catch(error){
+
+    return [];
+
+  }
+
+}
+
+
+/* =========================================================
+   TOGGLE FAVORITE
+========================================================= */
+
+function toggleFavorite(
+  propertyId,
+  button
+){
+
+  let favorites =
+    getFavorites();
+
+
+  if(
+    favorites.includes(propertyId)
+  ){
+
+    favorites =
+      favorites.filter(
+        id => id !== propertyId
+      );
+
+    button.classList.remove("active");
+
+    button.textContent = "♡";
+
+  }else{
+
+    favorites.push(propertyId);
+
+    button.classList.add("active");
+
+    button.textContent = "♥";
+
+  }
+
+
+  localStorage.setItem(
+    "keys99_favorites",
+    JSON.stringify(favorites)
+  );
+
+}
+
+
+/* =========================================================
+   VIEW ALL
+========================================================= */
+
+if(viewAllBtn){
+
+  viewAllBtn.addEventListener(
+    "click",
+    () => {
+
+      propertiesExpanded =
+        !propertiesExpanded;
+
+
+      renderProperties();
+
+
+      if(!propertiesExpanded){
+
+        document
+          .getElementById("properties")
+          .scrollIntoView({
+            behavior:"smooth"
+          });
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+const searchForm =
+  document.getElementById(
+    "searchForm"
+  );
+
+
+if(searchForm){
+
+  searchForm.addEventListener(
+    "submit",
+    event => {
+
+      event.preventDefault();
+
+
+      const query =
+        document
+          .getElementById("searchInput")
+          .value
+          .trim()
+          .toLowerCase();
+
+
+      const type =
+        document
+          .getElementById("propertyType")
+          .value
+          .trim()
+          .toLowerCase();
+
+
+      const bhk =
+        document
+          .getElementById("bhkType")
+          .value
+          .trim()
+          .toLowerCase();
+
+
+      filteredProperties =
+        allProperties.filter(
+          property => {
+
+            const searchText =
+              getSearchText(
+                property
+              );
+
+
+            /*
+              Search
+            */
+
+            const matchQuery =
+              !query ||
+              searchText.includes(
+                query
+              );
+
+
+            /*
+              Property Type
+            */
+
+            const category =
+              getCategory(
+                property
+              );
+
+
+            let matchType = true;
+
+
+            if(type){
+
+              matchType =
+                category === type;
+
+            }
+
+
+            /*
+              BHK
+            */
+
+            let matchBhk = true;
+
+
+            if(bhk){
+
+              const options =
+                getBhkOptions(
+                  property
+                );
+
+
+              const types =
+                options.map(
+                  option =>
+                    String(
+                      option.type || ""
+                    )
+                    .toLowerCase()
+                    .trim()
+                );
+
+
+              if(bhk === "4+ bhk"){
+
+                matchBhk =
+                  types.some(
+                    value => {
+
+                      const number =
+                        parseInt(
+                          value
+                        );
+
+
+                      return (
+                        Number.isFinite(number) &&
+                        number >= 4
+                      );
+
+                    }
+                  );
+
+              }else{
+
+                matchBhk =
+                  types.includes(
+                    bhk
+                  );
+
+              }
+
+            }
+
+
+            return (
+              matchQuery &&
+              matchType &&
+              matchBhk
+            );
+
+          }
+        );
+
+
+      propertiesExpanded = true;
+
+      renderProperties();
+
+
+      document
+        .getElementById("properties")
+        .scrollIntoView({
+          behavior:"smooth"
+        });
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   HEADER FAVORITES
+========================================================= */
+
+const headerFavorites =
+  document.getElementById(
+    "headerFavorites"
+  );
+
+
+if(headerFavorites){
+
+  headerFavorites.addEventListener(
+    "click",
+    () => {
+
+      const count =
+        getFavorites().length;
+
+
+      if(count){
+
+        alert(
+          count +
+          " favorite " +
+          (
+            count === 1
+              ? "property"
+              : "properties"
+          ) +
+          " selected."
+        );
+
+      }else{
+
+        alert(
+          "You have not added any property to favorites yet."
+        );
+
+      }
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   LOGIN
+========================================================= */
+
+const loginBtn =
+  document.getElementById(
+    "loginBtn"
+  );
+
+
+if(loginBtn){
+
+  loginBtn.addEventListener(
+    "click",
+    () => {
+
+      window.location.href =
+        "login.html";
+
+    }
+  );
+
+}
+
+
+/* =========================================================
+   LOAD PROPERTIES
+========================================================= */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  () => {
+
+    fetchProperties();
+
+  }
+);
+
+</script>
+  
+  
+  
+  
+
+</body>
+</html>

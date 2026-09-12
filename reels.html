@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#092c3d">
+<title>Keys99 Reels</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/reels.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="js/config.js"></script>
+<script src="js/reels.js" defer></script>
+</head>
+
+<body>
+<main class="reels-page">
+    <header class="reels-topbar">
+        <button class="round-btn" id="backBtn" aria-label="Go back">←</button>
+        <div class="brand">KEYS<span>99</span><small>.COM</small></div>
+        <button class="round-btn" id="refreshBtn" aria-label="Refresh reels">↻</button>
+    </header>
+
+    <section id="reelsFeed" class="reels-feed" aria-label="Property reels"></section>
+
+    <div id="loading" class="loading">
+        <div class="spinner"></div>
+        <p>Loading property reels...</p>
+    </div>
+
+    <div id="emptyState" class="empty-state hidden">
+        <div class="empty-icon">▶</div>
+        <h2>No reels available</h2>
+        <p>Property videos will appear here when they are published.</p>
+        <button id="retryBtn" class="primary-btn">Try Again</button>
+    </div>
+
+    <div id="toast" class="toast"></div>
+</main>
+</body>
+</html>
