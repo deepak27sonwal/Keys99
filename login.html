@@ -10,49 +10,15 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <meta
-        name="theme-color"
-        content="#ffffff"
-    >
-
     <title>Keys99.com | Login</title>
 
-
-    <!-- =====================================================
-         LOGIN CSS
-    ====================================================== -->
-
-    <link
-        rel="stylesheet"
-        href="login.css"
-    >
-
-
-    <!-- =====================================================
-         SUPABASE
-    ====================================================== -->
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
-    ></script>
-
-
-    <!-- =====================================================
-         LUCIDE ICONS
-    ====================================================== -->
-
-    <script
-        src="https://unpkg.com/lucide@latest"
-    ></script>
+    <link rel="stylesheet" href="login.css">
 
 </head>
 
-
 <body>
 
-
 <div class="page">
-
 
     <!-- =====================================================
          HEADER
@@ -61,24 +27,20 @@
     <header class="header">
 
         <button
-            type="button"
+            id="headerBackButton"
             class="header-back"
-            id="headerBack"
+            type="button"
             aria-label="Go back"
         >
-
             <span>‹</span>
-
         </button>
-
 
         <div
             class="logo-placeholder"
-            aria-label="Keys99.com"
+            aria-label="Keys99 logo"
         ></div>
 
     </header>
-
 
 
     <!-- =====================================================
@@ -87,16 +49,14 @@
 
     <main class="main">
 
-
         <!-- =================================================
-             PHONE PAGE
+             PHONE LOGIN
         ================================================== -->
 
         <section
             id="phonePage"
             class="auth-page active"
         >
-
 
             <div class="heading">
 
@@ -105,38 +65,33 @@
                 </h1>
 
                 <p>
-                    Login or create your Keys99 account
+                    Login to your account
                 </p>
 
             </div>
 
 
-
-            <!-- =============================================
-                 PHONE INPUT
-            ============================================== -->
+            <!-- PHONE -->
 
             <div class="input-group">
 
-                <label for="phoneInput">
+                <label>
                     Mobile Number
                 </label>
 
-
                 <div class="phone-field">
 
-                    <div class="phone-prefix">
+                    <span class="phone-prefix">
                         +91
-                    </div>
-
+                    </span>
 
                     <input
-                        type="tel"
                         id="phoneInput"
+                        type="tel"
                         inputmode="numeric"
-                        autocomplete="tel"
                         maxlength="10"
                         placeholder="Enter mobile number"
+                        autocomplete="tel"
                     >
 
                 </div>
@@ -144,18 +99,32 @@
             </div>
 
 
-            <!-- PHONE ERROR -->
-
             <div
                 id="phoneError"
                 class="error-message"
             ></div>
 
 
+            <!-- SEND OTP -->
 
-            <!-- =============================================
-                 RECAPTCHA
-            ============================================== -->
+            <button
+                id="sendOtpButton"
+                class="main-button"
+                type="button"
+            >
+
+                <span>
+                    Send OTP
+                </span>
+
+                <b>
+                    →
+                </b>
+
+            </button>
+
+
+            <!-- RECAPTCHA -->
 
             <div
                 id="recaptcha-container"
@@ -163,92 +132,61 @@
             ></div>
 
 
-
-            <!-- =============================================
-                 SEND OTP
-            ============================================== -->
-
-            <button
-                type="button"
-                id="sendOtpButton"
-                class="main-button"
-            >
-
-                <span>
-                    Send OTP
-                </span>
-
-                <b>›</b>
-
-            </button>
+            <p class="secure-text">
+                🔒 Your mobile number is securely verified
+            </p>
 
 
-
-            <!-- SECURITY TEXT -->
-
-            <div class="secure-text">
-
-                Your information is protected with
-                secure verification.
-
-            </div>
-
-
-
-            <!-- =============================================
-                 OR
-            ============================================== -->
+            <!-- OR -->
 
             <div class="or-divider">
 
                 <span></span>
 
-                <b>OR</b>
+                <b>
+                    OR
+                </b>
 
                 <span></span>
 
             </div>
 
 
-
-            <!-- =============================================
-                 GOOGLE LOGIN
-            ============================================== -->
+            <!-- GOOGLE -->
 
             <button
-                type="button"
                 id="googleButton"
                 class="alternative-button"
+                type="button"
             >
 
                 <svg
                     class="google-logo"
-                    viewBox="0 0 24 24"
+                    viewBox="0 0 48 48"
                     aria-hidden="true"
                 >
 
                     <path
-                        fill="#4285F4"
-                        d="M21.35 12.27c0-.79-.07-1.54-.22-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42Z"
+                        fill="#FFC107"
+                        d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.1 8.1 3.1l5.7-5.7C34.3 6.1 29.4 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"
                     />
 
                     <path
-                        fill="#34A853"
-                        d="M12 21.5c2.63 0 4.84-.87 6.45-2.36l-3.14-2.45c-.87.58-1.98.92-3.31.92-2.54 0-4.69-1.72-5.46-4.03H3.29v2.53A9.75 9.75 0 0 0 12 21.5Z"
+                        fill="#FF3D00"
+                        d="M6.3 14.7l6.6 4.8C14.7 16.1 19 12 24 12c3.1 0 5.9 1.1 8.1 3.1l5.7-5.7C34.3 6.1 29.4 4 24 4 16.3 4 9.6 8.3 6.3 14.7z"
                     />
 
                     <path
-                        fill="#FBBC05"
-                        d="M6.54 13.58A5.86 5.86 0 0 1 6.23 12c0-.55.11-1.09.31-1.58V7.89H3.29A9.5 9.5 0 0 0 2.25 12c0 1.53.37 2.98 1.04 4.11l3.25-2.53Z"
+                        fill="#4CAF50"
+                        d="M24 44c5.2 0 10-2 13.5-5.3l-6.2-5.2C29.7 35.1 27 36 24 36c-5.3 0-9.7-3.3-11.3-8l-6.6 5.1C9.5 39.6 16.2 44 24 44z"
                     />
 
                     <path
-                        fill="#EA4335"
-                        d="M12 6.39c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 3.43 14.63 2.5 12 2.5a9.75 9.75 0 0 0-8.71 5.39l3.25 2.53C7.31 8.11 9.46 6.39 12 6.39Z"
+                        fill="#1976D2"
+                        d="M43.6 20.5H42V20H24v8h11.3c-1.1 3.1-3.7 5.5-7 6.8l6.2 5.2C38.2 36.9 44 31.2 44 24c0-1.3-.1-2.4-.4-3.5z"
                     />
 
                 </svg>
-
 
                 <span>
                     Continue with Google
@@ -257,23 +195,17 @@
             </button>
 
 
-
-            <!-- =============================================
-                 FACEBOOK
-            ============================================== -->
+            <!-- FACEBOOK -->
 
             <button
-                type="button"
                 id="facebookButton"
                 class="alternative-button"
+                type="button"
             >
 
-                <span
-                    class="facebook-logo"
-                >
+                <span class="facebook-logo">
                     f
                 </span>
-
 
                 <span>
                     Continue with Facebook
@@ -282,24 +214,17 @@
             </button>
 
 
-
-            <!-- =============================================
-                 SIGN UP
-            ============================================== -->
-
-            <div class="bottom-text">
+            <p class="bottom-text">
 
                 Don't have an account?
 
-                <strong id="signupText">
+                <strong>
                     Sign Up
                 </strong>
 
-            </div>
-
+            </p>
 
         </section>
-
 
 
         <!-- =================================================
@@ -311,15 +236,10 @@
             class="auth-page"
         >
 
-
-            <!-- =============================================
-                 CHANGE NUMBER
-            ============================================== -->
-
             <button
-                type="button"
-                id="changeNumberButton"
+                id="backButton"
                 class="back-button"
+                type="button"
             >
 
                 <span class="back-arrow">
@@ -333,88 +253,120 @@
             </button>
 
 
-
-            <!-- =============================================
-                 OTP ICON
-            ============================================== -->
-
             <div class="otp-symbol">
                 ✓
             </div>
 
 
-
-            <!-- =============================================
-                 OTP HEADING
-            ============================================== -->
-
             <div class="heading">
 
                 <h1>
-                    Verify your number
+                    Verify Your Number
                 </h1>
 
-                <p id="otpDescription">
-                    Enter the OTP sent to your mobile number.
+                <p id="otpSentText">
+                    OTP sent to your mobile number
                 </p>
 
             </div>
 
 
-
-            <!-- =============================================
-                 EXISTING USER MESSAGE
-            ============================================== -->
-
-            <div
-                id="existingUserMessage"
-                class="existing-user-message"
-                hidden
-            >
-
-                <span>✓</span>
-
-                <div>
-
-                    <strong>
-                        Existing account
-                    </strong>
-
-                    <small>
-                        Enter the OTP to login to your Keys99 account.
-                    </small>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- =============================================
-                 OTP INPUT
-            ============================================== -->
+            <!-- OTP -->
 
             <div class="input-group">
 
-                <label for="otpInput">
-                    One-Time Password
+                <label>
+                    Enter OTP
                 </label>
 
-
                 <input
-                    type="text"
                     id="otpInput"
                     class="otp-input"
+                    type="tel"
                     inputmode="numeric"
-                    autocomplete="one-time-code"
                     maxlength="6"
                     placeholder="••••••"
+                    autocomplete="one-time-code"
                 >
 
             </div>
 
 
-            <!-- OTP ERROR -->
+            <!-- FIRST NAME -->
+
+            <div class="input-group">
+
+                <label>
+                    First Name
+                </label>
+
+                <input
+                    id="firstNameInput"
+                    class="normal-input"
+                    type="text"
+                    placeholder="Enter first name"
+                    autocomplete="given-name"
+                >
+
+            </div>
+
+
+            <!-- MIDDLE NAME -->
+
+            <div class="input-group">
+
+                <label>
+                    Middle Name
+                </label>
+
+                <input
+                    id="middleNameInput"
+                    class="normal-input"
+                    type="text"
+                    placeholder="Enter middle name"
+                    autocomplete="additional-name"
+                >
+
+            </div>
+
+
+            <!-- LAST NAME -->
+
+            <div class="input-group">
+
+                <label>
+                    Last Name
+                </label>
+
+                <input
+                    id="lastNameInput"
+                    class="normal-input"
+                    type="text"
+                    placeholder="Enter last name"
+                    autocomplete="family-name"
+                >
+
+            </div>
+
+
+            <!-- EMAIL -->
+
+            <div class="input-group">
+
+                <label>
+                    Email Address
+                </label>
+
+                <input
+                    id="emailInput"
+                    class="normal-input"
+                    type="email"
+                    placeholder="Enter your email address"
+                    autocomplete="email"
+                >
+
+            </div>
+
 
             <div
                 id="otpError"
@@ -422,185 +374,78 @@
             ></div>
 
 
-
-            <!-- =================================================
-                 NEW USER FIELDS
-                 Hidden for existing users
-            ================================================== -->
-
-            <div
-                id="newUserFields"
-                class="new-user-fields"
-                hidden
-            >
-
-
-                <!-- =============================================
-                     FIRST + MIDDLE NAME
-                ============================================== -->
-
-                <div class="name-row">
-
-
-                    <!-- FIRST NAME -->
-
-                    <div class="input-group">
-
-                        <label for="firstNameInput">
-                            First Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="firstNameInput"
-                            class="normal-input"
-                            autocomplete="given-name"
-                            placeholder="First name"
-                        >
-
-                    </div>
-
-
-
-                    <!-- MIDDLE NAME -->
-
-                    <div class="input-group">
-
-                        <label for="middleNameInput">
-                            Middle Name
-                        </label>
-
-                        <input
-                            type="text"
-                            id="middleNameInput"
-                            class="normal-input"
-                            autocomplete="additional-name"
-                            placeholder="Middle name"
-                        >
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- LAST NAME -->
-
-                <div class="input-group">
-
-                    <label for="lastNameInput">
-                        Last Name
-                    </label>
-
-                    <input
-                        type="text"
-                        id="lastNameInput"
-                        class="normal-input"
-                        autocomplete="family-name"
-                        placeholder="Last name"
-                    >
-
-                </div>
-
-
-
-                <!-- EMAIL -->
-
-                <div class="input-group">
-
-                    <label for="emailInput">
-                        Email Address
-                    </label>
-
-                    <input
-                        type="email"
-                        id="emailInput"
-                        class="normal-input"
-                        autocomplete="email"
-                        placeholder="Enter email address"
-                    >
-
-                </div>
-
-
-                <!-- NEW USER ERROR -->
-
-                <div
-                    id="newUserError"
-                    class="error-message"
-                ></div>
-
-
-            </div>
-
-
-
-            <!-- =================================================
-                 VERIFY BUTTON
-            ================================================== -->
-
             <button
-                type="button"
-                id="verifyOtpButton"
+                id="verifyButton"
                 class="main-button"
+                type="button"
             >
 
                 <span>
                     Verify & Continue
                 </span>
 
-                <b>›</b>
+                <b>
+                    →
+                </b>
 
             </button>
 
 
-
-            <!-- =================================================
-                 RESEND
-            ================================================== -->
-
             <div class="resend">
 
                 <button
-                    type="button"
                     id="resendButton"
+                    type="button"
                     disabled
                 >
                     Resend OTP
                 </button>
 
-
-                <span id="resendTimer">
-                    Resend available in 30s
+                <span id="countdown">
+                    Resend OTP in 30s
                 </span>
 
             </div>
 
 
-        </section>
+            <p class="secure-text">
+                🔒 OTP verification powered by Firebase
+            </p>
 
+        </section>
 
     </main>
 
 
-
     <!-- =====================================================
-         HOUSE SCENE
+         HOUSE ILLUSTRATION
     ====================================================== -->
 
     <div class="house-scene">
 
-
         <div class="sun"></div>
-
 
         <div class="cloud cloud-one"></div>
 
         <div class="cloud cloud-two"></div>
 
 
+        <div class="house">
 
-        <!-- TREE LEFT -->
+            <div class="house-roof"></div>
+
+            <div class="house-wall">
+
+                <div class="window window-one"></div>
+
+                <div class="window window-two"></div>
+
+                <div class="main-door"></div>
+
+            </div>
+
+        </div>
+
 
         <div class="tree tree-one">
 
@@ -611,34 +456,6 @@
         </div>
 
 
-
-        <!-- HOUSE -->
-
-        <div class="house">
-
-
-            <div class="house-roof"></div>
-
-
-            <div class="house-wall">
-
-
-                <div class="window window-one"></div>
-
-                <div class="window window-two"></div>
-
-
-                <div class="main-door"></div>
-
-
-            </div>
-
-        </div>
-
-
-
-        <!-- TREE RIGHT -->
-
         <div class="tree tree-two">
 
             <div class="tree-top"></div>
@@ -648,17 +465,12 @@
         </div>
 
 
-
         <div class="ground"></div>
-
 
     </div>
 
 
-
-    <!-- =====================================================
-         FOOTER
-    ====================================================== -->
+    <!-- FOOTER -->
 
     <footer>
 
@@ -667,27 +479,20 @@
         </span>
 
         <span>
-            •
-        </span>
-
-        <span>
-            Secure Login
+            Your key to a better tomorrow
         </span>
 
     </footer>
 
-
-
 </div>
 
 
-
 <!-- =========================================================
-     LOADING OVERLAY
-========================================================= -->
+     LOADING
+========================================================== -->
 
 <div
-    id="loadingOverlay"
+    id="loading"
     class="loading-overlay"
 >
 
@@ -704,13 +509,11 @@
 </div>
 
 
-
 <!-- =========================================================
      FIREBASE + SUPABASE
-========================================================= -->
+========================================================== -->
 
 <script type="module">
-
 
 /* =========================================================
    FIREBASE IMPORTS
@@ -718,7 +521,8 @@
 
 import {
     initializeApp
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
+} from
+"https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 
 
 import {
@@ -727,10 +531,19 @@ import {
     signInWithPhoneNumber,
     GoogleAuthProvider,
     signInWithPopup,
-    onAuthStateChanged,
-    signOut
-} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+    onAuthStateChanged
+} from
+"https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
 
+
+/* =========================================================
+   SUPABASE IMPORT
+========================================================= */
+
+import {
+    createClient
+} from
+"https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 
 
 /* =========================================================
@@ -763,18 +576,16 @@ const firebaseConfig = {
 };
 
 
-
-/* =========================================================
-   INITIALIZE FIREBASE
-========================================================= */
-
 const firebaseApp =
-    initializeApp(firebaseConfig);
+    initializeApp(
+        firebaseConfig
+    );
 
 
 const auth =
-    getAuth(firebaseApp);
-
+    getAuth(
+        firebaseApp
+    );
 
 
 /* =========================================================
@@ -786,128 +597,85 @@ const SUPABASE_URL =
 
 
 const SUPABASE_ANON_KEY =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGciOiJIUzI1NiIsInJlZiI6InhlZXN1c2diZHlyZ3h2emVqaGEiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc3Mjg3MjUzOSwiZXhwIjoyMDg4NDQ4NTM5fQ.8TjnH50MO4YBu8liCJwnUu36hiX6zAwRpGOCPFVW7sI";
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhlZXN1c2diZHlyZ3h2emV2amhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NzI1MzksImV4cCI6MjA4ODQ0ODUzOX0.8TjnH50MO4YBu8liCJwnUu36hiX6zAwRpGOCPFVW7sI";
 
 
 const supabaseClient =
-    window.supabase.createClient(
+    createClient(
         SUPABASE_URL.trim(),
         SUPABASE_ANON_KEY.trim()
     );
 
 
+console.log(
+    "Supabase initialized:",
+    SUPABASE_URL
+);
+
 
 /* =========================================================
-   DOM ELEMENTS
+   ELEMENTS
 ========================================================= */
 
 const phonePage =
     document.getElementById("phonePage");
 
-
 const otpPage =
     document.getElementById("otpPage");
-
 
 const phoneInput =
     document.getElementById("phoneInput");
 
-
 const otpInput =
     document.getElementById("otpInput");
-
 
 const firstNameInput =
     document.getElementById("firstNameInput");
 
-
 const middleNameInput =
     document.getElementById("middleNameInput");
-
 
 const lastNameInput =
     document.getElementById("lastNameInput");
 
-
 const emailInput =
     document.getElementById("emailInput");
-
 
 const sendOtpButton =
     document.getElementById("sendOtpButton");
 
-
-const verifyOtpButton =
-    document.getElementById("verifyOtpButton");
-
+const verifyButton =
+    document.getElementById("verifyButton");
 
 const googleButton =
     document.getElementById("googleButton");
 
-
 const facebookButton =
     document.getElementById("facebookButton");
 
+const backButton =
+    document.getElementById("backButton");
 
-const changeNumberButton =
-    document.getElementById("changeNumberButton");
-
-
-const headerBack =
-    document.getElementById("headerBack");
-
-
-const signupText =
-    document.getElementById("signupText");
-
+const headerBackButton =
+    document.getElementById("headerBackButton");
 
 const resendButton =
     document.getElementById("resendButton");
 
-
-const resendTimer =
-    document.getElementById("resendTimer");
-
-
 const phoneError =
     document.getElementById("phoneError");
-
 
 const otpError =
     document.getElementById("otpError");
 
+const otpSentText =
+    document.getElementById("otpSentText");
 
-const newUserError =
-    document.getElementById("newUserError");
+const countdown =
+    document.getElementById("countdown");
 
-
-const newUserFields =
-    document.getElementById("newUserFields");
-
-
-const existingUserMessage =
-    document.getElementById(
-        "existingUserMessage"
-    );
-
-
-const otpDescription =
-    document.getElementById(
-        "otpDescription"
-    );
-
-
-const loadingOverlay =
-    document.getElementById(
-        "loadingOverlay"
-    );
-
-
-const loadingText =
-    document.getElementById(
-        "loadingText"
-    );
-
+const loading =
+    document.getElementById("loading");
 
 
 /* =========================================================
@@ -922,40 +690,13 @@ let currentPhone = "";
 
 let currentExistingUser = null;
 
-let resendInterval = null;
+let resendTimer = null;
 
 let resendSeconds = 30;
 
 
-
 /* =========================================================
-   SHOW LOADING
-========================================================= */
-
-function showLoading(text = "Please wait...") {
-
-    loadingText.textContent = text;
-
-    loadingOverlay.classList.add("show");
-
-}
-
-
-
-/* =========================================================
-   HIDE LOADING
-========================================================= */
-
-function hideLoading() {
-
-    loadingOverlay.classList.remove("show");
-
-}
-
-
-
-/* =========================================================
-   ERROR HELPERS
+   ERROR
 ========================================================= */
 
 function showError(element, message) {
@@ -967,7 +708,7 @@ function showError(element, message) {
 }
 
 
-function hideError(element) {
+function clearError(element) {
 
     element.textContent = "";
 
@@ -976,126 +717,88 @@ function hideError(element) {
 }
 
 
-
 /* =========================================================
-   PAGE SWITCH
+   LOADING
 ========================================================= */
 
-function showPhonePage() {
+function showLoading(message) {
 
-    otpPage.classList.remove("active");
+    document.getElementById(
+        "loadingText"
+    ).textContent = message;
 
-    phonePage.classList.add("active");
+    loading.classList.add("show");
 
 }
 
 
-function showOtpPage() {
+function hideLoading() {
 
-    phonePage.classList.remove("active");
-
-    otpPage.classList.add("active");
+    loading.classList.remove("show");
 
 }
 
 
-
 /* =========================================================
-   NEW USER / EXISTING USER UI
+   NORMALIZE EMAIL
 ========================================================= */
 
-function setNewUserMode(isNewUser) {
+function normalizeEmail(email) {
 
-
-    /* -----------------------------------------------
-       New user fields
-    ------------------------------------------------ */
-
-    newUserFields.hidden =
-        !isNewUser;
-
-
-    /* -----------------------------------------------
-       Existing user message
-    ------------------------------------------------ */
-
-    existingUserMessage.hidden =
-        isNewUser;
-
-
-    /* -----------------------------------------------
-       Required fields
-    ------------------------------------------------ */
-
-    firstNameInput.required =
-        isNewUser;
-
-    middleNameInput.required =
-        false;
-
-    lastNameInput.required =
-        isNewUser;
-
-    emailInput.required =
-        isNewUser;
-
-
-    /* -----------------------------------------------
-       Existing user
-    ------------------------------------------------ */
-
-    if (!isNewUser) {
-
-        firstNameInput.value = "";
-
-        middleNameInput.value = "";
-
-        lastNameInput.value = "";
-
-        emailInput.value = "";
-
-        otpDescription.textContent =
-            "Enter the OTP sent to your mobile number.";
-
-    }
-
-    else {
-
-        otpDescription.textContent =
-            "Verify your number and complete your profile.";
-
-    }
+    return email
+        .trim()
+        .toLowerCase();
 
 }
 
 
-
 /* =========================================================
-   VALIDATE PHONE
+   PHONE VALIDATION
 ========================================================= */
 
-function getFormattedPhone() {
+function getPhoneNumber() {
 
-    const phone =
+    const number =
         phoneInput.value
             .replace(/\D/g, "");
 
+    if (number.length !== 10) {
 
-    if (!/^[6-9]\d{9}$/.test(phone)) {
+        showError(
+            phoneError,
+            "Please enter a valid 10-digit mobile number."
+        );
+
+        phoneInput.focus();
 
         return null;
 
     }
 
 
-    return "+91" + phone;
+    if (!/^[6-9]\d{9}$/.test(number)) {
+
+        showError(
+            phoneError,
+            "Please enter a valid Indian mobile number."
+        );
+
+        phoneInput.focus();
+
+        return null;
+
+    }
+
+
+    clearError(phoneError);
+
+    return "+91" + number;
 
 }
 
 
-
 /* =========================================================
-   FIND USER BY PHONE
+   CHECK PHONE IN SUPABASE
 ========================================================= */
 
 async function findUserByPhone(phone) {
@@ -1106,19 +809,14 @@ async function findUserByPhone(phone) {
     } =
         await supabaseClient
             .from("users")
-            .select(`
-                id,
-                first_name,
-                middle_name,
-                last_name,
-                phone,
-                email,
-                user_code,
-                avatar_url,
-                firebase_uid
-            `)
-            .eq("phone", phone)
-            .limit(1);
+            .select(
+                "id,firebase_uid,phone,email,first_name,middle_name,last_name,user_code"
+            )
+            .eq(
+                "phone",
+                phone
+            )
+            .maybeSingle();
 
 
     if (error) {
@@ -1133,24 +831,19 @@ async function findUserByPhone(phone) {
     }
 
 
-    return data && data.length
-        ? data[0]
-        : null;
+    return data;
 
 }
 
 
-
 /* =========================================================
-   FIND USER BY EMAIL
+   CHECK EMAIL IN SUPABASE
 ========================================================= */
 
 async function findUserByEmail(email) {
 
-    const cleanEmail =
-        email
-            .trim()
-            .toLowerCase();
+    const normalizedEmail =
+        normalizeEmail(email);
 
 
     const {
@@ -1159,19 +852,14 @@ async function findUserByEmail(email) {
     } =
         await supabaseClient
             .from("users")
-            .select(`
-                id,
-                first_name,
-                middle_name,
-                last_name,
-                phone,
-                email,
-                user_code,
-                avatar_url,
-                firebase_uid
-            `)
-            .ilike("email", cleanEmail)
-            .limit(1);
+            .select(
+                "id,firebase_uid,phone,email,first_name,middle_name,last_name,user_code"
+            )
+            .ilike(
+                "email",
+                normalizedEmail
+            )
+            .maybeSingle();
 
 
     if (error) {
@@ -1186,38 +874,20 @@ async function findUserByEmail(email) {
     }
 
 
-    return data && data.length
-        ? data[0]
-        : null;
+    return data;
 
 }
 
 
-
 /* =========================================================
-   CREATE RECAPTCHA
+   RECAPTCHA
 ========================================================= */
 
 function createRecaptcha() {
 
+    if (recaptchaVerifier) {
 
-    try {
-
-        if (recaptchaVerifier) {
-
-            recaptchaVerifier.clear();
-
-            recaptchaVerifier = null;
-
-        }
-
-    }
-    catch (error) {
-
-        console.warn(
-            "reCAPTCHA clear warning:",
-            error
-        );
+        return;
 
     }
 
@@ -1227,15 +897,68 @@ function createRecaptcha() {
             auth,
             "recaptcha-container",
             {
-                size: "normal"
+
+                size: "normal",
+
+                callback: () => {
+
+                    clearError(
+                        phoneError
+                    );
+
+                },
+
+                "expired-callback": () => {
+
+                    console.log(
+                        "reCAPTCHA expired"
+                    );
+
+                }
+
             }
         );
 
-
-    return recaptchaVerifier;
-
 }
 
+
+function resetRecaptcha() {
+
+    if (recaptchaVerifier) {
+
+        try {
+
+            recaptchaVerifier.clear();
+
+        }
+
+        catch (e) {
+
+            console.warn(
+                "reCAPTCHA clear error:",
+                e
+            );
+
+        }
+
+        recaptchaVerifier = null;
+
+    }
+
+
+    const container =
+        document.getElementById(
+            "recaptcha-container"
+        );
+
+
+    if (container) {
+
+        container.innerHTML = "";
+
+    }
+
+}
 
 
 /* =========================================================
@@ -1244,26 +967,13 @@ function createRecaptcha() {
 
 async function sendOTP() {
 
-
-    hideError(phoneError);
-
-    hideError(otpError);
-
-    hideError(newUserError);
-
+    clearError(phoneError);
 
     const phone =
-        getFormattedPhone();
+        getPhoneNumber();
 
 
     if (!phone) {
-
-        showError(
-            phoneError,
-            "Please enter a valid 10-digit mobile number."
-        );
-
-        phoneInput.focus();
 
         return;
 
@@ -1272,129 +982,168 @@ async function sendOTP() {
 
     sendOtpButton.disabled = true;
 
-    showLoading(
-        "Checking your account..."
-    );
+    sendOtpButton.innerHTML =
+        "<span>Checking...</span>";
 
 
     try {
 
-
-        /* -----------------------------------------------
-           Check whether phone already exists
-        ------------------------------------------------ */
+        /*
+         * IMPORTANT:
+         * Check whether this phone already has
+         * a Keys99 account.
+         */
 
         currentExistingUser =
             await findUserByPhone(phone);
 
 
-        currentPhone =
-            phone;
+        /*
+         * We still send OTP for an existing
+         * account. OTP acts as login verification.
+         */
+
+        sendOtpButton.innerHTML =
+            "<span>Sending OTP...</span>";
 
 
-        /* -----------------------------------------------
-           Create reCAPTCHA
-        ------------------------------------------------ */
+        createRecaptcha();
 
-        hideLoading();
+        await recaptchaVerifier.render();
 
-        const verifier =
-            createRecaptcha();
-
-
-        showLoading(
-            "Sending OTP..."
-        );
-
-
-        /* -----------------------------------------------
-           Firebase OTP
-        ------------------------------------------------ */
 
         confirmationResult =
             await signInWithPhoneNumber(
                 auth,
                 phone,
-                verifier
+                recaptchaVerifier
             );
 
 
-        /* -----------------------------------------------
-           Set correct UI
-        ------------------------------------------------ */
+        currentPhone = phone;
 
-        setNewUserMode(
-            !currentExistingUser
+
+        otpSentText.textContent =
+            "OTP sent to " + phone;
+
+
+        /*
+         * If existing user, pre-fill their
+         * existing information.
+         */
+
+        if (currentExistingUser) {
+
+            firstNameInput.value =
+                currentExistingUser.first_name ||
+                "";
+
+            middleNameInput.value =
+                currentExistingUser.middle_name ||
+                "";
+
+            lastNameInput.value =
+                currentExistingUser.last_name ||
+                "";
+
+            emailInput.value =
+                currentExistingUser.email ||
+                "";
+
+        }
+
+        else {
+
+            firstNameInput.value = "";
+
+            middleNameInput.value = "";
+
+            lastNameInput.value = "";
+
+            emailInput.value = "";
+
+        }
+
+
+        phonePage.classList.remove("active");
+
+
+        setTimeout(
+            () => {
+
+                phonePage.style.display =
+                    "none";
+
+                otpPage.style.display =
+                    "block";
+
+
+                requestAnimationFrame(
+                    () => {
+
+                        otpPage.classList.add(
+                            "active"
+                        );
+
+                    }
+                );
+
+            },
+            150
         );
-
-
-        /* -----------------------------------------------
-           Show OTP page
-        ------------------------------------------------ */
-
-        showOtpPage();
 
 
         otpInput.value = "";
 
-        setTimeout(() => {
+        otpInput.focus();
 
-            otpInput.focus();
-
-        }, 150);
-
-
-        /* -----------------------------------------------
-           Start resend timer
-        ------------------------------------------------ */
-
-        startResendTimer();
-
+        startTimer();
 
     }
+
     catch (error) {
 
         console.error(
-            "Send OTP error:",
+            "Firebase Send OTP Error:",
             error
         );
 
 
-        try {
-
-            if (recaptchaVerifier) {
-
-                recaptchaVerifier.clear();
-
-                recaptchaVerifier = null;
-
-            }
-
-        }
-        catch (e) {
-
-            console.warn(e);
-
-        }
-
-
         let message =
-            "Unable to send OTP. Please try again.";
+            "Unable to send OTP.";
 
 
         if (
-            error &&
+            error.code ===
+            "auth/billing-not-enabled"
+        ) {
+
+            message =
+                "Firebase billing is not enabled. Please enable billing for the Firebase project.";
+
+        }
+
+        else if (
+            error.code ===
+            "auth/captcha-check-failed"
+        ) {
+
+            message =
+                "Security verification failed. Please complete the captcha again.";
+
+        }
+
+        else if (
             error.code ===
             "auth/invalid-phone-number"
         ) {
 
             message =
-                "Please enter a valid mobile number.";
+                "Invalid mobile number.";
 
         }
 
         else if (
-            error &&
             error.code ===
             "auth/too-many-requests"
         ) {
@@ -1405,7 +1154,6 @@ async function sendOTP() {
         }
 
         else if (
-            error &&
             error.code ===
             "auth/quota-exceeded"
         ) {
@@ -1415,14 +1163,10 @@ async function sendOTP() {
 
         }
 
-        else if (
-            error &&
-            error.code ===
-            "auth/billing-not-enabled"
-        ) {
+        else if (error.message) {
 
             message =
-                "Firebase Phone Authentication billing is not enabled.";
+                error.message;
 
         }
 
@@ -1432,28 +1176,351 @@ async function sendOTP() {
             message
         );
 
+
+        resetRecaptcha();
+
     }
+
     finally {
 
-        hideLoading();
+        sendOtpButton.disabled = false;
 
-        sendOtpButton.disabled =
-            false;
+        sendOtpButton.innerHTML =
+            "<span>Send OTP</span><b>→</b>";
 
     }
 
 }
 
 
-
 /* =========================================================
-   VALIDATE NEW USER DETAILS
+   VALIDATE NAME
 ========================================================= */
 
-function validateNewUser() {
+function validateName(
+    value,
+    fieldName,
+    required = true
+) {
+
+    const name =
+        value.trim();
 
 
-    hideError(newUserError);
+    if (!required && !name) {
+
+        return true;
+
+    }
+
+
+    if (!name) {
+
+        showError(
+            otpError,
+            fieldName +
+            " is required."
+        );
+
+        return false;
+
+    }
+
+
+    if (!/^[A-Za-zÀ-ÖØ-öø-ÿ\s'-]+$/.test(name)) {
+
+        showError(
+            otpError,
+            fieldName +
+            " contains invalid characters."
+        );
+
+        return false;
+
+    }
+
+
+    if (name.length < 2) {
+
+        showError(
+            otpError,
+            fieldName +
+            " must contain at least 2 characters."
+        );
+
+        return false;
+
+    }
+
+
+    return true;
+
+}
+
+
+/* =========================================================
+   SAVE / UPDATE USER
+========================================================= */
+
+async function saveUserToSupabase(
+    firebaseUser,
+    firstName,
+    middleName,
+    lastName,
+    email
+) {
+
+    if (
+        !firebaseUser ||
+        !firebaseUser.uid
+    ) {
+
+        throw new Error(
+            "Firebase user information is missing."
+        );
+
+    }
+
+
+    const firebaseUID =
+        firebaseUser.uid;
+
+
+    const phone =
+        firebaseUser.phoneNumber ||
+        currentPhone ||
+        null;
+
+
+    const userEmail =
+        normalizeEmail(
+            email ||
+            firebaseUser.email ||
+            ""
+        );
+
+
+    /*
+     * -------------------------------------------------------
+     * FIRST: CHECK PHONE
+     * -------------------------------------------------------
+     */
+
+    if (phone) {
+
+        const phoneUser =
+            await findUserByPhone(phone);
+
+
+        if (
+            phoneUser &&
+            phoneUser.firebase_uid &&
+            phoneUser.firebase_uid !== firebaseUID
+        ) {
+
+            /*
+             * Same phone belongs to another Firebase
+             * account. Do NOT create another account.
+             */
+
+            throw new Error(
+                "PHONE_ALREADY_REGISTERED"
+            );
+
+        }
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * SECOND: CHECK EMAIL
+     * -------------------------------------------------------
+     */
+
+    if (userEmail) {
+
+        const emailUser =
+            await findUserByEmail(
+                userEmail
+            );
+
+
+        if (
+            emailUser &&
+            emailUser.firebase_uid &&
+            emailUser.firebase_uid !== firebaseUID
+        ) {
+
+            /*
+             * Same email belongs to another account.
+             */
+
+            throw new Error(
+                "EMAIL_ALREADY_REGISTERED"
+            );
+
+        }
+
+    }
+
+
+    /*
+     * -------------------------------------------------------
+     * FIND EXISTING FIREBASE USER
+     * -------------------------------------------------------
+     */
+
+    const {
+        data: firebaseExistingUser,
+        error: firebaseFindError
+    } =
+        await supabaseClient
+            .from("users")
+            .select(
+                "*"
+            )
+            .eq(
+                "firebase_uid",
+                firebaseUID
+            )
+            .maybeSingle();
+
+
+    if (firebaseFindError) {
+
+        throw firebaseFindError;
+
+    }
+
+
+    let data;
+
+
+    /*
+     * -------------------------------------------------------
+     * UPDATE EXISTING ACCOUNT
+     * -------------------------------------------------------
+     */
+
+    if (firebaseExistingUser) {
+
+        const {
+            data: updatedUser,
+            error
+        } =
+            await supabaseClient
+                .from("users")
+                .update({
+
+                    phone:
+                        phone,
+
+                    first_name:
+                        firstName || null,
+
+                    middle_name:
+                        middleName || null,
+
+                    last_name:
+                        lastName || null,
+
+                    email:
+                        userEmail || null
+
+                })
+                .eq(
+                    "firebase_uid",
+                    firebaseUID
+                )
+                .select()
+                .single();
+
+
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        data = updatedUser;
+
+    }
+
+    else {
+
+        /*
+         * ---------------------------------------------------
+         * NEW ACCOUNT
+         * ---------------------------------------------------
+         */
+
+        const {
+            data: newUser,
+            error
+        } =
+            await supabaseClient
+                .from("users")
+                .insert({
+
+                    firebase_uid:
+                        firebaseUID,
+
+                    phone:
+                        phone,
+
+                    first_name:
+                        firstName || null,
+
+                    middle_name:
+                        middleName || null,
+
+                    last_name:
+                        lastName || null,
+
+                    email:
+                        userEmail || null
+
+                })
+                .select()
+                .single();
+
+
+        if (error) {
+
+            throw error;
+
+        }
+
+
+        data = newUser;
+
+    }
+
+
+    console.log(
+        "Keys99 user saved:",
+        data
+    );
+
+
+    return data;
+
+}
+
+
+/* =========================================================
+   VERIFY OTP
+========================================================= */
+
+async function verifyOTP() {
+
+    clearError(otpError);
+
+
+    const otp =
+        otpInput.value.trim();
 
 
     const firstName =
@@ -1469,433 +1536,14 @@ function validateNewUser() {
 
 
     const email =
-        emailInput.value.trim().toLowerCase();
-
-
-    /* -----------------------------------------------
-       First name
-    ------------------------------------------------ */
-
-    if (!firstName) {
-
-        showError(
-            newUserError,
-            "Please enter your first name."
-        );
-
-        firstNameInput.focus();
-
-        return null;
-
-    }
-
-
-    if (!/^[A-Za-z][A-Za-z .'-]*$/.test(firstName)) {
-
-        showError(
-            newUserError,
-            "Please enter a valid first name."
-        );
-
-        firstNameInput.focus();
-
-        return null;
-
-    }
-
-
-    /* -----------------------------------------------
-       Middle name
-    ------------------------------------------------ */
-
-    if (
-        middleName &&
-        !/^[A-Za-z][A-Za-z .'-]*$/.test(middleName)
-    ) {
-
-        showError(
-            newUserError,
-            "Please enter a valid middle name."
-        );
-
-        middleNameInput.focus();
-
-        return null;
-
-    }
-
-
-    /* -----------------------------------------------
-       Last name
-    ------------------------------------------------ */
-
-    if (!lastName) {
-
-        showError(
-            newUserError,
-            "Please enter your last name."
-        );
-
-        lastNameInput.focus();
-
-        return null;
-
-    }
-
-
-    if (!/^[A-Za-z][A-Za-z .'-]*$/.test(lastName)) {
-
-        showError(
-            newUserError,
-            "Please enter a valid last name."
-        );
-
-        lastNameInput.focus();
-
-        return null;
-
-    }
-
-
-    /* -----------------------------------------------
-       Email
-    ------------------------------------------------ */
-
-    if (!email) {
-
-        showError(
-            newUserError,
-            "Please enter your email address."
-        );
-
-        emailInput.focus();
-
-        return null;
-
-    }
-
-
-    if (
-        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-    ) {
-
-        showError(
-            newUserError,
-            "Please enter a valid email address."
-        );
-
-        emailInput.focus();
-
-        return null;
-
-    }
-
-
-    return {
-
-        firstName,
-
-        middleName,
-
-        lastName,
-
-        email
-
-    };
-
-}
-
-
-
-/* =========================================================
-   LINK FIREBASE UID TO EXISTING USER
-========================================================= */
-
-async function linkExistingFirebaseUser(
-    firebaseUser,
-    existingUser
-) {
-
-
-    if (!existingUser) {
-
-        throw new Error(
-            "Existing account could not be found."
-        );
-
-    }
-
-
-    /* -----------------------------------------------
-       If already linked
-    ------------------------------------------------ */
-
-    if (
-        existingUser.firebase_uid &&
-        existingUser.firebase_uid !==
-        firebaseUser.uid
-    ) {
-
-        throw new Error(
-            "This mobile number is already linked to another account."
-        );
-
-    }
-
-
-    /* -----------------------------------------------
-       Already same Firebase account
-    ------------------------------------------------ */
-
-    if (
-        existingUser.firebase_uid ===
-        firebaseUser.uid
-    ) {
-
-        return existingUser;
-
-    }
-
-
-    /* -----------------------------------------------
-       Attach Firebase UID only
-       
-       IMPORTANT:
-       Do NOT overwrite:
-       first_name
-       middle_name
-       last_name
-       email
-    ------------------------------------------------ */
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("users")
-            .update({
-
-                firebase_uid:
-                    firebaseUser.uid
-
-            })
-            .eq(
-                "id",
-                existingUser.id
-            )
-            .select()
-            .single();
-
-
-    if (error) {
-
-        console.error(
-            "Existing user update error:",
-            error
-        );
-
-        throw error;
-
-    }
-
-
-    return data;
-
-}
-
-
-
-/* =========================================================
-   CREATE NEW USER
-========================================================= */
-
-async function createNewUser(
-    firebaseUser,
-    details
-) {
-
-
-    /* -----------------------------------------------
-       Re-check phone
-    ------------------------------------------------ */
-
-    const phoneUser =
-        await findUserByPhone(
-            currentPhone
+        normalizeEmail(
+            emailInput.value
         );
 
 
-    if (phoneUser) {
-
-        throw new Error(
-            "An account with this mobile number already exists."
-        );
-
-    }
-
-
-    /* -----------------------------------------------
-       Re-check email
-    ------------------------------------------------ */
-
-    const emailUser =
-        await findUserByEmail(
-            details.email
-        );
-
-
-    if (emailUser) {
-
-        throw new Error(
-            "An account with this email address already exists."
-        );
-
-    }
-
-
-    /* -----------------------------------------------
-       Insert user
-    ------------------------------------------------ */
-
-    const {
-        data,
-        error
-    } =
-        await supabaseClient
-            .from("users")
-            .insert({
-
-                first_name:
-                    details.firstName,
-
-                middle_name:
-                    details.middleName || null,
-
-                last_name:
-                    details.lastName,
-
-                phone:
-                    currentPhone,
-
-                email:
-                    details.email,
-
-                firebase_uid:
-                    firebaseUser.uid
-
-            })
-            .select()
-            .single();
-
-
-    if (error) {
-
-        console.error(
-            "New user insert error:",
-            error
-        );
-
-        throw error;
-
-    }
-
-
-    return data;
-
-}
-
-
-
-/* =========================================================
-   SAVE LOGIN DATA LOCALLY
-========================================================= */
-
-function saveLoginSession(user) {
-
-
-    if (!user) {
-
-        return;
-
-    }
-
-
-    localStorage.setItem(
-        "keys99_user_id",
-        user.id || ""
-    );
-
-
-    localStorage.setItem(
-        "keys99_firebase_uid",
-        user.firebase_uid || ""
-    );
-
-
-    localStorage.setItem(
-        "keys99_user_code",
-        user.user_code || ""
-    );
-
-
-    localStorage.setItem(
-        "keys99_user_name",
-        [
-            user.first_name,
-            user.middle_name,
-            user.last_name
-        ]
-            .filter(Boolean)
-            .join(" ")
-    );
-
-
-    localStorage.setItem(
-        "keys99_user_phone",
-        user.phone || ""
-    );
-
-
-    localStorage.setItem(
-        "keys99_user_email",
-        user.email || ""
-    );
-
-
-    if (user.avatar_url) {
-
-        localStorage.setItem(
-            "keys99_user_avatar",
-            user.avatar_url
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-   VERIFY OTP
-========================================================= */
-
-async function verifyOTP() {
-
-
-    hideError(otpError);
-
-    hideError(newUserError);
-
-
-    const otp =
-        otpInput.value
-            .replace(/\D/g, "");
-
-
-    /* -----------------------------------------------
-       Validate OTP
-    ------------------------------------------------ */
+    /* -----------------------------------------
+       OTP
+    ----------------------------------------- */
 
     if (!/^\d{6}$/.test(otp)) {
 
@@ -1905,6 +1553,84 @@ async function verifyOTP() {
         );
 
         otpInput.focus();
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       FIRST NAME
+    ----------------------------------------- */
+
+    if (
+        !validateName(
+            firstName,
+            "First Name"
+        )
+    ) {
+
+        firstNameInput.focus();
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       MIDDLE NAME
+    ----------------------------------------- */
+
+    if (
+        middleName &&
+        !validateName(
+            middleName,
+            "Middle Name",
+            false
+        )
+    ) {
+
+        middleNameInput.focus();
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       LAST NAME
+    ----------------------------------------- */
+
+    if (
+        !validateName(
+            lastName,
+            "Last Name"
+        )
+    ) {
+
+        lastNameInput.focus();
+
+        return;
+
+    }
+
+
+    /* -----------------------------------------
+       EMAIL
+    ----------------------------------------- */
+
+    if (
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(
+            email
+        )
+    ) {
+
+        showError(
+            otpError,
+            "Please enter a valid email address."
+        );
+
+        emailInput.focus();
 
         return;
 
@@ -1923,7 +1649,11 @@ async function verifyOTP() {
     }
 
 
-    verifyOtpButton.disabled = true;
+    verifyButton.disabled = true;
+
+    verifyButton.innerHTML =
+        "<span>Verifying...</span>";
+
 
     showLoading(
         "Verifying OTP..."
@@ -1932,10 +1662,9 @@ async function verifyOTP() {
 
     try {
 
-
-        /* -----------------------------------------------
-           Confirm Firebase OTP
-        ------------------------------------------------ */
+        /* -----------------------------------------
+           VERIFY FIREBASE OTP
+        ----------------------------------------- */
 
         const result =
             await confirmationResult.confirm(
@@ -1947,120 +1676,139 @@ async function verifyOTP() {
             result.user;
 
 
-        /* =================================================
-           EXISTING USER
-        ================================================= */
-
-        if (currentExistingUser) {
-
-
-            /* -------------------------------------------
-               Make sure Firebase UID matches
-            -------------------------------------------- */
-
-            const user =
-                await linkExistingFirebaseUser(
-                    firebaseUser,
-                    currentExistingUser
-                );
-
-
-            saveLoginSession(
-                user
-            );
-
-
-            loadingText.textContent =
-                "Login successful...";
-
-
-            window.location.href =
-                "profile.html";
-
-
-            return;
-
-        }
-
-
-
-        /* =================================================
-           NEW USER
-        ================================================= */
-
-
-        const details =
-            validateNewUser();
-
-
-        if (!details) {
-
-            await signOut(auth);
-
-            hideLoading();
-
-            verifyOtpButton.disabled =
-                false;
-
-            return;
-
-        }
-
-
-        /* -----------------------------------------------
-           Check email again
-        ------------------------------------------------ */
-
-        const emailUser =
-            await findUserByEmail(
-                details.email
-            );
-
-
-        if (emailUser) {
-
-            await signOut(auth);
-
-            showError(
-                newUserError,
-                "This email address is already registered. Please use another email."
-            );
-
-            hideLoading();
-
-            verifyOtpButton.disabled =
-                false;
-
-            return;
-
-        }
-
-
-        /* -----------------------------------------------
-           Create user
-        ------------------------------------------------ */
-
-        const newUser =
-            await createNewUser(
-                firebaseUser,
-                details
-            );
-
-
-        saveLoginSession(
-            newUser
+        console.log(
+            "Firebase OTP verified:",
+            firebaseUser.uid
         );
 
 
-        loadingText.textContent =
-            "Account created successfully...";
+        /* -----------------------------------------
+           CHECK EMAIL AGAIN
+           This protects against changes while
+           the OTP was being verified.
+        ----------------------------------------- */
+
+        const emailUser =
+            await findUserByEmail(
+                email
+            );
 
 
-        window.location.href =
-            "profile.html";
+        if (
+            emailUser &&
+            emailUser.firebase_uid &&
+            emailUser.firebase_uid !==
+                firebaseUser.uid
+        ) {
 
+            throw new Error(
+                "EMAIL_ALREADY_REGISTERED"
+            );
+
+        }
+
+
+        showLoading(
+            "Creating your Keys99 account..."
+        );
+
+
+        /* -----------------------------------------
+           SAVE USER
+        ----------------------------------------- */
+
+        const user =
+            await saveUserToSupabase(
+                firebaseUser,
+                firstName,
+                middleName,
+                lastName,
+                email
+            );
+
+
+        /* -----------------------------------------
+           LOCAL STORAGE
+        ----------------------------------------- */
+
+        localStorage.setItem(
+            "keys99_firebase_uid",
+            firebaseUser.uid
+        );
+
+
+        localStorage.setItem(
+            "keys99_phone",
+            firebaseUser.phoneNumber ||
+            currentPhone ||
+            ""
+        );
+
+
+        localStorage.setItem(
+            "keys99_email",
+            email
+        );
+
+
+        localStorage.setItem(
+            "keys99_first_name",
+            firstName
+        );
+
+
+        localStorage.setItem(
+            "keys99_middle_name",
+            middleName
+        );
+
+
+        localStorage.setItem(
+            "keys99_last_name",
+            lastName
+        );
+
+
+        localStorage.setItem(
+            "keys99_logged_in",
+            "true"
+        );
+
+
+        if (
+            user &&
+            user.user_code
+        ) {
+
+            localStorage.setItem(
+                "keys99_user_code",
+                user.user_code
+            );
+
+        }
+
+
+        /* -----------------------------------------
+           SUCCESS
+        ----------------------------------------- */
+
+        showLoading(
+            "Login successful..."
+        );
+
+
+        setTimeout(
+            () => {
+
+                window.location.href =
+                    "profile.html";
+
+            },
+            500
+        );
 
     }
+
     catch (error) {
 
         console.error(
@@ -2070,11 +1818,30 @@ async function verifyOTP() {
 
 
         let message =
-            "Invalid OTP. Please try again.";
+            "Unable to complete login.";
 
 
         if (
-            error &&
+            error.message ===
+            "PHONE_ALREADY_REGISTERED"
+        ) {
+
+            message =
+                "This mobile number is already registered with another account.";
+
+        }
+
+        else if (
+            error.message ===
+            "EMAIL_ALREADY_REGISTERED"
+        ) {
+
+            message =
+                "This email address is already registered with another account.";
+
+        }
+
+        else if (
             error.code ===
             "auth/invalid-verification-code"
         ) {
@@ -2085,20 +1852,26 @@ async function verifyOTP() {
         }
 
         else if (
-            error &&
             error.code ===
             "auth/code-expired"
         ) {
 
             message =
-                "This OTP has expired. Please request a new OTP.";
+                "OTP has expired. Please request a new OTP.";
 
         }
 
         else if (
-            error &&
-            error.message
+            error.code ===
+            "23505"
         ) {
+
+            message =
+                "This phone number or email is already registered.";
+
+        }
+
+        else if (error.message) {
 
             message =
                 error.message;
@@ -2111,174 +1884,21 @@ async function verifyOTP() {
             message
         );
 
-    }
-    finally {
 
         hideLoading();
 
-        verifyOtpButton.disabled =
-            false;
-
     }
 
-}
-
-
-
-/* =========================================================
-   RESEND TIMER
-========================================================= */
-
-function startResendTimer() {
-
-
-    clearInterval(
-        resendInterval
-    );
-
-
-    resendSeconds = 30;
-
-    resendButton.disabled =
-        true;
-
-
-    resendTimer.textContent =
-        `Resend available in ${resendSeconds}s`;
-
-
-    resendInterval =
-        setInterval(() => {
-
-
-            resendSeconds--;
-
-
-            if (resendSeconds <= 0) {
-
-                clearInterval(
-                    resendInterval
-                );
-
-
-                resendButton.disabled =
-                    false;
-
-
-                resendTimer.textContent =
-                    "You can resend the OTP now.";
-
-                return;
-
-            }
-
-
-            resendTimer.textContent =
-                `Resend available in ${resendSeconds}s`;
-
-
-        }, 1000);
-
-}
-
-
-
-/* =========================================================
-   RESEND OTP
-========================================================= */
-
-async function resendOTP() {
-
-
-    if (!currentPhone) {
-
-        return;
-
-    }
-
-
-    if (resendButton.disabled) {
-
-        return;
-
-    }
-
-
-    resendButton.disabled =
-        true;
-
-
-    showLoading(
-        "Sending new OTP..."
-    );
-
-
-    try {
-
-
-        /* -----------------------------------------------
-           Create fresh reCAPTCHA
-        ------------------------------------------------ */
-
-        const verifier =
-            createRecaptcha();
-
-
-        confirmationResult =
-            await signInWithPhoneNumber(
-                auth,
-                currentPhone,
-                verifier
-            );
-
-
-        showError(
-            otpError,
-            "A new OTP has been sent."
-        );
-
-
-        otpError.classList.remove(
-            "show"
-        );
-
-
-        otpInput.value = "";
-
-
-        otpInput.focus();
-
-
-        startResendTimer();
-
-
-    }
-    catch (error) {
-
-        console.error(
-            "Resend OTP error:",
-            error
-        );
-
-
-        showError(
-            otpError,
-            "Unable to resend OTP. Please try again."
-        );
-
-
-        resendButton.disabled =
-            false;
-
-    }
     finally {
 
-        hideLoading();
+        verifyButton.disabled = false;
+
+        verifyButton.innerHTML =
+            "<span>Verify & Continue</span><b>→</b>";
 
     }
 
 }
-
 
 
 /* =========================================================
@@ -2287,18 +1907,21 @@ async function resendOTP() {
 
 async function googleLogin() {
 
+    clearError(phoneError);
 
-    googleButton.disabled =
-        true;
+
+    googleButton.disabled = true;
+
+    googleButton.innerHTML =
+        "<span>Connecting to Google...</span>";
 
 
     showLoading(
-        "Connecting with Google..."
+        "Connecting to Google..."
     );
 
 
     try {
-
 
         const provider =
             new GoogleAuthProvider();
@@ -2306,7 +1929,8 @@ async function googleLogin() {
 
         provider.setCustomParameters({
 
-            prompt: "select_account"
+            prompt:
+                "select_account"
 
         });
 
@@ -2323,183 +1947,103 @@ async function googleLogin() {
 
 
         const email =
-            firebaseUser.email
-                ? firebaseUser.email
-                    .trim()
-                    .toLowerCase()
-                : "";
+            normalizeEmail(
+                firebaseUser.email ||
+                ""
+            );
 
 
         if (!email) {
 
             throw new Error(
-                "Your Google account does not have an email address."
+                "Google account does not have an email address."
             );
 
         }
 
 
-        /* -----------------------------------------------
-           Find existing user by Firebase UID
-        ------------------------------------------------ */
-
-        let existingUser = null;
-
-
-        const {
-            data: firebaseUsers,
-            error: firebaseLookupError
-        } =
-            await supabaseClient
-                .from("users")
-                .select("*")
-                .eq(
-                    "firebase_uid",
-                    firebaseUser.uid
-                )
-                .limit(1);
+        console.log(
+            "Google Firebase user:",
+            firebaseUser.uid
+        );
 
 
-        if (firebaseLookupError) {
+        /*
+         * Check whether email already exists.
+         */
 
-            throw firebaseLookupError;
+        const existingUser =
+            await findUserByEmail(
+                email
+            );
 
-        }
 
+        /*
+         * If the email belongs to a different
+         * Firebase account, don't create another row.
+         */
 
         if (
-            firebaseUsers &&
-            firebaseUsers.length
+            existingUser &&
+            existingUser.firebase_uid &&
+            existingUser.firebase_uid !==
+                firebaseUser.uid
         ) {
 
-            existingUser =
-                firebaseUsers[0];
-
-        }
-
-
-
-        /* -----------------------------------------------
-           If not found by Firebase UID,
-           check email
-        ------------------------------------------------ */
-
-        if (!existingUser) {
-
-            existingUser =
-                await findUserByEmail(
-                    email
-                );
-
-        }
-
-
-        /* -----------------------------------------------
-           Existing email account
-        ------------------------------------------------ */
-
-        if (existingUser) {
-
-
-            if (
-                existingUser.firebase_uid &&
-                existingUser.firebase_uid !==
-                firebaseUser.uid
-            ) {
-
-                throw new Error(
-                    "This email is already linked to another Keys99 account."
-                );
-
-            }
-
-
-            /* -------------------------------------------
-               Attach UID if missing
-            -------------------------------------------- */
-
-            if (
-                !existingUser.firebase_uid
-            ) {
-
-                const {
-                    data,
-                    error
-                } =
-                    await supabaseClient
-                        .from("users")
-                        .update({
-
-                            firebase_uid:
-                                firebaseUser.uid
-
-                        })
-                        .eq(
-                            "id",
-                            existingUser.id
-                        )
-                        .select()
-                        .single();
-
-
-                if (error) {
-
-                    throw error;
-
-                }
-
-
-                existingUser =
-                    data;
-
-            }
-
-
-            saveLoginSession(
-                existingUser
+            throw new Error(
+                "EMAIL_ALREADY_REGISTERED"
             );
 
-
         }
 
-        else {
+
+        /*
+         * For Google login we use Google's
+         * display name when available.
+         */
+
+        let firstName = "";
+
+        let middleName = "";
+
+        let lastName = "";
 
 
-            /* -------------------------------------------
-               Create Google user
-            -------------------------------------------- */
+        if (firebaseUser.displayName) {
 
-            const displayName =
-                firebaseUser.displayName ||
-                "";
-
-
-            const nameParts =
-                displayName
+            const parts =
+                firebaseUser.displayName
                     .trim()
-                    .split(/\s+/)
-                    .filter(Boolean);
+                    .split(/\s+/);
 
 
-            const firstName =
-                nameParts[0] || "";
+            if (parts.length === 1) {
 
+                firstName =
+                    parts[0];
 
-            const lastName =
-                nameParts.length > 1
-                    ? nameParts[nameParts.length - 1]
-                    : "";
+            }
 
+            else if (parts.length === 2) {
 
-            let middleName = "";
+                firstName =
+                    parts[0];
 
+                lastName =
+                    parts[1];
 
-            if (
-                nameParts.length > 2
-            ) {
+            }
+
+            else {
+
+                firstName =
+                    parts[0];
+
+                lastName =
+                    parts[parts.length - 1];
 
                 middleName =
-                    nameParts
+                    parts
                         .slice(
                             1,
                             -1
@@ -2508,90 +2052,104 @@ async function googleLogin() {
 
             }
 
-
-            const phone =
-                firebaseUser.phoneNumber ||
-                null;
+        }
 
 
-            /* -------------------------------------------
-               If Google account has phone,
-               check phone uniqueness
-            -------------------------------------------- */
-
-            if (phone) {
-
-                const phoneUser =
-                    await findUserByPhone(
-                        phone
-                    );
+        showLoading(
+            "Creating your Keys99 account..."
+        );
 
 
-                if (phoneUser) {
-
-                    throw new Error(
-                        "This mobile number is already registered with another Keys99 account."
-                    );
-
-                }
-
-            }
-
-
-            const {
-                data,
-                error
-            } =
-                await supabaseClient
-                    .from("users")
-                    .insert({
-
-                        first_name:
-                            firstName,
-
-                        middle_name:
-                            middleName || null,
-
-                        last_name:
-                            lastName,
-
-                        phone:
-                            phone,
-
-                        email:
-                            email,
-
-                        firebase_uid:
-                            firebaseUser.uid
-
-                    })
-                    .select()
-                    .single();
+        const user =
+            await saveUserToSupabase(
+                firebaseUser,
+                firstName,
+                middleName,
+                lastName,
+                email
+            );
 
 
-            if (error) {
+        /* -----------------------------------------
+           LOCAL STORAGE
+        ----------------------------------------- */
 
-                throw error;
+        localStorage.setItem(
+            "keys99_firebase_uid",
+            firebaseUser.uid
+        );
 
-            }
+
+        localStorage.setItem(
+            "keys99_email",
+            email
+        );
 
 
-            saveLoginSession(
-                data
+        localStorage.setItem(
+            "keys99_phone",
+            firebaseUser.phoneNumber ||
+            ""
+        );
+
+
+        localStorage.setItem(
+            "keys99_first_name",
+            user.first_name ||
+            firstName
+        );
+
+
+        localStorage.setItem(
+            "keys99_middle_name",
+            user.middle_name ||
+            middleName
+        );
+
+
+        localStorage.setItem(
+            "keys99_last_name",
+            user.last_name ||
+            lastName
+        );
+
+
+        localStorage.setItem(
+            "keys99_logged_in",
+            "true"
+        );
+
+
+        if (
+            user &&
+            user.user_code
+        ) {
+
+            localStorage.setItem(
+                "keys99_user_code",
+                user.user_code
             );
 
         }
 
 
-        loadingText.textContent =
-            "Login successful...";
+        showLoading(
+            "Login successful..."
+        );
 
 
-        window.location.href =
-            "profile.html";
+        setTimeout(
+            () => {
 
+                window.location.href =
+                    "profile.html";
+
+            },
+            500
+        );
 
     }
+
     catch (error) {
 
         console.error(
@@ -2600,34 +2158,131 @@ async function googleLogin() {
         );
 
 
+        let message =
+            "Google login could not be completed.";
+
+
         if (
+            error.message ===
+            "EMAIL_ALREADY_REGISTERED"
+        ) {
+
+            message =
+                "This email address is already registered with another account.";
+
+        }
+
+        else if (
+            error.message ===
+            "PHONE_ALREADY_REGISTERED"
+        ) {
+
+            message =
+                "This mobile number is already registered with another account.";
+
+        }
+
+        else if (
             error.code ===
             "auth/popup-closed-by-user"
         ) {
 
-            return;
+            message =
+                "Google login window was closed.";
+
+        }
+
+        else if (
+            error.code ===
+            "auth/popup-blocked"
+        ) {
+
+            message =
+                "Google popup was blocked. Please allow popups and try again.";
+
+        }
+
+        else if (
+            error.code ===
+            "auth/unauthorized-domain"
+        ) {
+
+            message =
+                "This website domain is not authorized in Firebase.";
+
+        }
+
+        else if (
+            error.code ===
+            "auth/operation-not-allowed"
+        ) {
+
+            message =
+                "Google sign-in is not enabled in Firebase.";
+
+        }
+
+        else if (error.message) {
+
+            message =
+                error.message;
 
         }
 
 
         showError(
             phoneError,
-            error.message ||
-            "Google login failed. Please try again."
+            message
         );
 
-    }
-    finally {
 
         hideLoading();
 
-        googleButton.disabled =
-            false;
+    }
+
+    finally {
+
+        googleButton.disabled = false;
+
+        googleButton.innerHTML = `
+
+            <svg
+                class="google-logo"
+                viewBox="0 0 48 48"
+                aria-hidden="true"
+            >
+
+                <path
+                    fill="#FFC107"
+                    d="M43.6 20.5H42V20H24v8h11.3C33.7 32.7 29.3 36 24 36c-6.6 0-12-5.4-12-12s5.4-12 12-12c3.1 0 5.9 1.1 8.1 3.1l5.7-5.7C34.3 6.1 29.4 4 24 4 13 4 4 13 4 24s9 20 20 20 20-9 20-20c0-1.3-.1-2.4-.4-3.5z"
+                />
+
+                <path
+                    fill="#FF3D00"
+                    d="M6.3 14.7l6.6 4.8C14.7 16.1 19 12 24 12c3.1 0 5.9 1.1 8.1 3.1l5.7-5.7C34.3 6.1 29.4 4 24 4 16.3 4 9.6 8.3 6.3 14.7z"
+                />
+
+                <path
+                    fill="#4CAF50"
+                    d="M24 44c5.2 0 10-2 13.5-5.3l-6.2-5.2C29.7 35.1 27 36 24 36c-5.3 0-9.7-3.3-11.3-8l-6.6 5.1C9.5 39.6 16.2 44 24 44z"
+                />
+
+                <path
+                    fill="#1976D2"
+                    d="M43.6 20.5H42V20H24v8h11.3c-1.1 3.1-3.7 5.5-7 6.8l6.2 5.2C38.2 36.9 44 31.2 44 24c0-1.3-.1-2.4-.4-3.5z"
+                />
+
+            </svg>
+
+            <span>
+                Continue with Google
+            </span>
+
+        `;
 
     }
 
 }
-
 
 
 /* =========================================================
@@ -2636,135 +2291,242 @@ async function googleLogin() {
 
 function changeNumber() {
 
-
     clearInterval(
-        resendInterval
+        resendTimer
     );
 
 
-    currentPhone =
-        "";
+    resetRecaptcha();
+
 
     currentExistingUser =
         null;
 
-    confirmationResult =
-        null;
 
-
-    otpInput.value =
-        "";
-
-
-    firstNameInput.value =
-        "";
-
-
-    middleNameInput.value =
-        "";
-
-
-    lastNameInput.value =
-        "";
-
-
-    emailInput.value =
-        "";
-
-
-    hideError(phoneError);
-
-    hideError(otpError);
-
-    hideError(newUserError);
-
-
-    setNewUserMode(
-        true
+    otpPage.classList.remove(
+        "active"
     );
 
 
-    showPhonePage();
+    setTimeout(
+        () => {
+
+            otpPage.style.display =
+                "none";
+
+            phonePage.style.display =
+                "block";
 
 
-    setTimeout(() => {
+            requestAnimationFrame(
+                () => {
 
-        phoneInput.focus();
+                    phonePage.classList.add(
+                        "active"
+                    );
 
-    }, 150);
+                }
+            );
+
+        },
+        150
+    );
+
+
+    otpInput.value = "";
+
+    firstNameInput.value = "";
+
+    middleNameInput.value = "";
+
+    lastNameInput.value = "";
+
+    emailInput.value = "";
+
+
+    clearError(
+        otpError
+    );
 
 }
-
 
 
 /* =========================================================
    HEADER BACK
 ========================================================= */
 
-headerBack.addEventListener(
-    "click",
-    () => {
+function headerBack() {
 
-        if (
-            otpPage.classList.contains(
-                "active"
-            )
-        ) {
+    if (
+        otpPage.classList.contains(
+            "active"
+        )
+    ) {
 
-            changeNumber();
+        changeNumber();
 
-            return;
-
-        }
-
-
-        if (
-            window.history.length > 1
-        ) {
-
-            window.history.back();
-
-        }
+        return;
 
     }
-);
 
+
+    window.history.back();
+
+}
 
 
 /* =========================================================
-   SIGN UP BUTTON
+   RESEND OTP
 ========================================================= */
 
-signupText.addEventListener(
-    "click",
-    () => {
+async function resendOTP() {
 
-        phoneInput.focus();
+    if (resendSeconds > 0) {
+
+        return;
 
     }
-);
 
 
+    if (!currentPhone) {
 
-/* =========================================================
-   FACEBOOK BUTTON
-========================================================= */
+        return;
 
-facebookButton.addEventListener(
-    "click",
-    () => {
+    }
 
-        alert(
-            "Facebook login will be available soon."
+
+    resendButton.disabled = true;
+
+    resendButton.textContent =
+        "Sending...";
+
+
+    try {
+
+        resetRecaptcha();
+
+        createRecaptcha();
+
+        await recaptchaVerifier.render();
+
+
+        confirmationResult =
+            await signInWithPhoneNumber(
+                auth,
+                currentPhone,
+                recaptchaVerifier
+            );
+
+
+        otpSentText.textContent =
+            "A new OTP was sent to " +
+            currentPhone;
+
+
+        startTimer();
+
+    }
+
+    catch (error) {
+
+        console.error(
+            "Resend OTP error:",
+            error
         );
 
-    }
-);
 
+        showError(
+            otpError,
+            error.message ||
+            "Unable to resend OTP. Please try again."
+        );
+
+
+        resetRecaptcha();
+
+    }
+
+    finally {
+
+        resendButton.disabled = false;
+
+    }
+
+}
 
 
 /* =========================================================
-   INPUT FORMATTING
+   TIMER
+========================================================= */
+
+function startTimer() {
+
+    clearInterval(
+        resendTimer
+    );
+
+
+    resendSeconds = 30;
+
+
+    updateTimer();
+
+
+    resendTimer =
+        setInterval(
+            () => {
+
+                resendSeconds--;
+
+                updateTimer();
+
+
+                if (
+                    resendSeconds <= 0
+                ) {
+
+                    clearInterval(
+                        resendTimer
+                    );
+
+                }
+
+            },
+            1000
+        );
+
+}
+
+
+function updateTimer() {
+
+    if (resendSeconds > 0) {
+
+        resendButton.disabled = true;
+
+        countdown.textContent =
+            "Resend OTP in " +
+            resendSeconds +
+            "s";
+
+    }
+
+    else {
+
+        resendButton.disabled = false;
+
+        resendButton.textContent =
+            "Resend OTP";
+
+        countdown.textContent = "";
+
+    }
+
+}
+
+
+/* =========================================================
+   INPUTS
 ========================================================= */
 
 phoneInput.addEventListener(
@@ -2776,19 +2538,9 @@ phoneInput.addEventListener(
                 .replace(/\D/g, "")
                 .slice(0, 10);
 
-
-        hideError(
-            phoneError
-        );
-
     }
 );
 
-
-
-/* =========================================================
-   OTP INPUT
-========================================================= */
 
 otpInput.addEventListener(
     "input",
@@ -2799,18 +2551,12 @@ otpInput.addEventListener(
                 .replace(/\D/g, "")
                 .slice(0, 6);
 
-
-        hideError(
-            otpError
-        );
-
     }
 );
 
 
-
 /* =========================================================
-   NAME INPUTS
+   CLEAN NAME INPUTS
 ========================================================= */
 
 [
@@ -2825,22 +2571,17 @@ otpInput.addEventListener(
             () => {
 
                 input.value =
-                    input.value.replace(
-                        /[^A-Za-z .'-]/g,
-                        ""
-                    );
-
-
-                hideError(
-                    newUserError
-                );
+                    input.value
+                        .replace(
+                            /[^A-Za-zÀ-ÖØ-öø-ÿ\s'-]/g,
+                            ""
+                        );
 
             }
         );
 
     }
 );
-
 
 
 /* =========================================================
@@ -2851,17 +2592,20 @@ emailInput.addEventListener(
     "input",
     () => {
 
-        hideError(
-            newUserError
-        );
+        emailInput.value =
+            emailInput.value
+                .toLowerCase()
+                .replace(
+                    /\s/g,
+                    ""
+                );
 
     }
 );
 
 
-
 /* =========================================================
-   BUTTON EVENTS
+   EVENTS
 ========================================================= */
 
 sendOtpButton.addEventListener(
@@ -2870,21 +2614,9 @@ sendOtpButton.addEventListener(
 );
 
 
-verifyOtpButton.addEventListener(
+verifyButton.addEventListener(
     "click",
     verifyOTP
-);
-
-
-resendButton.addEventListener(
-    "click",
-    resendOTP
-);
-
-
-changeNumberButton.addEventListener(
-    "click",
-    changeNumber
 );
 
 
@@ -2893,6 +2625,23 @@ googleButton.addEventListener(
     googleLogin
 );
 
+
+backButton.addEventListener(
+    "click",
+    changeNumber
+);
+
+
+headerBackButton.addEventListener(
+    "click",
+    headerBack
+);
+
+
+resendButton.addEventListener(
+    "click",
+    resendOTP
+);
 
 
 /* =========================================================
@@ -2904,7 +2653,8 @@ phoneInput.addEventListener(
     event => {
 
         if (
-            event.key === "Enter"
+            event.key ===
+            "Enter"
         ) {
 
             event.preventDefault();
@@ -2922,7 +2672,8 @@ otpInput.addEventListener(
     event => {
 
         if (
-            event.key === "Enter"
+            event.key ===
+            "Enter"
         ) {
 
             event.preventDefault();
@@ -2935,9 +2686,8 @@ otpInput.addEventListener(
 );
 
 
-
 /* =========================================================
-   AUTH STATE
+   FIREBASE AUTH STATE
 ========================================================= */
 
 onAuthStateChanged(
@@ -2947,7 +2697,7 @@ onAuthStateChanged(
         if (user) {
 
             console.log(
-                "Firebase authenticated:",
+                "Firebase user:",
                 user.uid
             );
 
@@ -2956,23 +2706,7 @@ onAuthStateChanged(
     }
 );
 
-
-
-/* =========================================================
-   INITIAL STATE
-========================================================= */
-
-setNewUserMode(
-    true
-);
-
-
-hideLoading();
-
-
 </script>
 
-
 </body>
-
 </html>

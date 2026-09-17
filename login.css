@@ -948,170 +948,6 @@ body {
 
 
 /* =========================================================
-   NEW USER FIELDS
-========================================================= */
-
-.new-user-fields {
-    width: 100%;
-}
-
-
-.new-user-fields[hidden] {
-    display: none !important;
-}
-
-
-/* =========================================================
-   FIRST + MIDDLE NAME ROW
-========================================================= */
-
-.name-row {
-    width: 100%;
-
-    display: grid;
-
-    grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
-
-    gap: 12px;
-}
-
-
-/*
-   Prevent the input fields from pushing
-   outside the screen on small devices.
-*/
-
-.name-row .input-group {
-    min-width: 0;
-}
-
-
-.name-row .normal-input {
-    min-width: 0;
-
-    padding-left: 13px;
-
-    padding-right: 13px;
-}
-
-
-/* =========================================================
-   EXISTING USER MESSAGE
-========================================================= */
-
-.existing-user-message {
-    width: 100%;
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: 12px;
-
-    padding:
-        14px
-        15px;
-
-    margin-bottom: 18px;
-
-    border:
-        1px solid #dcece9;
-
-    border-radius: 15px;
-
-    background: #f4fbf9;
-
-    color: #35616a;
-
-    animation:
-        existingMessageIn
-        .25s
-        ease
-        both;
-}
-
-
-.existing-user-message[hidden] {
-    display: none !important;
-}
-
-
-.existing-user-message > span {
-    width: 24px;
-
-    height: 24px;
-
-    flex-shrink: 0;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: #008d79;
-
-    color: #ffffff;
-
-    font-size: 13px;
-
-    font-weight: 700;
-}
-
-
-.existing-user-message div {
-    min-width: 0;
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 3px;
-}
-
-
-.existing-user-message strong {
-    color: #123f52;
-
-    font-size: 13px;
-
-    font-weight: 700;
-}
-
-
-.existing-user-message small {
-    color: #71858e;
-
-    font-size: 11px;
-
-    line-height: 1.45;
-}
-
-
-@keyframes existingMessageIn {
-
-    from {
-        opacity: 0;
-
-        transform:
-            translateY(-5px);
-    }
-
-    to {
-        opacity: 1;
-
-        transform:
-            translateY(0);
-    }
-
-}
-
-
-/* =========================================================
    RESEND
 ========================================================= */
 
@@ -1147,9 +983,7 @@ body {
 
     cursor: pointer;
 
-    padding:
-        6px
-        10px;
+    padding: 6px 10px;
 }
 
 
@@ -1756,25 +1590,6 @@ footer {
 
     .house-scene {
         height: 165px;
-    }
-
-
-    .name-row {
-        gap: 8px;
-    }
-
-
-    .name-row .normal-input {
-        padding-left: 10px;
-
-        padding-right: 10px;
-
-        font-size: 14px;
-    }
-
-
-    .name-row .input-group label {
-        font-size: 12px;
     }
 
 }
