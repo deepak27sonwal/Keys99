@@ -1,0 +1,1755 @@
+/* =========================================================
+   KEYS99.COM LOGIN
+   Mobile First
+   Theme: Clean / Premium / Teal + Gold
+========================================================= */
+
+
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: #ffffff;
+
+    color: #123f52;
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================================
+   PAGE
+========================================================= */
+
+.page {
+    min-height: 100vh;
+
+    width: 100%;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.header {
+    width: 100%;
+
+    min-height: 105px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding:
+        18px
+        20px
+        8px;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   HEADER BACK BUTTON
+========================================================= */
+
+.header-back {
+    position: absolute;
+
+    top: 22px;
+    left: 18px;
+
+    width: 46px;
+    height: 46px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #123f52;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 50;
+
+    padding: 0;
+
+    border-radius: 50%;
+
+    -webkit-tap-highlight-color: transparent;
+
+    transition:
+        background .2s ease,
+        transform .15s ease;
+}
+
+
+.header-back:hover {
+    background: rgba(13, 110, 99, .06);
+}
+
+
+.header-back:active {
+    transform: scale(.90);
+}
+
+
+.header-back span {
+    font-size: 42px;
+
+    line-height: 1;
+
+    font-weight: 300;
+
+    margin-top: -5px;
+}
+
+
+/* =========================================================
+   LOGO PNG PLACEHOLDER
+========================================================= */
+
+.logo-placeholder {
+    width: 250px;
+
+    height: 62px;
+
+    margin-top: 4px;
+
+    background-image:
+        url("assets/images/keys99-logo.png");
+
+    background-repeat: no-repeat;
+
+    background-position: center;
+
+    background-size: contain;
+}
+
+
+/*
+   If your PNG has a different location,
+   change only the path above.
+*/
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+.main {
+    width: 100%;
+
+    max-width: 520px;
+
+    margin: 0 auto;
+
+    padding:
+        8px
+        24px
+        0;
+
+    position: relative;
+
+    z-index: 5;
+}
+
+
+/* =========================================================
+   AUTH PAGE
+========================================================= */
+
+.auth-page {
+    width: 100%;
+
+    display: none;
+
+    opacity: 0;
+
+    transform: translateX(15px);
+
+    transition:
+        opacity .25s ease,
+        transform .25s ease;
+}
+
+
+.auth-page.active {
+    display: block;
+
+    opacity: 1;
+
+    transform: translateX(0);
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.heading {
+    margin-top: 8px;
+
+    margin-bottom: 27px;
+}
+
+
+.heading h1 {
+    color: #123f52;
+
+    font-size: 29px;
+
+    line-height: 1.2;
+
+    font-weight: 750;
+
+    letter-spacing: -.6px;
+
+    margin-bottom: 8px;
+}
+
+
+.heading p {
+    color: #78909b;
+
+    font-size: 16px;
+
+    line-height: 1.5;
+
+    font-weight: 450;
+}
+
+
+/* =========================================================
+   INPUT GROUP
+========================================================= */
+
+.input-group {
+    width: 100%;
+
+    margin-bottom: 17px;
+}
+
+
+.input-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #486572;
+
+    font-size: 13px;
+
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   PHONE FIELD
+========================================================= */
+
+.phone-field {
+    width: 100%;
+
+    height: 58px;
+
+    display: flex;
+
+    align-items: center;
+
+    background: #ffffff;
+
+    border:
+        1px solid #dce7e9;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 2px 8px
+        rgba(22, 65, 75, .035);
+
+    overflow: hidden;
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.phone-field:focus-within {
+    border-color: #0b927f;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(11, 146, 127, .09);
+}
+
+
+.phone-prefix {
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    padding-left: 18px;
+
+    padding-right: 10px;
+
+    color: #496773;
+
+    font-size: 15px;
+
+    font-weight: 650;
+
+    border-right:
+        1px solid #e6eeee;
+}
+
+
+.phone-field input {
+    width: 100%;
+
+    height: 100%;
+
+    border: none;
+
+    outline: none;
+
+    padding:
+        0
+        15px;
+
+    color: #234c5c;
+
+    background: transparent;
+
+    font-size: 15px;
+
+    font-weight: 500;
+}
+
+
+.phone-field input::placeholder {
+    color: #9aadb5;
+
+    font-weight: 450;
+}
+
+
+/* =========================================================
+   NORMAL INPUT
+========================================================= */
+
+.normal-input {
+    width: 100%;
+
+    height: 58px;
+
+    border:
+        1px solid #dce7e9;
+
+    border-radius: 16px;
+
+    outline: none;
+
+    padding:
+        0
+        17px;
+
+    color: #234c5c;
+
+    background: #ffffff;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    box-shadow:
+        0 2px 8px
+        rgba(22, 65, 75, .035);
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.normal-input:focus {
+    border-color: #0b927f;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(11, 146, 127, .09);
+}
+
+
+.normal-input::placeholder {
+    color: #9aadb5;
+}
+
+
+/* =========================================================
+   ERROR
+========================================================= */
+
+.error-message {
+    width: 100%;
+
+    min-height: 0;
+
+    color: #c0392b;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+
+    margin-top: -7px;
+
+    margin-bottom: 0;
+
+    opacity: 0;
+
+    transform: translateY(-3px);
+
+    transition:
+        opacity .2s ease,
+        transform .2s ease;
+}
+
+
+.error-message.show {
+    opacity: 1;
+
+    transform: translateY(0);
+
+    margin-bottom: 12px;
+}
+
+
+/* =========================================================
+   MAIN BUTTON
+========================================================= */
+
+.main-button {
+    width: 100%;
+
+    height: 58px;
+
+    border: none;
+
+    border-radius: 16px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #008f7a,
+            #087b6c
+        );
+
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    letter-spacing: .1px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0, 121, 105, .18);
+
+    transition:
+        transform .15s ease,
+        box-shadow .2s ease,
+        opacity .2s ease;
+}
+
+
+.main-button b {
+    font-size: 21px;
+
+    font-weight: 400;
+
+    line-height: 1;
+}
+
+
+.main-button:hover {
+    box-shadow:
+        0 10px 24px
+        rgba(0, 121, 105, .23);
+}
+
+
+.main-button:active {
+    transform: scale(.985);
+}
+
+
+.main-button:disabled {
+    opacity: .6;
+
+    cursor: not-allowed;
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   CAPTCHA
+========================================================= */
+
+.recaptcha-container {
+    width: 100%;
+
+    min-height: 78px;
+
+    margin:
+        14px auto
+        2px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: flex-start;
+
+    overflow: visible;
+}
+
+
+.recaptcha-container iframe {
+    max-width: 100%;
+}
+
+
+/* =========================================================
+   SECURITY TEXT
+========================================================= */
+
+.secure-text {
+    text-align: center;
+
+    color: #8ca0a8;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+
+    margin:
+        4px 0
+        20px;
+}
+
+
+/* =========================================================
+   OR DIVIDER
+========================================================= */
+
+.or-divider {
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    margin:
+        4px 0
+        18px;
+}
+
+
+.or-divider span {
+    flex: 1;
+
+    height: 1px;
+
+    background: #e2eaec;
+}
+
+
+.or-divider b {
+    color: #6e858e;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   SOCIAL BUTTON
+========================================================= */
+
+.alternative-button {
+    width: 100%;
+
+    height: 57px;
+
+    border:
+        1px solid #e1e9eb;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    color: #55707d;
+
+    font-size: 14px;
+
+    font-weight: 650;
+
+    margin-bottom: 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 13px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 2px 7px
+        rgba(30, 70, 80, .025);
+
+    transition:
+        transform .15s ease,
+        box-shadow .15s ease,
+        border-color .15s ease,
+        background .15s ease;
+
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.alternative-button:hover {
+    border-color: #cbdcdf;
+
+    box-shadow:
+        0 5px 15px
+        rgba(30, 70, 80, .06);
+}
+
+
+.alternative-button:active {
+    transform: scale(.985);
+}
+
+
+.alternative-button:disabled {
+    opacity: .6;
+
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   GOOGLE LOGO
+========================================================= */
+
+.google-logo {
+    width: 22px;
+
+    height: 22px;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================================
+   FACEBOOK LOGO
+========================================================= */
+
+.facebook-logo {
+    width: 23px;
+
+    height: 23px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    background: #1877f2;
+
+    color: #ffffff;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 19px;
+
+    font-weight: bold;
+
+    line-height: 1;
+}
+
+
+/* =========================================================
+   BOTTOM SIGN UP
+========================================================= */
+
+.bottom-text {
+    text-align: center;
+
+    color: #71858e;
+
+    font-size: 14px;
+
+    margin:
+        26px 0
+        10px;
+
+    line-height: 1.6;
+}
+
+
+.bottom-text strong {
+    color: #008d79;
+
+    font-weight: 700;
+
+    cursor: pointer;
+}
+
+
+/* =========================================================
+   OTP PAGE
+========================================================= */
+
+#otpPage {
+    padding-top: 4px;
+}
+
+
+/* =========================================================
+   OTP BACK BUTTON
+========================================================= */
+
+.back-button {
+    min-height: 46px;
+
+    padding:
+        4px
+        8px;
+
+    margin-bottom: 15px;
+
+    border: none;
+
+    background: transparent;
+
+    color: #123f52;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    font-size: 14px;
+
+    font-weight: 650;
+
+    cursor: pointer;
+
+    position: relative;
+
+    z-index: 50;
+
+    -webkit-tap-highlight-color: transparent;
+
+    border-radius: 10px;
+
+    transition:
+        background .2s ease,
+        transform .15s ease;
+}
+
+
+.back-button:hover {
+    background:
+        rgba(13, 110, 99, .06);
+}
+
+
+.back-button:active {
+    transform: scale(.96);
+}
+
+
+.back-arrow {
+    font-size: 34px;
+
+    line-height: 20px;
+
+    font-weight: 300;
+
+    margin-top: -2px;
+}
+
+
+/* =========================================================
+   OTP ICON
+========================================================= */
+
+.otp-symbol {
+    width: 62px;
+
+    height: 62px;
+
+    margin:
+        4px 0
+        20px;
+
+    border-radius: 50%;
+
+    background:
+        linear-gradient(
+            135deg,
+            #0a9986,
+            #087d70
+        );
+
+    color: #ffffff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 28px;
+
+    font-weight: 600;
+
+    box-shadow:
+        0 8px 20px
+        rgba(0, 128, 113, .18);
+}
+
+
+/* =========================================================
+   OTP INPUT
+========================================================= */
+
+.otp-input {
+    width: 100%;
+
+    height: 62px;
+
+    border:
+        1px solid #dce7e9;
+
+    border-radius: 16px;
+
+    background: #ffffff;
+
+    outline: none;
+
+    color: #123f52;
+
+    text-align: center;
+
+    font-size: 23px;
+
+    font-weight: 700;
+
+    letter-spacing: 10px;
+
+    padding-left: 10px;
+
+    box-shadow:
+        0 2px 8px
+        rgba(22, 65, 75, .035);
+
+    transition:
+        border-color .2s ease,
+        box-shadow .2s ease;
+}
+
+
+.otp-input:focus {
+    border-color: #0b927f;
+
+    box-shadow:
+        0 0 0 3px
+        rgba(11, 146, 127, .09);
+}
+
+
+.otp-input::placeholder {
+    color: #a9b9bf;
+
+    letter-spacing: 8px;
+}
+
+
+/* =========================================================
+   RESEND
+========================================================= */
+
+.resend {
+    width: 100%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 5px;
+
+    margin:
+        18px 0
+        7px;
+}
+
+
+.resend button {
+    border: none;
+
+    background: transparent;
+
+    color: #008d79;
+
+    font-size: 14px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    padding: 6px 10px;
+}
+
+
+.resend button:disabled {
+    color: #9baeb5;
+
+    cursor: not-allowed;
+}
+
+
+.resend span {
+    color: #8b9ca3;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   HOUSE SCENE
+========================================================= */
+
+.house-scene {
+    width: 100%;
+
+    height: 190px;
+
+    margin-top: auto;
+
+    position: relative;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff 0%,
+            #f7fcfc 55%,
+            #edf8f6 100%
+        );
+
+    border-radius:
+        55% 55% 0 0 /
+        20% 20% 0 0;
+}
+
+
+/* =========================================================
+   SUN
+========================================================= */
+
+.sun {
+    position: absolute;
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(247, 205, 88, .35);
+
+    top: 22px;
+
+    right: 20%;
+
+    filter: blur(1px);
+}
+
+
+/* =========================================================
+   CLOUDS
+========================================================= */
+
+.cloud {
+    position: absolute;
+
+    width: 75px;
+
+    height: 22px;
+
+    border-radius: 30px;
+
+    background:
+        rgba(255, 255, 255, .85);
+
+    opacity: .7;
+}
+
+
+.cloud::before,
+.cloud::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, .85);
+}
+
+
+.cloud::before {
+    width: 30px;
+
+    height: 30px;
+
+    left: 12px;
+
+    bottom: 3px;
+}
+
+
+.cloud::after {
+    width: 24px;
+
+    height: 24px;
+
+    right: 12px;
+
+    bottom: 2px;
+}
+
+
+.cloud-one {
+    top: 38px;
+
+    left: 7%;
+
+    transform: scale(.8);
+}
+
+
+.cloud-two {
+    top: 68px;
+
+    right: 5%;
+
+    transform: scale(.55);
+}
+
+
+/* =========================================================
+   HOUSE
+========================================================= */
+
+.house {
+    position: absolute;
+
+    bottom: 24px;
+
+    left: 50%;
+
+    width: 185px;
+
+    height: 100px;
+
+    transform: translateX(-50%);
+
+    z-index: 5;
+}
+
+
+.house-roof {
+    position: absolute;
+
+    top: 0;
+
+    left: 12px;
+
+    width: 160px;
+
+    height: 58px;
+
+    background:
+        #d8eee9;
+
+    clip-path:
+        polygon(
+            0 100%,
+            50% 0,
+            100% 100%
+        );
+
+    border-bottom:
+        3px solid #0d8777;
+}
+
+
+.house-wall {
+    position: absolute;
+
+    left: 28px;
+
+    right: 28px;
+
+    bottom: 0;
+
+    height: 66px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid #e1e8e6;
+
+    box-shadow:
+        0 4px 15px
+        rgba(30, 70, 70, .08);
+}
+
+
+/* =========================================================
+   WINDOWS
+========================================================= */
+
+.window {
+    position: absolute;
+
+    width: 28px;
+
+    height: 27px;
+
+    top: 14px;
+
+    background:
+        #c9e8e6;
+
+    border:
+        3px solid #ffffff;
+
+    box-shadow:
+        inset 0 0 0 1px #82aaa9;
+}
+
+
+.window-one {
+    left: 12px;
+}
+
+
+.window-two {
+    right: 12px;
+}
+
+
+/* =========================================================
+   DOOR
+========================================================= */
+
+.main-door {
+    position: absolute;
+
+    width: 31px;
+
+    height: 47px;
+
+    bottom: 0;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    background:
+        #d4a649;
+
+    border-radius:
+        4px 4px 0 0;
+}
+
+
+.main-door::after {
+    content: "";
+
+    position: absolute;
+
+    width: 4px;
+
+    height: 4px;
+
+    border-radius: 50%;
+
+    background: #ffffff;
+
+    right: 5px;
+
+    top: 25px;
+}
+
+
+/* =========================================================
+   TREES
+========================================================= */
+
+.tree {
+    position: absolute;
+
+    bottom: 24px;
+
+    width: 48px;
+
+    height: 95px;
+
+    z-index: 6;
+}
+
+
+.tree-one {
+    left: 7%;
+}
+
+
+.tree-two {
+    right: 7%;
+
+    transform: scale(.78);
+}
+
+
+/* =========================================================
+   TREE TOP
+========================================================= */
+
+.tree-top {
+    position: absolute;
+
+    width: 58px;
+
+    height: 58px;
+
+    top: 0;
+
+    left: -5px;
+
+    border-radius:
+        50%
+        48%
+        45%
+        50%;
+
+    background:
+        #a7d9c5;
+
+    box-shadow:
+        17px 8px 0 #c3e4d4,
+        -12px 16px 0 #b4dfce,
+        5px -10px 0 #d0eadc;
+}
+
+
+/* =========================================================
+   TREE TRUNK
+========================================================= */
+
+.tree-trunk {
+    position: absolute;
+
+    width: 11px;
+
+    height: 42px;
+
+    bottom: 0;
+
+    left: 19px;
+
+    background:
+        #b89062;
+
+    border-radius:
+        3px;
+}
+
+
+/* =========================================================
+   GROUND
+========================================================= */
+
+.ground {
+    position: absolute;
+
+    left: -5%;
+
+    right: -5%;
+
+    bottom: -35px;
+
+    height: 75px;
+
+    background:
+        #dcefe5;
+
+    border-radius:
+        50% 50% 0 0;
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    width: 100%;
+
+    padding:
+        10px
+        20px
+        15px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 8px;
+
+    flex-wrap: wrap;
+
+    color: #92a4aa;
+
+    font-size: 9px;
+
+    text-align: center;
+
+    background: #ffffff;
+
+    position: relative;
+
+    z-index: 10;
+}
+
+
+/* =========================================================
+   LOADING OVERLAY
+========================================================= */
+
+.loading-overlay {
+    position: fixed;
+
+    inset: 0;
+
+    background:
+        rgba(255, 255, 255, .86);
+
+    backdrop-filter:
+        blur(5px);
+
+    -webkit-backdrop-filter:
+        blur(5px);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    z-index: 9999;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity .2s ease,
+        visibility .2s ease;
+}
+
+
+.loading-overlay.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    pointer-events: auto;
+}
+
+
+.loading-box {
+    width: 180px;
+
+    padding:
+        22px
+        15px;
+
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 15px 50px
+        rgba(20, 60, 70, .14);
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+
+.loading-box p {
+    margin-top: 12px;
+
+    color: #55707d;
+
+    font-size: 12px;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   SPINNER
+========================================================= */
+
+.spinner {
+    width: 34px;
+
+    height: 34px;
+
+    border:
+        3px solid #dcece9;
+
+    border-top-color:
+        #008d79;
+
+    border-radius: 50%;
+
+    animation:
+        spin .8s linear infinite;
+}
+
+
+@keyframes spin {
+
+    to {
+        transform:
+            rotate(360deg);
+    }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 360px) {
+
+    .header {
+        min-height: 92px;
+
+        padding-top: 12px;
+    }
+
+
+    .logo-placeholder {
+        width: 220px;
+
+        height: 54px;
+    }
+
+
+    .header-back {
+        left: 10px;
+
+        top: 18px;
+    }
+
+
+    .main {
+        padding-left: 19px;
+
+        padding-right: 19px;
+    }
+
+
+    .heading h1 {
+        font-size: 26px;
+    }
+
+
+    .heading p {
+        font-size: 14px;
+    }
+
+
+    .phone-field,
+    .normal-input,
+    .main-button {
+        height: 55px;
+    }
+
+
+    .alternative-button {
+        height: 54px;
+    }
+
+
+    .house-scene {
+        height: 165px;
+    }
+
+}
+
+
+/* =========================================================
+   MOBILE CAPTCHA
+========================================================= */
+
+@media (max-width: 400px) {
+
+    .recaptcha-container {
+        transform:
+            scale(.90);
+
+        transform-origin:
+            top center;
+
+        width: 111%;
+
+        margin-left:
+            -5.5%;
+    }
+
+}
+
+
+/* =========================================================
+   TABLET
+========================================================= */
+
+@media (min-width: 600px) {
+
+    .header {
+        min-height: 125px;
+    }
+
+
+    .main {
+        max-width: 500px;
+
+        padding-left: 30px;
+
+        padding-right: 30px;
+    }
+
+
+    .logo-placeholder {
+        width: 290px;
+
+        height: 68px;
+    }
+
+
+    .heading h1 {
+        font-size: 31px;
+    }
+
+
+    .house-scene {
+        height: 220px;
+    }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media (min-width: 900px) {
+
+    body {
+        background:
+            #f3f8f7;
+    }
+
+
+    .page {
+        max-width: 520px;
+
+        min-height: 100vh;
+
+        margin: 0 auto;
+
+        background: #ffffff;
+
+        box-shadow:
+            0 0 45px
+            rgba(30, 70, 70, .08);
+    }
+
+
+    .main {
+        max-width: 100%;
+
+        padding:
+            8px
+            42px
+            0;
+    }
+
+
+    .header-back {
+        left: 20px;
+    }
+
+
+    .house-scene {
+        height: 220px;
+    }
+
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+========================================================= */
+
+@media (min-width: 1200px) {
+
+    .page {
+        min-height: 100vh;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+button:focus-visible,
+input:focus-visible {
+    outline:
+        3px solid
+        rgba(0, 141, 121, .20);
+
+    outline-offset: 2px;
+}
+
+
+/* =========================================================
+   REDUCE MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+
+        animation-duration: .01ms !important;
+
+        animation-iteration-count: 1 !important;
+
+        scroll-behavior: auto !important;
+
+        transition-duration: .01ms !important;
+
+    }
+
+}
