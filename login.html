@@ -1,2056 +1,2978 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
 
     <title>Keys99.com | Login</title>
 
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
 
-    <style>
-        /* =========================================================
-           KEYS99 LIGHT PREMIUM THEME
-           FUNCTIONALITY NOT CHANGED
-        ========================================================= */
+    <!-- =====================================================
+         LOGIN CSS
+    ====================================================== -->
 
-        :root {
-            --primary: #075b4f;
-            --primary-dark: #064b42;
-            --primary-light: #eaf7f4;
+    <link
+        rel="stylesheet"
+        href="login.css"
+    >
 
-            --gold: #d8a51d;
-            --gold-dark: #b98508;
-            --gold-light: #fff7df;
 
-            --bg: #f7faf9;
-            --white: #ffffff;
+    <!-- =====================================================
+         SUPABASE
+    ====================================================== -->
 
-            --text: #102d3d;
-            --text-light: #647783;
-            --muted: #8a989f;
+    <script
+        src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"
+    ></script>
 
-            --border: #e3ebe8;
 
-            --error: #dc4b4b;
-            --success: #15966d;
+    <!-- =====================================================
+         LUCIDE ICONS
+    ====================================================== -->
 
-            --shadow: 0 25px 70px rgba(16, 45, 61, 0.10);
-        }
+    <script
+        src="https://unpkg.com/lucide@latest"
+    ></script>
 
-        * {
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family:
-                Inter,
-                "Segoe UI",
-                Arial,
-                sans-serif;
-
-            margin: 0;
-            min-height: 100vh;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            padding: 30px 18px;
-
-            color: var(--text);
-
-            background:
-                radial-gradient(
-                    circle at 10% 10%,
-                    rgba(216, 165, 29, 0.09),
-                    transparent 28%
-                ),
-                radial-gradient(
-                    circle at 90% 90%,
-                    rgba(7, 91, 79, 0.08),
-                    transparent 30%
-                ),
-                var(--bg);
-        }
-
-        /* =========================================================
-           MAIN LOGIN CARD
-        ========================================================= */
-
-        .login-card {
-            width: 100%;
-            max-width: 520px;
-
-            background: rgba(255, 255, 255, 0.96);
-
-            border: 1px solid var(--border);
-
-            border-radius: 28px;
-
-            padding: 42px 44px 34px;
-
-            box-shadow: var(--shadow);
-
-            position: relative;
-            overflow: hidden;
-
-            animation: cardIn 0.5s ease;
-        }
-
-        .login-card::before {
-            content: "";
-
-            position: absolute;
-            left: 0;
-            top: 0;
-
-            width: 100%;
-            height: 5px;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    var(--primary),
-                    var(--gold),
-                    var(--primary)
-                );
-        }
-
-        @keyframes cardIn {
-            from {
-                opacity: 0;
-                transform: translateY(18px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* =========================================================
-           BRAND / LOGO
-        ========================================================= */
-
-        .logo-icon {
-            width: 62px;
-            height: 62px;
-
-            border-radius: 18px;
-
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            margin: 0 auto 16px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    #f7d45b,
-                    var(--gold)
-                );
-
-            color: var(--primary);
-
-            box-shadow:
-                0 10px 25px rgba(216, 165, 29, 0.22);
-
-            position: relative;
-        }
-
-        .logo-icon::after {
-            content: "";
-
-            position: absolute;
-            inset: -5px;
-
-            border-radius: 22px;
-
-            border: 1px solid rgba(216, 165, 29, 0.22);
-
-            pointer-events: none;
-        }
-
-        .logo-icon svg {
-            width: 30px;
-            height: 30px;
-            stroke-width: 2.4;
-        }
-
-        h2 {
-            margin: 0;
-
-            text-align: center;
-
-            color: var(--text);
-
-            font-size: 28px;
-            line-height: 1.2;
-
-            font-weight: 800;
-
-            letter-spacing: -0.6px;
-        }
-
-        h2::first-letter {
-            color: var(--primary);
-        }
-
-        p.subtitle {
-            text-align: center;
-
-            color: var(--text-light);
-
-            margin:
-                8px auto 28px;
-
-            font-size: 14px;
-
-            line-height: 1.6;
-
-            max-width: 340px;
-        }
-
-        /* =========================================================
-           ERROR BOX
-        ========================================================= */
-
-        .db-error-box {
-            background: #fff4f4;
-
-            border: 1px solid #f0bcbc;
-
-            color: var(--error);
-
-            padding: 12px 14px;
-
-            border-radius: 12px;
-
-            margin-bottom: 18px;
-
-            font-size: 13px;
-
-            line-height: 1.5;
-
-            display: none;
-
-            text-align: center;
-        }
-
-        /* =========================================================
-           FORM
-        ========================================================= */
-
-        .input-group {
-            margin-bottom: 18px;
-            text-align: left;
-        }
-
-        .row {
-            display: grid;
-
-            grid-template-columns: 1fr 1fr;
-
-            gap: 14px;
-        }
-
-        label {
-            display: block;
-
-            margin-bottom: 7px;
-
-            font-size: 12px;
-
-            color: var(--text);
-
-            font-weight: 700;
-
-            letter-spacing: 0.1px;
-        }
-
-        .field-wrapper {
-            position: relative;
-        }
-
-        .input-icon {
-            position: absolute;
-
-            left: 14px;
-            top: 50%;
-
-            transform: translateY(-50%);
-
-            color: var(--primary);
-
-            width: 17px;
-            height: 17px;
-
-            pointer-events: none;
-
-            opacity: 0.85;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-
-            padding:
-                13px
-                13px
-                13px
-                42px;
-
-            background: #fbfdfc;
-
-            border: 1px solid var(--border);
-
-            border-radius: 12px;
-
-            color: var(--text);
-
-            outline: none;
-
-            transition:
-                border-color 0.2s ease,
-                box-shadow 0.2s ease,
-                background 0.2s ease;
-
-            font-size: 14px;
-
-            font-family: inherit;
-        }
-
-        input::placeholder,
-        textarea::placeholder {
-            color: #a0adb2;
-        }
-
-        input:hover,
-        textarea:hover {
-            border-color: #cbdad5;
-        }
-
-        input:focus,
-        textarea:focus {
-            border-color: var(--primary);
-
-            background: #ffffff;
-
-            box-shadow:
-                0 0 0 4px rgba(7, 91, 79, 0.08);
-        }
-
-        textarea {
-            padding-top: 13px;
-
-            resize: none;
-
-            line-height: 1.5;
-        }
-
-        input.invalid,
-        textarea.invalid {
-            border-color: var(--error) !important;
-
-            background: #fff8f8;
-
-            box-shadow:
-                0 0 0 3px rgba(220, 75, 75, 0.06);
-        }
-
-        .error-hint {
-            color: var(--error);
-
-            font-size: 11px;
-
-            margin-top: 5px;
-
-            display: none;
-
-            line-height: 1.4;
-        }
-
-        /* =========================================================
-           FORGOT PASSWORD
-        ========================================================= */
-
-        .forgot-link {
-            text-align: right;
-
-            margin-top: -7px;
-
-            margin-bottom: 15px;
-
-            font-size: 12px;
-
-            color: var(--primary);
-
-            cursor: pointer;
-
-            font-weight: 700;
-
-            transition: color 0.2s ease;
-        }
-
-        .forgot-link:hover {
-            color: var(--gold-dark);
-            text-decoration: underline;
-        }
-
-        /* =========================================================
-           PRIMARY BUTTON
-        ========================================================= */
-
-        .btn-primary {
-            position: relative;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    var(--primary),
-                    var(--primary-dark)
-                );
-
-            color: white;
-
-            width: 100%;
-
-            padding: 14px 18px;
-
-            border: none;
-
-            border-radius: 12px;
-
-            font-weight: 800;
-
-            cursor: pointer;
-
-            margin-top: 8px;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            gap: 10px;
-
-            font-size: 14px;
-
-            letter-spacing: 0.1px;
-
-            box-shadow:
-                0 8px 18px rgba(7, 91, 79, 0.18);
-
-            transition:
-                transform 0.2s ease,
-                box-shadow 0.2s ease,
-                opacity 0.2s ease;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-1px);
-
-            box-shadow:
-                0 12px 25px rgba(7, 91, 79, 0.23);
-        }
-
-        .btn-primary:active {
-            transform: translateY(0);
-        }
-
-        .btn-primary:disabled {
-            cursor: not-allowed;
-            opacity: 0.75;
-            transform: none;
-        }
-
-        /* =========================================================
-           GOOGLE BUTTON
-        ========================================================= */
-
-        .btn-google {
-            background: #ffffff;
-
-            color: var(--text);
-
-            border: 1px solid var(--border);
-
-            width: 100%;
-
-            padding: 13px;
-
-            border-radius: 12px;
-
-            font-weight: 700;
-
-            cursor: pointer;
-
-            display: flex;
-
-            justify-content: center;
-
-            align-items: center;
-
-            gap: 10px;
-
-            margin-bottom: 17px;
-
-            transition:
-                border-color 0.2s ease,
-                background 0.2s ease,
-                transform 0.2s ease,
-                box-shadow 0.2s ease;
-        }
-
-        .btn-google:hover {
-            background: #fbfdfc;
-
-            border-color: #cbdad5;
-
-            transform: translateY(-1px);
-
-            box-shadow:
-                0 6px 18px rgba(16, 45, 61, 0.07);
-        }
-
-        .btn-google img {
-            width: 17px;
-            height: 17px;
-        }
-
-        /* =========================================================
-           DIVIDER
-        ========================================================= */
-
-        .divider {
-            display: flex;
-
-            align-items: center;
-
-            text-align: center;
-
-            margin: 21px 0;
-
-            color: #96a3a8;
-
-            font-size: 10px;
-
-            font-weight: 800;
-
-            letter-spacing: 1.4px;
-        }
-
-        .divider::before,
-        .divider::after {
-            content: '';
-
-            flex: 1;
-
-            height: 1px;
-
-            background: var(--border);
-        }
-
-        .divider:not(:empty)::before {
-            margin-right: 12px;
-        }
-
-        .divider:not(:empty)::after {
-            margin-left: 12px;
-        }
-
-        /* =========================================================
-           OUTLINE BUTTON
-        ========================================================= */
-
-        .btn-outline {
-            background: white;
-
-            border: 1px solid var(--primary);
-
-            color: var(--primary);
-
-            width: 100%;
-
-            padding: 12px;
-
-            border-radius: 12px;
-
-            cursor: pointer;
-
-            margin-top: 10px;
-
-            font-weight: 700;
-
-            font-size: 13px;
-
-            transition:
-                background 0.2s ease,
-                color 0.2s ease;
-        }
-
-        .btn-outline:hover {
-            background: var(--primary-light);
-        }
-
-        /* =========================================================
-           SPINNER
-        ========================================================= */
-
-        .spinner {
-            width: 17px;
-            height: 17px;
-
-            border: 2px solid rgba(255, 255, 255, 0.35);
-
-            border-radius: 50%;
-
-            border-top-color: white;
-
-            animation: spin 0.8s linear infinite;
-
-            display: none;
-        }
-
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* =========================================================
-           FOOTER LINKS
-        ========================================================= */
-
-        .footer-links {
-            margin-top: 23px;
-
-            font-size: 12px;
-
-            text-align: center;
-
-            color: var(--text-light);
-        }
-
-        .footer-links p {
-            margin: 0;
-            line-height: 1.6;
-        }
-
-        .footer-links span {
-            color: var(--primary);
-
-            cursor: pointer;
-
-            text-decoration: none;
-
-            font-weight: 800;
-        }
-
-        .footer-links span:hover {
-            color: var(--gold-dark);
-
-            text-decoration: underline;
-        }
-
-        /* =========================================================
-           SMALL BRAND FOOTER
-        ========================================================= */
-
-        .login-card::after {
-            content: "KEYS99.COM  •  YOUR KEY TO A BETTER TOMORROW";
-
-            display: block;
-
-            text-align: center;
-
-            margin-top: 25px;
-
-            padding-top: 18px;
-
-            border-top: 1px solid var(--border);
-
-            color: #a0adb2;
-
-            font-size: 9px;
-
-            font-weight: 800;
-
-            letter-spacing: 1.2px;
-        }
-
-        /* =========================================================
-           MODAL
-        ========================================================= */
-
-        .modal-overlay {
-            position: fixed;
-
-            top: 0;
-            left: 0;
-
-            width: 100%;
-            height: 100%;
-
-            background:
-                rgba(7, 40, 36, 0.45);
-
-            display: none;
-
-            justify-content: center;
-
-            align-items: center;
-
-            z-index: 9999;
-
-            padding: 20px;
-
-            backdrop-filter: blur(8px);
-        }
-
-        .modal-content {
-            background: white;
-
-            padding: 34px 30px;
-
-            border-radius: 24px;
-
-            text-align: center;
-
-            border: 1px solid var(--border);
-
-            max-width: 400px;
-
-            width: 100%;
-
-            box-shadow:
-                0 30px 70px rgba(16, 45, 61, 0.20);
-
-            animation: modalIn 0.25s ease;
-        }
-
-        @keyframes modalIn {
-            from {
-                opacity: 0;
-                transform: scale(0.96) translateY(10px);
-            }
-
-            to {
-                opacity: 1;
-                transform: scale(1) translateY(0);
-            }
-        }
-
-        .modal-content .logo-icon {
-            margin-bottom: 15px;
-        }
-
-        .modal-content h3 {
-            margin: 0 0 8px;
-
-            font-size: 21px;
-        }
-
-        .modal-content p {
-            font-size: 13px;
-
-            line-height: 1.6;
-
-            margin: 0 0 20px;
-        }
-
-        .modal-content .btn-primary {
-            margin-top: 0;
-        }
-
-        /* =========================================================
-           UTILITY
-        ========================================================= */
-
-        .hidden {
-            display: none !important;
-        }
-
-        /* =========================================================
-           TABLET
-        ========================================================= */
-
-        @media (max-width: 600px) {
-
-            body {
-                padding: 18px 14px;
-
-                align-items: center;
-            }
-
-            .login-card {
-                max-width: 480px;
-
-                padding:
-                    34px
-                    22px
-                    28px;
-
-                border-radius: 23px;
-            }
-
-            h2 {
-                font-size: 25px;
-            }
-
-            p.subtitle {
-                margin-bottom: 24px;
-            }
-
-            .row {
-                gap: 10px;
-            }
-
-            .input-group {
-                margin-bottom: 16px;
-            }
-        }
-
-        /* =========================================================
-           SMALL MOBILE
-        ========================================================= */
-
-        @media (max-width: 420px) {
-
-            body {
-                padding: 12px;
-            }
-
-            .login-card {
-                padding:
-                    30px
-                    17px
-                    25px;
-
-                border-radius: 20px;
-            }
-
-            .logo-icon {
-                width: 56px;
-                height: 56px;
-
-                border-radius: 16px;
-            }
-
-            .logo-icon svg {
-                width: 27px;
-                height: 27px;
-            }
-
-            h2 {
-                font-size: 23px;
-            }
-
-            p.subtitle {
-                font-size: 13px;
-
-                margin-bottom: 21px;
-            }
-
-            .row {
-                grid-template-columns: 1fr;
-
-                gap: 0;
-            }
-
-            input,
-            textarea {
-                padding-top: 12px;
-                padding-bottom: 12px;
-
-                font-size: 13px;
-            }
-
-            .btn-primary,
-            .btn-google {
-                padding: 13px;
-            }
-
-            .login-card::after {
-                font-size: 8px;
-
-                letter-spacing: 0.9px;
-            }
-        }
-    </style>
 </head>
+
 
 <body>
 
-<div class="login-card">
 
-    <!-- BRAND ICON -->
-    <div class="logo-icon">
-        <i data-lucide="home"></i>
-    </div>
+<div class="page">
 
-    <h2 id="formTitle">Keys99.com</h2>
 
-    <p class="subtitle" id="formSubtitle">
-        Login and access your property dashboard
-    </p>
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
 
-    <div id="dbErrorBox" class="db-error-box"></div>
-
-    <!-- SOCIAL LOGIN -->
-    <div id="socialSection">
+    <header class="header">
 
         <button
             type="button"
-            class="btn-google"
-            onclick="handleGoogleLogin()"
+            class="header-back"
+            id="headerBack"
+            aria-label="Go back"
         >
-            <img
-                src="https://www.google.com/favicon.ico"
-                width="16"
-                alt="google"
-            >
 
-            Continue with Google
+            <span>‹</span>
+
         </button>
 
-        <div class="divider">
-            OR EMAIL
-        </div>
 
-    </div>
+        <div
+            class="logo-placeholder"
+            aria-label="Keys99.com"
+        ></div>
 
-
-    <form
-        id="authForm"
-        novalidate
-        onsubmit="handleSubmit(event)"
-    >
-
-        <!-- REGISTER FIELDS -->
-        <div id="registerFields" class="hidden">
-
-            <div class="row">
-
-                <div class="input-group">
-
-                    <label>First Name*</label>
-
-                    <div class="field-wrapper">
-
-                        <i
-                            data-lucide="user"
-                            class="input-icon"
-                        ></i>
-
-                        <input
-                            type="text"
-                            id="fname"
-                            placeholder="John"
-                        >
-
-                    </div>
-
-                    <div
-                        class="error-hint"
-                        id="err-fname"
-                    >
-                        Min 3 letters, alphabets only.
-                    </div>
-
-                </div>
+    </header>
 
 
-                <div class="input-group">
 
-                    <label>Middle Name</label>
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
-                    <div class="field-wrapper">
+    <main class="main">
 
-                        <i
-                            data-lucide="user"
-                            class="input-icon"
-                        ></i>
 
-                        <input
-                            type="text"
-                            id="mname"
-                            placeholder="Quincy"
-                        >
+        <!-- =================================================
+             PHONE PAGE
+        ================================================== -->
 
-                    </div>
+        <section
+            id="phonePage"
+            class="auth-page active"
+        >
 
-                    <div
-                        class="error-hint"
-                        id="err-mname"
-                    >
-                        Min 3 letters, alphabets only.
-                    </div>
 
-                </div>
+            <div class="heading">
+
+                <h1>
+                    Welcome Back
+                </h1>
+
+                <p>
+                    Login or create your Keys99 account
+                </p>
 
             </div>
 
 
-            <div class="row">
 
-                <div class="input-group">
-
-                    <label>Last Name*</label>
-
-                    <div class="field-wrapper">
-
-                        <i
-                            data-lucide="user"
-                            class="input-icon"
-                        ></i>
-
-                        <input
-                            type="text"
-                            id="lname"
-                            placeholder="Doe"
-                        >
-
-                    </div>
-
-                    <div
-                        class="error-hint"
-                        id="err-lname"
-                    >
-                        Min 3 letters, alphabets only.
-                    </div>
-
-                </div>
-
-
-                <div class="input-group">
-
-                    <label>Phone Number*</label>
-
-                    <div class="field-wrapper">
-
-                        <i
-                            data-lucide="smartphone"
-                            class="input-icon"
-                        ></i>
-
-                        <input
-                            type="text"
-                            id="phone"
-                            maxlength="10"
-                            placeholder="10-digit number"
-                        >
-
-                    </div>
-
-                    <div
-                        class="error-hint"
-                        id="err-phone"
-                    >
-                        Exactly 10 numerical digits required.
-                    </div>
-
-                </div>
-
-            </div>
-
+            <!-- =============================================
+                 PHONE INPUT
+            ============================================== -->
 
             <div class="input-group">
 
-                <label>Residential Address*</label>
+                <label for="phoneInput">
+                    Mobile Number
+                </label>
 
-                <div class="field-wrapper">
 
-                    <i
-                        data-lucide="map"
-                        class="input-icon"
-                        style="top: 18px;"
-                    ></i>
+                <div class="phone-field">
 
-                    <textarea
-                        id="address"
-                        rows="2"
-                        placeholder="Street, City, Zip..."
-                    ></textarea>
+                    <div class="phone-prefix">
+                        +91
+                    </div>
+
+
+                    <input
+                        type="tel"
+                        id="phoneInput"
+                        inputmode="numeric"
+                        autocomplete="tel"
+                        maxlength="10"
+                        placeholder="Enter mobile number"
+                    >
 
                 </div>
 
-                <div
-                    class="error-hint"
-                    id="err-address"
-                >
-                    Address is required.
-                </div>
-
             </div>
 
-        </div>
 
-
-        <!-- EMAIL -->
-        <div class="input-group">
-
-            <label>Email Address*</label>
-
-            <div class="field-wrapper">
-
-                <i
-                    data-lucide="mail"
-                    class="input-icon"
-                ></i>
-
-                <input
-                    type="email"
-                    id="email"
-                    placeholder="you@example.com"
-                >
-
-            </div>
+            <!-- PHONE ERROR -->
 
             <div
-                class="error-hint"
-                id="err-email"
-            >
-                Invalid email format.
-            </div>
-
-        </div>
-
-
-        <!-- PASSWORD -->
-        <div class="input-group">
-
-            <label id="passLabel">
-                Password*
-            </label>
-
-            <div class="field-wrapper">
-
-                <i
-                    data-lucide="lock"
-                    class="input-icon"
-                ></i>
-
-                <input
-                    type="password"
-                    id="password"
-                    placeholder="••••••••"
-                >
-
-            </div>
-
-            <div
-                class="error-hint"
-                id="err-password"
-            >
-                Password is required.
-            </div>
-
-        </div>
-
-
-        <!-- FORGOT -->
-        <div
-            class="forgot-link"
-            id="forgotPassLink"
-            onclick="handleForgotPassword()"
-        >
-            Forgot Password?
-        </div>
-
-
-        <!-- CONFIRM PASSWORD -->
-        <div
-            class="input-group hidden"
-            id="confirmPassGroup"
-        >
-
-            <label>
-                Confirm Password*
-            </label>
-
-            <div class="field-wrapper">
-
-                <i
-                    data-lucide="check-circle"
-                    class="input-icon"
-                ></i>
-
-                <input
-                    type="password"
-                    id="confirmPassword"
-                    placeholder="••••••••"
-                >
-
-            </div>
-
-            <div
-                class="error-hint"
-                id="err-confirmPassword"
-            >
-                Passwords do not match.
-            </div>
-
-        </div>
-
-
-        <!-- SUBMIT -->
-        <button
-            type="submit"
-            class="btn-primary"
-            id="submitBtn"
-        >
-
-            <span id="btnText">
-                Sign In
-            </span>
-
-            <div
-                class="spinner"
-                id="btnSpinner"
+                id="phoneError"
+                class="error-message"
             ></div>
 
-        </button>
 
 
-        <!-- BACK -->
-        <button
-            type="button"
-            id="backBtn"
-            class="btn-outline hidden"
-            onclick="toggleMode()"
+            <!-- =============================================
+                 RECAPTCHA
+            ============================================== -->
+
+            <div
+                id="recaptcha-container"
+                class="recaptcha-container"
+            ></div>
+
+
+
+            <!-- =============================================
+                 SEND OTP
+            ============================================== -->
+
+            <button
+                type="button"
+                id="sendOtpButton"
+                class="main-button"
+            >
+
+                <span>
+                    Send OTP
+                </span>
+
+                <b>›</b>
+
+            </button>
+
+
+
+            <!-- SECURITY TEXT -->
+
+            <div class="secure-text">
+
+                Your information is protected with
+                secure verification.
+
+            </div>
+
+
+
+            <!-- =============================================
+                 OR
+            ============================================== -->
+
+            <div class="or-divider">
+
+                <span></span>
+
+                <b>OR</b>
+
+                <span></span>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 GOOGLE LOGIN
+            ============================================== -->
+
+            <button
+                type="button"
+                id="googleButton"
+                class="alternative-button"
+            >
+
+                <svg
+                    class="google-logo"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                >
+
+                    <path
+                        fill="#4285F4"
+                        d="M21.35 12.27c0-.79-.07-1.54-.22-2.27H12v4.3h5.24a4.48 4.48 0 0 1-1.94 2.94v2.45h3.14c1.84-1.69 2.91-4.18 2.91-7.42Z"
+                    />
+
+                    <path
+                        fill="#34A853"
+                        d="M12 21.5c2.63 0 4.84-.87 6.45-2.36l-3.14-2.45c-.87.58-1.98.92-3.31.92-2.54 0-4.69-1.72-5.46-4.03H3.29v2.53A9.75 9.75 0 0 0 12 21.5Z"
+                    />
+
+                    <path
+                        fill="#FBBC05"
+                        d="M6.54 13.58A5.86 5.86 0 0 1 6.23 12c0-.55.11-1.09.31-1.58V7.89H3.29A9.5 9.5 0 0 0 2.25 12c0 1.53.37 2.98 1.04 4.11l3.25-2.53Z"
+                    />
+
+                    <path
+                        fill="#EA4335"
+                        d="M12 6.39c1.43 0 2.71.49 3.72 1.45l2.79-2.79C16.84 3.43 14.63 2.5 12 2.5a9.75 9.75 0 0 0-8.71 5.39l3.25 2.53C7.31 8.11 9.46 6.39 12 6.39Z"
+                    />
+
+                </svg>
+
+
+                <span>
+                    Continue with Google
+                </span>
+
+            </button>
+
+
+
+            <!-- =============================================
+                 FACEBOOK
+            ============================================== -->
+
+            <button
+                type="button"
+                id="facebookButton"
+                class="alternative-button"
+            >
+
+                <span
+                    class="facebook-logo"
+                >
+                    f
+                </span>
+
+
+                <span>
+                    Continue with Facebook
+                </span>
+
+            </button>
+
+
+
+            <!-- =============================================
+                 SIGN UP
+            ============================================== -->
+
+            <div class="bottom-text">
+
+                Don't have an account?
+
+                <strong id="signupText">
+                    Sign Up
+                </strong>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- =================================================
+             OTP PAGE
+        ================================================== -->
+
+        <section
+            id="otpPage"
+            class="auth-page"
         >
-            Back to Login
-        </button>
-
-    </form>
 
 
-    <!-- FOOTER LINKS -->
-    <div class="footer-links">
+            <!-- =============================================
+                 CHANGE NUMBER
+            ============================================== -->
 
-        <p id="toggleText">
-            Don't have an account?
-            <span onclick="toggleMode()">
-                Create Account
-            </span>
-        </p>
+            <button
+                type="button"
+                id="changeNumberButton"
+                class="back-button"
+            >
 
-        <p
-            id="resendArea"
-            class="hidden"
-        >
-            Didn't get the mail?
-            <span onclick="resendEmail()">
-                Resend Verification Link
-            </span>
-        </p>
+                <span class="back-arrow">
+                    ‹
+                </span>
+
+                <span>
+                    Change number
+                </span>
+
+            </button>
+
+
+
+            <!-- =============================================
+                 OTP ICON
+            ============================================== -->
+
+            <div class="otp-symbol">
+                ✓
+            </div>
+
+
+
+            <!-- =============================================
+                 OTP HEADING
+            ============================================== -->
+
+            <div class="heading">
+
+                <h1>
+                    Verify your number
+                </h1>
+
+                <p id="otpDescription">
+                    Enter the OTP sent to your mobile number.
+                </p>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 EXISTING USER MESSAGE
+            ============================================== -->
+
+            <div
+                id="existingUserMessage"
+                class="existing-user-message"
+                hidden
+            >
+
+                <span>✓</span>
+
+                <div>
+
+                    <strong>
+                        Existing account
+                    </strong>
+
+                    <small>
+                        Enter the OTP to login to your Keys99 account.
+                    </small>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =============================================
+                 OTP INPUT
+            ============================================== -->
+
+            <div class="input-group">
+
+                <label for="otpInput">
+                    One-Time Password
+                </label>
+
+
+                <input
+                    type="text"
+                    id="otpInput"
+                    class="otp-input"
+                    inputmode="numeric"
+                    autocomplete="one-time-code"
+                    maxlength="6"
+                    placeholder="••••••"
+                >
+
+            </div>
+
+
+            <!-- OTP ERROR -->
+
+            <div
+                id="otpError"
+                class="error-message"
+            ></div>
+
+
+
+            <!-- =================================================
+                 NEW USER FIELDS
+                 Hidden for existing users
+            ================================================== -->
+
+            <div
+                id="newUserFields"
+                class="new-user-fields"
+                hidden
+            >
+
+
+                <!-- =============================================
+                     FIRST + MIDDLE NAME
+                ============================================== -->
+
+                <div class="name-row">
+
+
+                    <!-- FIRST NAME -->
+
+                    <div class="input-group">
+
+                        <label for="firstNameInput">
+                            First Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="firstNameInput"
+                            class="normal-input"
+                            autocomplete="given-name"
+                            placeholder="First name"
+                        >
+
+                    </div>
+
+
+
+                    <!-- MIDDLE NAME -->
+
+                    <div class="input-group">
+
+                        <label for="middleNameInput">
+                            Middle Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="middleNameInput"
+                            class="normal-input"
+                            autocomplete="additional-name"
+                            placeholder="Middle name"
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- LAST NAME -->
+
+                <div class="input-group">
+
+                    <label for="lastNameInput">
+                        Last Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="lastNameInput"
+                        class="normal-input"
+                        autocomplete="family-name"
+                        placeholder="Last name"
+                    >
+
+                </div>
+
+
+
+                <!-- EMAIL -->
+
+                <div class="input-group">
+
+                    <label for="emailInput">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="emailInput"
+                        class="normal-input"
+                        autocomplete="email"
+                        placeholder="Enter email address"
+                    >
+
+                </div>
+
+
+                <!-- NEW USER ERROR -->
+
+                <div
+                    id="newUserError"
+                    class="error-message"
+                ></div>
+
+
+            </div>
+
+
+
+            <!-- =================================================
+                 VERIFY BUTTON
+            ================================================== -->
+
+            <button
+                type="button"
+                id="verifyOtpButton"
+                class="main-button"
+            >
+
+                <span>
+                    Verify & Continue
+                </span>
+
+                <b>›</b>
+
+            </button>
+
+
+
+            <!-- =================================================
+                 RESEND
+            ================================================== -->
+
+            <div class="resend">
+
+                <button
+                    type="button"
+                    id="resendButton"
+                    disabled
+                >
+                    Resend OTP
+                </button>
+
+
+                <span id="resendTimer">
+                    Resend available in 30s
+                </span>
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         HOUSE SCENE
+    ====================================================== -->
+
+    <div class="house-scene">
+
+
+        <div class="sun"></div>
+
+
+        <div class="cloud cloud-one"></div>
+
+        <div class="cloud cloud-two"></div>
+
+
+
+        <!-- TREE LEFT -->
+
+        <div class="tree tree-one">
+
+            <div class="tree-top"></div>
+
+            <div class="tree-trunk"></div>
+
+        </div>
+
+
+
+        <!-- HOUSE -->
+
+        <div class="house">
+
+
+            <div class="house-roof"></div>
+
+
+            <div class="house-wall">
+
+
+                <div class="window window-one"></div>
+
+                <div class="window window-two"></div>
+
+
+                <div class="main-door"></div>
+
+
+            </div>
+
+        </div>
+
+
+
+        <!-- TREE RIGHT -->
+
+        <div class="tree tree-two">
+
+            <div class="tree-top"></div>
+
+            <div class="tree-trunk"></div>
+
+        </div>
+
+
+
+        <div class="ground"></div>
+
 
     </div>
 
+
+
+    <!-- =====================================================
+         FOOTER
+    ====================================================== -->
+
+    <footer>
+
+        <span>
+            © 2026 Keys99.com
+        </span>
+
+        <span>
+            •
+        </span>
+
+        <span>
+            Secure Login
+        </span>
+
+    </footer>
+
+
+
 </div>
+
 
 
 <!-- =========================================================
-     EMAIL MODAL
+     LOADING OVERLAY
 ========================================================= -->
 
 <div
-    id="emailModal"
-    class="modal-overlay"
+    id="loadingOverlay"
+    class="loading-overlay"
 >
 
-    <div class="modal-content">
+    <div class="loading-box">
 
-        <div
-            class="logo-icon"
-            style="
-                background:#e9f8f2;
-                color:#15966d;
-            "
-        >
-            <i data-lucide="mail-check"></i>
-        </div>
+        <div class="spinner"></div>
 
-        <h3
-            id="modalTitle"
-            style="color:#15966d;"
-        >
-            Email Sent!
-        </h3>
-
-        <p
-            id="modalMsg"
-            style="color:#647783;"
-        >
-            A verification link has been sent to your email.
-            Please verify it to log in.
+        <p id="loadingText">
+            Please wait...
         </p>
-
-        <button
-            class="btn-primary"
-            onclick="closeModal()"
-        >
-            Got it
-        </button>
 
     </div>
 
 </div>
 
 
-<script>
 
-    lucide.createIcons();
+<!-- =========================================================
+     FIREBASE + SUPABASE
+========================================================= -->
 
-    let isLoginMode = true;
+<script type="module">
 
 
-    /* =========================================================
-       SUPABASE
-       ORIGINAL CONFIGURATION PRESERVED
-    ========================================================= */
+/* =========================================================
+   FIREBASE IMPORTS
+========================================================= */
 
-    const supabaseUrl =
-        "https://xeesusgbdyrgxvzevjha.supabase.co";
+import {
+    initializeApp
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-app.js";
 
-    const supabaseKey =
-        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im5lZXN1c2diZHlyZ3h2emV2amhhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI4NzI1MzksImV4cCI6MjA4ODQ0ODUzOX0.8TjnH50MO4YBu8liCJwnUu36hiX6zAwRpGOCPFVW7sI";
 
-    const client =
-        supabase.createClient(
-            supabaseUrl,
-            supabaseKey
+import {
+    getAuth,
+    RecaptchaVerifier,
+    signInWithPhoneNumber,
+    GoogleAuthProvider,
+    signInWithPopup,
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/11.0.2/firebase-auth.js";
+
+
+
+/* =========================================================
+   FIREBASE CONFIG
+========================================================= */
+
+const firebaseConfig = {
+
+    apiKey:
+        "AIzaSyCPBTezt_RtGVzSEd-a-cSKphX-zCWG-l8",
+
+    authDomain:
+        "keys99.firebaseapp.com",
+
+    projectId:
+        "keys99",
+
+    storageBucket:
+        "keys99.firebasestorage.app",
+
+    messagingSenderId:
+        "198135750226",
+
+    appId:
+        "1:198135750226:web:c73958fff996ed2fc8898b",
+
+    measurementId:
+        "G-6V6CTQD2KY"
+
+};
+
+
+
+/* =========================================================
+   INITIALIZE FIREBASE
+========================================================= */
+
+const firebaseApp =
+    initializeApp(firebaseConfig);
+
+
+const auth =
+    getAuth(firebaseApp);
+
+
+
+/* =========================================================
+   SUPABASE CONFIG
+========================================================= */
+
+const SUPABASE_URL =
+    "https://xeesusgbdyrgxvzevjha.supabase.co";
+
+
+const SUPABASE_ANON_KEY =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhbGciOiJIUzI1NiIsInJlZiI6InhlZXN1c2diZHlyZ3h2emVqaGEiLCJyb2xlIjoiYW5vbiIsImlhdCI6MTc3Mjg3MjUzOSwiZXhwIjoyMDg4NDQ4NTM5fQ.8TjnH50MO4YBu8liCJwnUu36hiX6zAwRpGOCPFVW7sI";
+
+
+const supabaseClient =
+    window.supabase.createClient(
+        SUPABASE_URL.trim(),
+        SUPABASE_ANON_KEY.trim()
+    );
+
+
+
+/* =========================================================
+   DOM ELEMENTS
+========================================================= */
+
+const phonePage =
+    document.getElementById("phonePage");
+
+
+const otpPage =
+    document.getElementById("otpPage");
+
+
+const phoneInput =
+    document.getElementById("phoneInput");
+
+
+const otpInput =
+    document.getElementById("otpInput");
+
+
+const firstNameInput =
+    document.getElementById("firstNameInput");
+
+
+const middleNameInput =
+    document.getElementById("middleNameInput");
+
+
+const lastNameInput =
+    document.getElementById("lastNameInput");
+
+
+const emailInput =
+    document.getElementById("emailInput");
+
+
+const sendOtpButton =
+    document.getElementById("sendOtpButton");
+
+
+const verifyOtpButton =
+    document.getElementById("verifyOtpButton");
+
+
+const googleButton =
+    document.getElementById("googleButton");
+
+
+const facebookButton =
+    document.getElementById("facebookButton");
+
+
+const changeNumberButton =
+    document.getElementById("changeNumberButton");
+
+
+const headerBack =
+    document.getElementById("headerBack");
+
+
+const signupText =
+    document.getElementById("signupText");
+
+
+const resendButton =
+    document.getElementById("resendButton");
+
+
+const resendTimer =
+    document.getElementById("resendTimer");
+
+
+const phoneError =
+    document.getElementById("phoneError");
+
+
+const otpError =
+    document.getElementById("otpError");
+
+
+const newUserError =
+    document.getElementById("newUserError");
+
+
+const newUserFields =
+    document.getElementById("newUserFields");
+
+
+const existingUserMessage =
+    document.getElementById(
+        "existingUserMessage"
+    );
+
+
+const otpDescription =
+    document.getElementById(
+        "otpDescription"
+    );
+
+
+const loadingOverlay =
+    document.getElementById(
+        "loadingOverlay"
+    );
+
+
+const loadingText =
+    document.getElementById(
+        "loadingText"
+    );
+
+
+
+/* =========================================================
+   VARIABLES
+========================================================= */
+
+let recaptchaVerifier = null;
+
+let confirmationResult = null;
+
+let currentPhone = "";
+
+let currentExistingUser = null;
+
+let resendInterval = null;
+
+let resendSeconds = 30;
+
+
+
+/* =========================================================
+   SHOW LOADING
+========================================================= */
+
+function showLoading(text = "Please wait...") {
+
+    loadingText.textContent = text;
+
+    loadingOverlay.classList.add("show");
+
+}
+
+
+
+/* =========================================================
+   HIDE LOADING
+========================================================= */
+
+function hideLoading() {
+
+    loadingOverlay.classList.remove("show");
+
+}
+
+
+
+/* =========================================================
+   ERROR HELPERS
+========================================================= */
+
+function showError(element, message) {
+
+    element.textContent = message;
+
+    element.classList.add("show");
+
+}
+
+
+function hideError(element) {
+
+    element.textContent = "";
+
+    element.classList.remove("show");
+
+}
+
+
+
+/* =========================================================
+   PAGE SWITCH
+========================================================= */
+
+function showPhonePage() {
+
+    otpPage.classList.remove("active");
+
+    phonePage.classList.add("active");
+
+}
+
+
+function showOtpPage() {
+
+    phonePage.classList.remove("active");
+
+    otpPage.classList.add("active");
+
+}
+
+
+
+/* =========================================================
+   NEW USER / EXISTING USER UI
+========================================================= */
+
+function setNewUserMode(isNewUser) {
+
+
+    /* -----------------------------------------------
+       New user fields
+    ------------------------------------------------ */
+
+    newUserFields.hidden =
+        !isNewUser;
+
+
+    /* -----------------------------------------------
+       Existing user message
+    ------------------------------------------------ */
+
+    existingUserMessage.hidden =
+        isNewUser;
+
+
+    /* -----------------------------------------------
+       Required fields
+    ------------------------------------------------ */
+
+    firstNameInput.required =
+        isNewUser;
+
+    middleNameInput.required =
+        false;
+
+    lastNameInput.required =
+        isNewUser;
+
+    emailInput.required =
+        isNewUser;
+
+
+    /* -----------------------------------------------
+       Existing user
+    ------------------------------------------------ */
+
+    if (!isNewUser) {
+
+        firstNameInput.value = "";
+
+        middleNameInput.value = "";
+
+        lastNameInput.value = "";
+
+        emailInput.value = "";
+
+        otpDescription.textContent =
+            "Enter the OTP sent to your mobile number.";
+
+    }
+
+    else {
+
+        otpDescription.textContent =
+            "Verify your number and complete your profile.";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   VALIDATE PHONE
+========================================================= */
+
+function getFormattedPhone() {
+
+    const phone =
+        phoneInput.value
+            .replace(/\D/g, "");
+
+
+    if (!/^[6-9]\d{9}$/.test(phone)) {
+
+        return null;
+
+    }
+
+
+    return "+91" + phone;
+
+}
+
+
+
+/* =========================================================
+   FIND USER BY PHONE
+========================================================= */
+
+async function findUserByPhone(phone) {
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("users")
+            .select(`
+                id,
+                first_name,
+                middle_name,
+                last_name,
+                phone,
+                email,
+                user_code,
+                avatar_url,
+                firebase_uid
+            `)
+            .eq("phone", phone)
+            .limit(1);
+
+
+    if (error) {
+
+        console.error(
+            "Phone lookup error:",
+            error
+        );
+
+        throw error;
+
+    }
+
+
+    return data && data.length
+        ? data[0]
+        : null;
+
+}
+
+
+
+/* =========================================================
+   FIND USER BY EMAIL
+========================================================= */
+
+async function findUserByEmail(email) {
+
+    const cleanEmail =
+        email
+            .trim()
+            .toLowerCase();
+
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("users")
+            .select(`
+                id,
+                first_name,
+                middle_name,
+                last_name,
+                phone,
+                email,
+                user_code,
+                avatar_url,
+                firebase_uid
+            `)
+            .ilike("email", cleanEmail)
+            .limit(1);
+
+
+    if (error) {
+
+        console.error(
+            "Email lookup error:",
+            error
+        );
+
+        throw error;
+
+    }
+
+
+    return data && data.length
+        ? data[0]
+        : null;
+
+}
+
+
+
+/* =========================================================
+   CREATE RECAPTCHA
+========================================================= */
+
+function createRecaptcha() {
+
+
+    try {
+
+        if (recaptchaVerifier) {
+
+            recaptchaVerifier.clear();
+
+            recaptchaVerifier = null;
+
+        }
+
+    }
+    catch (error) {
+
+        console.warn(
+            "reCAPTCHA clear warning:",
+            error
+        );
+
+    }
+
+
+    recaptchaVerifier =
+        new RecaptchaVerifier(
+            auth,
+            "recaptcha-container",
+            {
+                size: "normal"
+            }
         );
 
 
-    /* =========================================================
-       REDIRECT UTILITY
-    ========================================================= */
+    return recaptchaVerifier;
 
-    const redirectToProfile = () => {
-
-        const baseUrl =
-            window.location.origin +
-            window.location.pathname
-                .split('/')
-                .slice(0, -1)
-                .join('/');
-
-        window.location.href =
-            `${baseUrl}/profile.html`;
-    };
+}
 
 
-    /* =========================================================
-       SESSION CHECK
-    ========================================================= */
 
-    window.addEventListener(
-        'load',
-        async () => {
+/* =========================================================
+   SEND OTP
+========================================================= */
 
-            const {
-                data: {
-                    session
-                }
-            } =
-                await client.auth.getSession();
+async function sendOTP() {
 
-            if (session) {
-                redirectToProfile();
-            }
 
-        }
+    hideError(phoneError);
+
+    hideError(otpError);
+
+    hideError(newUserError);
+
+
+    const phone =
+        getFormattedPhone();
+
+
+    if (!phone) {
+
+        showError(
+            phoneError,
+            "Please enter a valid 10-digit mobile number."
+        );
+
+        phoneInput.focus();
+
+        return;
+
+    }
+
+
+    sendOtpButton.disabled = true;
+
+    showLoading(
+        "Checking your account..."
     );
 
 
-    client.auth.onAuthStateChange(
-        (event, session) => {
-
-            if (
-                (
-                    event === 'SIGNED_IN' ||
-                    event === 'TOKEN_REFRESHED'
-                ) &&
-                session
-            ) {
-
-                redirectToProfile();
-
-            }
-
-        }
-    );
+    try {
 
 
-    /* =========================================================
-       TOGGLE LOGIN / REGISTER
-    ========================================================= */
+        /* -----------------------------------------------
+           Check whether phone already exists
+        ------------------------------------------------ */
 
-    function toggleMode() {
+        currentExistingUser =
+            await findUserByPhone(phone);
 
-        isLoginMode = !isLoginMode;
 
-        document
-            .getElementById('registerFields')
-            .classList
-            .toggle('hidden');
+        currentPhone =
+            phone;
 
-        document
-            .getElementById('confirmPassGroup')
-            .classList
-            .toggle('hidden');
 
-        document
-            .getElementById('backBtn')
-            .classList
-            .toggle('hidden');
+        /* -----------------------------------------------
+           Create reCAPTCHA
+        ------------------------------------------------ */
 
-        document
-            .getElementById('socialSection')
-            .classList
-            .toggle('hidden');
+        hideLoading();
 
-        document
-            .getElementById('forgotPassLink')
-            .classList
-            .toggle('hidden');
+        const verifier =
+            createRecaptcha();
 
-        document
-            .getElementById('dbErrorBox')
-            .style
-            .display = 'none';
 
-        document
-            .getElementById('formTitle')
-            .innerText =
-            isLoginMode
-                ? 'Keys99.com'
-                : 'Create Your Account';
+        showLoading(
+            "Sending OTP..."
+        );
 
-        document
-            .getElementById('btnText')
-            .innerText =
-            isLoginMode
-                ? 'Sign In'
-                : 'Register Account';
 
-        document
-            .getElementById('toggleText')
-            .style
-            .display =
-            isLoginMode
-                ? 'block'
-                : 'none';
+        /* -----------------------------------------------
+           Firebase OTP
+        ------------------------------------------------ */
 
-        clearAllErrors();
+        confirmationResult =
+            await signInWithPhoneNumber(
+                auth,
+                phone,
+                verifier
+            );
 
-        lucide.createIcons();
+
+        /* -----------------------------------------------
+           Set correct UI
+        ------------------------------------------------ */
+
+        setNewUserMode(
+            !currentExistingUser
+        );
+
+
+        /* -----------------------------------------------
+           Show OTP page
+        ------------------------------------------------ */
+
+        showOtpPage();
+
+
+        otpInput.value = "";
+
+        setTimeout(() => {
+
+            otpInput.focus();
+
+        }, 150);
+
+
+        /* -----------------------------------------------
+           Start resend timer
+        ------------------------------------------------ */
+
+        startResendTimer();
+
+
     }
+    catch (error) {
 
-
-    /* =========================================================
-       GOOGLE LOGIN
-    ========================================================= */
-
-    async function handleGoogleLogin() {
-
-        const baseUrl =
-            window.location.origin +
-            window.location.pathname
-                .split('/')
-                .slice(0, -1)
-                .join('/');
-
-        const {
+        console.error(
+            "Send OTP error:",
             error
-        } =
-            await client.auth.signInWithOAuth({
-
-                provider: 'google',
-
-                options: {
-                    redirectTo:
-                        `${baseUrl}/profile.html`
-                }
-
-            });
-
-        if (error) {
-            showError(
-                "Google Login Error: " +
-                error.message
-            );
-        }
-    }
-
-
-    /* =========================================================
-       FORGOT PASSWORD
-    ========================================================= */
-
-    async function handleForgotPassword() {
-
-        const email =
-            document
-                .getElementById('email')
-                .value;
-
-        const emailRegex =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!emailRegex.test(email)) {
-
-            setFieldError(
-                'email',
-                'Enter a valid email to reset password.'
-            );
-
-            return;
-        }
-
-        const {
-            error
-        } =
-            await client.auth.resetPasswordForEmail(
-                email,
-                {
-                    redirectTo:
-                        window.location.origin +
-                        '/reset-password.html',
-                }
-            );
-
-        if (error) {
-
-            showError(
-                "Reset Error: " +
-                error.message
-            );
-
-        } else {
-
-            document
-                .getElementById('modalTitle')
-                .innerText =
-                "Reset Link Sent!";
-
-            document
-                .getElementById('modalMsg')
-                .innerText =
-                "Check your inbox for the password reset instructions.";
-
-            document
-                .getElementById('emailModal')
-                .style
-                .display = 'flex';
-        }
-    }
-
-
-    /* =========================================================
-       CLEAR ERRORS
-    ========================================================= */
-
-    function clearAllErrors() {
-
-        document
-            .querySelectorAll('.invalid')
-            .forEach(
-                el =>
-                    el.classList.remove('invalid')
-            );
-
-        document
-            .querySelectorAll('.error-hint')
-            .forEach(
-                el =>
-                    el.style.display = 'none'
-            );
-    }
-
-
-    /* =========================================================
-       FIELD ERROR
-    ========================================================= */
-
-    function setFieldError(id, message) {
-
-        const input =
-            document.getElementById(id);
-
-        const hint =
-            document.getElementById(
-                'err-' + id
-            );
-
-        if (input && hint) {
-
-            input.classList.add('invalid');
-
-            hint.innerText = message;
-
-            hint.style.display = 'block';
-        }
-    }
-
-
-    /* =========================================================
-       CLOSE MODAL
-    ========================================================= */
-
-    function closeModal() {
-
-        document
-            .getElementById('emailModal')
-            .style
-            .display = 'none';
-
-        if (!isLoginMode) {
-            toggleMode();
-        }
-    }
-
-
-    /* =========================================================
-       DATABASE ERROR
-    ========================================================= */
-
-    function showError(msg) {
-
-        const box =
-            document.getElementById(
-                'dbErrorBox'
-            );
-
-        box.innerText = msg;
-
-        box.style.display = 'block';
-    }
-
-
-    /* =========================================================
-       RESEND EMAIL
-    ========================================================= */
-
-    async function resendEmail() {
-
-        const email =
-            document
-                .getElementById('email')
-                .value;
-
-        const {
-            error
-        } =
-            await client.auth.resend({
-                type: 'signup',
-                email
-            });
-
-        if (error) {
-
-            showError(
-                "Resend failed: " +
-                error.message
-            );
-
-        } else {
-
-            alert(
-                "Verification link resent!"
-            );
-
-        }
-    }
-
-
-    /* =========================================================
-       FORM SUBMIT
-    ========================================================= */
-
-    async function handleSubmit(e) {
-
-        e.preventDefault();
-
-        clearAllErrors();
-
-        document
-            .getElementById('dbErrorBox')
-            .style
-            .display = 'none';
-
-        const email =
-            document
-                .getElementById('email')
-                .value;
-
-        const password =
-            document
-                .getElementById('password')
-                .value;
-
-        let hasLocalError = false;
-
-        const emailRegex =
-            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (!emailRegex.test(email)) {
-
-            setFieldError(
-                'email',
-                'Invalid email format.'
-            );
-
-            hasLocalError = true;
-        }
-
-        if (password.length < 1) {
-
-            setFieldError(
-                'password',
-                'Password is required.'
-            );
-
-            hasLocalError = true;
-        }
-
-
-        /* =====================================================
-           REGISTRATION VALIDATION
-        ===================================================== */
-
-        if (!isLoginMode) {
-
-            const alphaOnly =
-                /^[A-Za-z]{3,}$/;
-
-            const phoneRegex =
-                /^[0-9]{10}$/;
-
-            const passPolicy =
-                /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*(),.?":{}|<>]).{6,}$/;
-
-
-            if (
-                !alphaOnly.test(
-                    document
-                        .getElementById('fname')
-                        .value
-                )
-            ) {
-
-                setFieldError(
-                    'fname',
-                    'Min 3 letters, alphabets only.'
-                );
-
-                hasLocalError = true;
-            }
-
-
-            if (
-                !alphaOnly.test(
-                    document
-                        .getElementById('lname')
-                        .value
-                )
-            ) {
-
-                setFieldError(
-                    'lname',
-                    'Min 3 letters, alphabets only.'
-                );
-
-                hasLocalError = true;
-            }
-
-
-            if (
-                !phoneRegex.test(
-                    document
-                        .getElementById('phone')
-                        .value
-                )
-            ) {
-
-                setFieldError(
-                    'phone',
-                    'Exactly 10 numerical digits required.'
-                );
-
-                hasLocalError = true;
-            }
-
-
-            if (
-                document
-                    .getElementById('address')
-                    .value
-                    .trim() === ""
-            ) {
-
-                setFieldError(
-                    'address',
-                    'Address is required.'
-                );
-
-                hasLocalError = true;
-            }
-
-
-            if (!passPolicy.test(password)) {
-
-                setFieldError(
-                    'password',
-                    'Min 6 chars, 1 upper, 1 lower, 1 special.'
-                );
-
-                hasLocalError = true;
-            }
-
-
-            if (
-                password !==
-                document
-                    .getElementById('confirmPassword')
-                    .value
-            ) {
-
-                setFieldError(
-                    'confirmPassword',
-                    'Passwords do not match.'
-                );
-
-                hasLocalError = true;
-            }
-        }
-
-
-        if (hasLocalError) return;
-
-
-        /* =====================================================
-           BUTTON LOADING
-        ===================================================== */
-
-        const btn =
-            document.getElementById(
-                'submitBtn'
-            );
-
-        const spinner =
-            document.getElementById(
-                'btnSpinner'
-            );
-
-        btn.disabled = true;
-
-        spinner.style.display = 'block';
+        );
 
 
         try {
 
-            /* =================================================
-               LOGIN
-            ================================================= */
+            if (recaptchaVerifier) {
 
-            if (isLoginMode) {
+                recaptchaVerifier.clear();
+
+                recaptchaVerifier = null;
+
+            }
+
+        }
+        catch (e) {
+
+            console.warn(e);
+
+        }
+
+
+        let message =
+            "Unable to send OTP. Please try again.";
+
+
+        if (
+            error &&
+            error.code ===
+            "auth/invalid-phone-number"
+        ) {
+
+            message =
+                "Please enter a valid mobile number.";
+
+        }
+
+        else if (
+            error &&
+            error.code ===
+            "auth/too-many-requests"
+        ) {
+
+            message =
+                "Too many attempts. Please try again later.";
+
+        }
+
+        else if (
+            error &&
+            error.code ===
+            "auth/quota-exceeded"
+        ) {
+
+            message =
+                "OTP limit reached. Please try again later.";
+
+        }
+
+        else if (
+            error &&
+            error.code ===
+            "auth/billing-not-enabled"
+        ) {
+
+            message =
+                "Firebase Phone Authentication billing is not enabled.";
+
+        }
+
+
+        showError(
+            phoneError,
+            message
+        );
+
+    }
+    finally {
+
+        hideLoading();
+
+        sendOtpButton.disabled =
+            false;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   VALIDATE NEW USER DETAILS
+========================================================= */
+
+function validateNewUser() {
+
+
+    hideError(newUserError);
+
+
+    const firstName =
+        firstNameInput.value.trim();
+
+
+    const middleName =
+        middleNameInput.value.trim();
+
+
+    const lastName =
+        lastNameInput.value.trim();
+
+
+    const email =
+        emailInput.value.trim().toLowerCase();
+
+
+    /* -----------------------------------------------
+       First name
+    ------------------------------------------------ */
+
+    if (!firstName) {
+
+        showError(
+            newUserError,
+            "Please enter your first name."
+        );
+
+        firstNameInput.focus();
+
+        return null;
+
+    }
+
+
+    if (!/^[A-Za-z][A-Za-z .'-]*$/.test(firstName)) {
+
+        showError(
+            newUserError,
+            "Please enter a valid first name."
+        );
+
+        firstNameInput.focus();
+
+        return null;
+
+    }
+
+
+    /* -----------------------------------------------
+       Middle name
+    ------------------------------------------------ */
+
+    if (
+        middleName &&
+        !/^[A-Za-z][A-Za-z .'-]*$/.test(middleName)
+    ) {
+
+        showError(
+            newUserError,
+            "Please enter a valid middle name."
+        );
+
+        middleNameInput.focus();
+
+        return null;
+
+    }
+
+
+    /* -----------------------------------------------
+       Last name
+    ------------------------------------------------ */
+
+    if (!lastName) {
+
+        showError(
+            newUserError,
+            "Please enter your last name."
+        );
+
+        lastNameInput.focus();
+
+        return null;
+
+    }
+
+
+    if (!/^[A-Za-z][A-Za-z .'-]*$/.test(lastName)) {
+
+        showError(
+            newUserError,
+            "Please enter a valid last name."
+        );
+
+        lastNameInput.focus();
+
+        return null;
+
+    }
+
+
+    /* -----------------------------------------------
+       Email
+    ------------------------------------------------ */
+
+    if (!email) {
+
+        showError(
+            newUserError,
+            "Please enter your email address."
+        );
+
+        emailInput.focus();
+
+        return null;
+
+    }
+
+
+    if (
+        !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+    ) {
+
+        showError(
+            newUserError,
+            "Please enter a valid email address."
+        );
+
+        emailInput.focus();
+
+        return null;
+
+    }
+
+
+    return {
+
+        firstName,
+
+        middleName,
+
+        lastName,
+
+        email
+
+    };
+
+}
+
+
+
+/* =========================================================
+   LINK FIREBASE UID TO EXISTING USER
+========================================================= */
+
+async function linkExistingFirebaseUser(
+    firebaseUser,
+    existingUser
+) {
+
+
+    if (!existingUser) {
+
+        throw new Error(
+            "Existing account could not be found."
+        );
+
+    }
+
+
+    /* -----------------------------------------------
+       If already linked
+    ------------------------------------------------ */
+
+    if (
+        existingUser.firebase_uid &&
+        existingUser.firebase_uid !==
+        firebaseUser.uid
+    ) {
+
+        throw new Error(
+            "This mobile number is already linked to another account."
+        );
+
+    }
+
+
+    /* -----------------------------------------------
+       Already same Firebase account
+    ------------------------------------------------ */
+
+    if (
+        existingUser.firebase_uid ===
+        firebaseUser.uid
+    ) {
+
+        return existingUser;
+
+    }
+
+
+    /* -----------------------------------------------
+       Attach Firebase UID only
+       
+       IMPORTANT:
+       Do NOT overwrite:
+       first_name
+       middle_name
+       last_name
+       email
+    ------------------------------------------------ */
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("users")
+            .update({
+
+                firebase_uid:
+                    firebaseUser.uid
+
+            })
+            .eq(
+                "id",
+                existingUser.id
+            )
+            .select()
+            .single();
+
+
+    if (error) {
+
+        console.error(
+            "Existing user update error:",
+            error
+        );
+
+        throw error;
+
+    }
+
+
+    return data;
+
+}
+
+
+
+/* =========================================================
+   CREATE NEW USER
+========================================================= */
+
+async function createNewUser(
+    firebaseUser,
+    details
+) {
+
+
+    /* -----------------------------------------------
+       Re-check phone
+    ------------------------------------------------ */
+
+    const phoneUser =
+        await findUserByPhone(
+            currentPhone
+        );
+
+
+    if (phoneUser) {
+
+        throw new Error(
+            "An account with this mobile number already exists."
+        );
+
+    }
+
+
+    /* -----------------------------------------------
+       Re-check email
+    ------------------------------------------------ */
+
+    const emailUser =
+        await findUserByEmail(
+            details.email
+        );
+
+
+    if (emailUser) {
+
+        throw new Error(
+            "An account with this email address already exists."
+        );
+
+    }
+
+
+    /* -----------------------------------------------
+       Insert user
+    ------------------------------------------------ */
+
+    const {
+        data,
+        error
+    } =
+        await supabaseClient
+            .from("users")
+            .insert({
+
+                first_name:
+                    details.firstName,
+
+                middle_name:
+                    details.middleName || null,
+
+                last_name:
+                    details.lastName,
+
+                phone:
+                    currentPhone,
+
+                email:
+                    details.email,
+
+                firebase_uid:
+                    firebaseUser.uid
+
+            })
+            .select()
+            .single();
+
+
+    if (error) {
+
+        console.error(
+            "New user insert error:",
+            error
+        );
+
+        throw error;
+
+    }
+
+
+    return data;
+
+}
+
+
+
+/* =========================================================
+   SAVE LOGIN DATA LOCALLY
+========================================================= */
+
+function saveLoginSession(user) {
+
+
+    if (!user) {
+
+        return;
+
+    }
+
+
+    localStorage.setItem(
+        "keys99_user_id",
+        user.id || ""
+    );
+
+
+    localStorage.setItem(
+        "keys99_firebase_uid",
+        user.firebase_uid || ""
+    );
+
+
+    localStorage.setItem(
+        "keys99_user_code",
+        user.user_code || ""
+    );
+
+
+    localStorage.setItem(
+        "keys99_user_name",
+        [
+            user.first_name,
+            user.middle_name,
+            user.last_name
+        ]
+            .filter(Boolean)
+            .join(" ")
+    );
+
+
+    localStorage.setItem(
+        "keys99_user_phone",
+        user.phone || ""
+    );
+
+
+    localStorage.setItem(
+        "keys99_user_email",
+        user.email || ""
+    );
+
+
+    if (user.avatar_url) {
+
+        localStorage.setItem(
+            "keys99_user_avatar",
+            user.avatar_url
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   VERIFY OTP
+========================================================= */
+
+async function verifyOTP() {
+
+
+    hideError(otpError);
+
+    hideError(newUserError);
+
+
+    const otp =
+        otpInput.value
+            .replace(/\D/g, "");
+
+
+    /* -----------------------------------------------
+       Validate OTP
+    ------------------------------------------------ */
+
+    if (!/^\d{6}$/.test(otp)) {
+
+        showError(
+            otpError,
+            "Please enter the 6-digit OTP."
+        );
+
+        otpInput.focus();
+
+        return;
+
+    }
+
+
+    if (!confirmationResult) {
+
+        showError(
+            otpError,
+            "OTP session expired. Please request a new OTP."
+        );
+
+        return;
+
+    }
+
+
+    verifyOtpButton.disabled = true;
+
+    showLoading(
+        "Verifying OTP..."
+    );
+
+
+    try {
+
+
+        /* -----------------------------------------------
+           Confirm Firebase OTP
+        ------------------------------------------------ */
+
+        const result =
+            await confirmationResult.confirm(
+                otp
+            );
+
+
+        const firebaseUser =
+            result.user;
+
+
+        /* =================================================
+           EXISTING USER
+        ================================================= */
+
+        if (currentExistingUser) {
+
+
+            /* -------------------------------------------
+               Make sure Firebase UID matches
+            -------------------------------------------- */
+
+            const user =
+                await linkExistingFirebaseUser(
+                    firebaseUser,
+                    currentExistingUser
+                );
+
+
+            saveLoginSession(
+                user
+            );
+
+
+            loadingText.textContent =
+                "Login successful...";
+
+
+            window.location.href =
+                "profile.html";
+
+
+            return;
+
+        }
+
+
+
+        /* =================================================
+           NEW USER
+        ================================================= */
+
+
+        const details =
+            validateNewUser();
+
+
+        if (!details) {
+
+            await signOut(auth);
+
+            hideLoading();
+
+            verifyOtpButton.disabled =
+                false;
+
+            return;
+
+        }
+
+
+        /* -----------------------------------------------
+           Check email again
+        ------------------------------------------------ */
+
+        const emailUser =
+            await findUserByEmail(
+                details.email
+            );
+
+
+        if (emailUser) {
+
+            await signOut(auth);
+
+            showError(
+                newUserError,
+                "This email address is already registered. Please use another email."
+            );
+
+            hideLoading();
+
+            verifyOtpButton.disabled =
+                false;
+
+            return;
+
+        }
+
+
+        /* -----------------------------------------------
+           Create user
+        ------------------------------------------------ */
+
+        const newUser =
+            await createNewUser(
+                firebaseUser,
+                details
+            );
+
+
+        saveLoginSession(
+            newUser
+        );
+
+
+        loadingText.textContent =
+            "Account created successfully...";
+
+
+        window.location.href =
+            "profile.html";
+
+
+    }
+    catch (error) {
+
+        console.error(
+            "OTP verification error:",
+            error
+        );
+
+
+        let message =
+            "Invalid OTP. Please try again.";
+
+
+        if (
+            error &&
+            error.code ===
+            "auth/invalid-verification-code"
+        ) {
+
+            message =
+                "Incorrect OTP. Please check and try again.";
+
+        }
+
+        else if (
+            error &&
+            error.code ===
+            "auth/code-expired"
+        ) {
+
+            message =
+                "This OTP has expired. Please request a new OTP.";
+
+        }
+
+        else if (
+            error &&
+            error.message
+        ) {
+
+            message =
+                error.message;
+
+        }
+
+
+        showError(
+            otpError,
+            message
+        );
+
+    }
+    finally {
+
+        hideLoading();
+
+        verifyOtpButton.disabled =
+            false;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   RESEND TIMER
+========================================================= */
+
+function startResendTimer() {
+
+
+    clearInterval(
+        resendInterval
+    );
+
+
+    resendSeconds = 30;
+
+    resendButton.disabled =
+        true;
+
+
+    resendTimer.textContent =
+        `Resend available in ${resendSeconds}s`;
+
+
+    resendInterval =
+        setInterval(() => {
+
+
+            resendSeconds--;
+
+
+            if (resendSeconds <= 0) {
+
+                clearInterval(
+                    resendInterval
+                );
+
+
+                resendButton.disabled =
+                    false;
+
+
+                resendTimer.textContent =
+                    "You can resend the OTP now.";
+
+                return;
+
+            }
+
+
+            resendTimer.textContent =
+                `Resend available in ${resendSeconds}s`;
+
+
+        }, 1000);
+
+}
+
+
+
+/* =========================================================
+   RESEND OTP
+========================================================= */
+
+async function resendOTP() {
+
+
+    if (!currentPhone) {
+
+        return;
+
+    }
+
+
+    if (resendButton.disabled) {
+
+        return;
+
+    }
+
+
+    resendButton.disabled =
+        true;
+
+
+    showLoading(
+        "Sending new OTP..."
+    );
+
+
+    try {
+
+
+        /* -----------------------------------------------
+           Create fresh reCAPTCHA
+        ------------------------------------------------ */
+
+        const verifier =
+            createRecaptcha();
+
+
+        confirmationResult =
+            await signInWithPhoneNumber(
+                auth,
+                currentPhone,
+                verifier
+            );
+
+
+        showError(
+            otpError,
+            "A new OTP has been sent."
+        );
+
+
+        otpError.classList.remove(
+            "show"
+        );
+
+
+        otpInput.value = "";
+
+
+        otpInput.focus();
+
+
+        startResendTimer();
+
+
+    }
+    catch (error) {
+
+        console.error(
+            "Resend OTP error:",
+            error
+        );
+
+
+        showError(
+            otpError,
+            "Unable to resend OTP. Please try again."
+        );
+
+
+        resendButton.disabled =
+            false;
+
+    }
+    finally {
+
+        hideLoading();
+
+    }
+
+}
+
+
+
+/* =========================================================
+   GOOGLE LOGIN
+========================================================= */
+
+async function googleLogin() {
+
+
+    googleButton.disabled =
+        true;
+
+
+    showLoading(
+        "Connecting with Google..."
+    );
+
+
+    try {
+
+
+        const provider =
+            new GoogleAuthProvider();
+
+
+        provider.setCustomParameters({
+
+            prompt: "select_account"
+
+        });
+
+
+        const result =
+            await signInWithPopup(
+                auth,
+                provider
+            );
+
+
+        const firebaseUser =
+            result.user;
+
+
+        const email =
+            firebaseUser.email
+                ? firebaseUser.email
+                    .trim()
+                    .toLowerCase()
+                : "";
+
+
+        if (!email) {
+
+            throw new Error(
+                "Your Google account does not have an email address."
+            );
+
+        }
+
+
+        /* -----------------------------------------------
+           Find existing user by Firebase UID
+        ------------------------------------------------ */
+
+        let existingUser = null;
+
+
+        const {
+            data: firebaseUsers,
+            error: firebaseLookupError
+        } =
+            await supabaseClient
+                .from("users")
+                .select("*")
+                .eq(
+                    "firebase_uid",
+                    firebaseUser.uid
+                )
+                .limit(1);
+
+
+        if (firebaseLookupError) {
+
+            throw firebaseLookupError;
+
+        }
+
+
+        if (
+            firebaseUsers &&
+            firebaseUsers.length
+        ) {
+
+            existingUser =
+                firebaseUsers[0];
+
+        }
+
+
+
+        /* -----------------------------------------------
+           If not found by Firebase UID,
+           check email
+        ------------------------------------------------ */
+
+        if (!existingUser) {
+
+            existingUser =
+                await findUserByEmail(
+                    email
+                );
+
+        }
+
+
+        /* -----------------------------------------------
+           Existing email account
+        ------------------------------------------------ */
+
+        if (existingUser) {
+
+
+            if (
+                existingUser.firebase_uid &&
+                existingUser.firebase_uid !==
+                firebaseUser.uid
+            ) {
+
+                throw new Error(
+                    "This email is already linked to another Keys99 account."
+                );
+
+            }
+
+
+            /* -------------------------------------------
+               Attach UID if missing
+            -------------------------------------------- */
+
+            if (
+                !existingUser.firebase_uid
+            ) {
 
                 const {
+                    data,
                     error
                 } =
-                    await client.auth
-                        .signInWithPassword({
-                            email,
-                            password
-                        });
+                    await supabaseClient
+                        .from("users")
+                        .update({
+
+                            firebase_uid:
+                                firebaseUser.uid
+
+                        })
+                        .eq(
+                            "id",
+                            existingUser.id
+                        )
+                        .select()
+                        .single();
 
 
                 if (error) {
 
-                    if (
-                        error.message.includes(
-                            "Email not confirmed"
-                        )
-                    ) {
-
-                        showError(
-                            "Please verify your email before logging in."
-                        );
-
-                        document
-                            .getElementById(
-                                'resendArea'
-                            )
-                            .classList
-                            .remove('hidden');
-
-                    } else {
-
-                        showError(
-                            "Login failed: " +
-                            error.message
-                        );
-                    }
-
                     throw error;
+
                 }
 
 
-                redirectToProfile();
+                existingUser =
+                    data;
 
             }
 
 
-            /* =================================================
-               REGISTRATION
-            ================================================= */
-
-            else {
-
-                const userData = {
-
-                    first_name:
-                        document
-                            .getElementById('fname')
-                            .value,
-
-                    middle_name:
-                        document
-                            .getElementById('mname')
-                            .value,
-
-                    last_name:
-                        document
-                            .getElementById('lname')
-                            .value,
-
-                    phone:
-                        document
-                            .getElementById('phone')
-                            .value,
-
-                    address:
-                        document
-                            .getElementById('address')
-                            .value,
-
-                    email:
-                        email
-                };
+            saveLoginSession(
+                existingUser
+            );
 
 
-                const {
-                    data: authData,
-                    error: authError
-                } =
-                    await client.auth.signUp({
+        }
 
-                        email,
-
-                        password,
-
-                        options: {
-                            data: userData
-                        }
-
-                    });
+        else {
 
 
-                if (authError) {
+            /* -------------------------------------------
+               Create Google user
+            -------------------------------------------- */
 
-                    showError(
-                        "Auth Error: " +
-                        authError.message
+            const displayName =
+                firebaseUser.displayName ||
+                "";
+
+
+            const nameParts =
+                displayName
+                    .trim()
+                    .split(/\s+/)
+                    .filter(Boolean);
+
+
+            const firstName =
+                nameParts[0] || "";
+
+
+            const lastName =
+                nameParts.length > 1
+                    ? nameParts[nameParts.length - 1]
+                    : "";
+
+
+            let middleName = "";
+
+
+            if (
+                nameParts.length > 2
+            ) {
+
+                middleName =
+                    nameParts
+                        .slice(
+                            1,
+                            -1
+                        )
+                        .join(" ");
+
+            }
+
+
+            const phone =
+                firebaseUser.phoneNumber ||
+                null;
+
+
+            /* -------------------------------------------
+               If Google account has phone,
+               check phone uniqueness
+            -------------------------------------------- */
+
+            if (phone) {
+
+                const phoneUser =
+                    await findUserByPhone(
+                        phone
                     );
 
-                    throw authError;
+
+                if (phoneUser) {
+
+                    throw new Error(
+                        "This mobile number is already registered with another Keys99 account."
+                    );
+
                 }
 
-
-                if (authData.user) {
-
-                    const {
-                        error: dbError
-                    } =
-                        await client
-                            .from('users')
-                            .upsert(
-                                [
-                                    {
-                                        id:
-                                            authData.user.id,
-                                        ...userData
-                                    }
-                                ],
-                                {
-                                    onConflict: 'id'
-                                }
-                            );
-
-
-                    if (dbError) {
-
-                        showError(
-                            "DB Error: " +
-                            dbError.message +
-                            " (Code: " +
-                            dbError.code +
-                            ")"
-                        );
-
-                        throw dbError;
-                    }
-
-
-                    document
-                        .getElementById(
-                            'modalTitle'
-                        )
-                        .innerText =
-                        "Email Sent!";
-
-
-                    document
-                        .getElementById(
-                            'modalMsg'
-                        )
-                        .innerText =
-                        "A verification link has been sent to your email. Please verify it to log in.";
-
-
-                    document
-                        .getElementById(
-                            'emailModal'
-                        )
-                        .style
-                        .display = 'flex';
-                }
             }
 
-        } catch (err) {
 
-            console.error(err);
+            const {
+                data,
+                error
+            } =
+                await supabaseClient
+                    .from("users")
+                    .insert({
 
-        } finally {
+                        first_name:
+                            firstName,
 
-            btn.disabled = false;
+                        middle_name:
+                            middleName || null,
 
-            spinner.style.display = 'none';
+                        last_name:
+                            lastName,
+
+                        phone:
+                            phone,
+
+                        email:
+                            email,
+
+                        firebase_uid:
+                            firebaseUser.uid
+
+                    })
+                    .select()
+                    .single();
+
+
+            if (error) {
+
+                throw error;
+
+            }
+
+
+            saveLoginSession(
+                data
+            );
+
         }
+
+
+        loadingText.textContent =
+            "Login successful...";
+
+
+        window.location.href =
+            "profile.html";
+
+
     }
+    catch (error) {
+
+        console.error(
+            "Google login error:",
+            error
+        );
+
+
+        if (
+            error.code ===
+            "auth/popup-closed-by-user"
+        ) {
+
+            return;
+
+        }
+
+
+        showError(
+            phoneError,
+            error.message ||
+            "Google login failed. Please try again."
+        );
+
+    }
+    finally {
+
+        hideLoading();
+
+        googleButton.disabled =
+            false;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   CHANGE NUMBER
+========================================================= */
+
+function changeNumber() {
+
+
+    clearInterval(
+        resendInterval
+    );
+
+
+    currentPhone =
+        "";
+
+    currentExistingUser =
+        null;
+
+    confirmationResult =
+        null;
+
+
+    otpInput.value =
+        "";
+
+
+    firstNameInput.value =
+        "";
+
+
+    middleNameInput.value =
+        "";
+
+
+    lastNameInput.value =
+        "";
+
+
+    emailInput.value =
+        "";
+
+
+    hideError(phoneError);
+
+    hideError(otpError);
+
+    hideError(newUserError);
+
+
+    setNewUserMode(
+        true
+    );
+
+
+    showPhonePage();
+
+
+    setTimeout(() => {
+
+        phoneInput.focus();
+
+    }, 150);
+
+}
+
+
+
+/* =========================================================
+   HEADER BACK
+========================================================= */
+
+headerBack.addEventListener(
+    "click",
+    () => {
+
+        if (
+            otpPage.classList.contains(
+                "active"
+            )
+        ) {
+
+            changeNumber();
+
+            return;
+
+        }
+
+
+        if (
+            window.history.length > 1
+        ) {
+
+            window.history.back();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   SIGN UP BUTTON
+========================================================= */
+
+signupText.addEventListener(
+    "click",
+    () => {
+
+        phoneInput.focus();
+
+    }
+);
+
+
+
+/* =========================================================
+   FACEBOOK BUTTON
+========================================================= */
+
+facebookButton.addEventListener(
+    "click",
+    () => {
+
+        alert(
+            "Facebook login will be available soon."
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   INPUT FORMATTING
+========================================================= */
+
+phoneInput.addEventListener(
+    "input",
+    () => {
+
+        phoneInput.value =
+            phoneInput.value
+                .replace(/\D/g, "")
+                .slice(0, 10);
+
+
+        hideError(
+            phoneError
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   OTP INPUT
+========================================================= */
+
+otpInput.addEventListener(
+    "input",
+    () => {
+
+        otpInput.value =
+            otpInput.value
+                .replace(/\D/g, "")
+                .slice(0, 6);
+
+
+        hideError(
+            otpError
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   NAME INPUTS
+========================================================= */
+
+[
+    firstNameInput,
+    middleNameInput,
+    lastNameInput
+].forEach(
+    input => {
+
+        input.addEventListener(
+            "input",
+            () => {
+
+                input.value =
+                    input.value.replace(
+                        /[^A-Za-z .'-]/g,
+                        ""
+                    );
+
+
+                hideError(
+                    newUserError
+                );
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   EMAIL INPUT
+========================================================= */
+
+emailInput.addEventListener(
+    "input",
+    () => {
+
+        hideError(
+            newUserError
+        );
+
+    }
+);
+
+
+
+/* =========================================================
+   BUTTON EVENTS
+========================================================= */
+
+sendOtpButton.addEventListener(
+    "click",
+    sendOTP
+);
+
+
+verifyOtpButton.addEventListener(
+    "click",
+    verifyOTP
+);
+
+
+resendButton.addEventListener(
+    "click",
+    resendOTP
+);
+
+
+changeNumberButton.addEventListener(
+    "click",
+    changeNumber
+);
+
+
+googleButton.addEventListener(
+    "click",
+    googleLogin
+);
+
+
+
+/* =========================================================
+   ENTER KEY
+========================================================= */
+
+phoneInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            sendOTP();
+
+        }
+
+    }
+);
+
+
+otpInput.addEventListener(
+    "keydown",
+    event => {
+
+        if (
+            event.key === "Enter"
+        ) {
+
+            event.preventDefault();
+
+            verifyOTP();
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   AUTH STATE
+========================================================= */
+
+onAuthStateChanged(
+    auth,
+    user => {
+
+        if (user) {
+
+            console.log(
+                "Firebase authenticated:",
+                user.uid
+            );
+
+        }
+
+    }
+);
+
+
+
+/* =========================================================
+   INITIAL STATE
+========================================================= */
+
+setNewUserMode(
+    true
+);
+
+
+hideLoading();
+
 
 </script>
 
+
 </body>
+
 </html>
